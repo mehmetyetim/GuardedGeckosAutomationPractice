@@ -5,7 +5,11 @@ import com.guardedgeckos.automationpractice.pages.LinksInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ShippingPage extends CartPage{
+public class ShippingPage extends BasePage{
+
+    protected ShippingPage(WebDriver driver, String url) {
+        super(driver, url);
+    }
 
     public enum Links implements LinksInterface{
         CONTINUE_SHOPPING{
@@ -27,5 +31,12 @@ public class ShippingPage extends CartPage{
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
             BY_CHECKOUT = new By.ByClassName("standard-checkout");
+
+
+    public void tickTheTermsBox(WebDriver driver){
+        driver.findElement(By.name("cgv")).click();
+    }
+
+
 
 }

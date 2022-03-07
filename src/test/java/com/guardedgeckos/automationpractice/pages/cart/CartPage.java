@@ -11,14 +11,14 @@ public class CartPage {
         CONTINUE_SHOPPING{
             @Override
             public BasePage getPage(WebDriver driver) {
-                driver.findElement(BY_CONTINUE_SHOPPING);
+                driver.findElement(BY_CONTINUE_SHOPPING).click();
                 return null; // return MainPage? ProductPage? IDK
             }
         },
         CHECKOUT_LOGGED_OUT{
             @Override
             public BasePage getPage(WebDriver driver) {
-                driver.findElement(BY_CHECKOUT);
+                driver.findElement(BY_CHECKOUT).click();
                 return null; // return CheckoutPageOne(driver)
             }
         },
@@ -26,12 +26,11 @@ public class CartPage {
         CHECKOUT_LOGGED_IN{
           @Override
           public BasePage getPage(WebDriver driver){
-              driver.findElement(BY_CHECKOUT);
+              driver.findElement(BY_CHECKOUT).click();
               return null; // return CheckoutPageOne(driver, user)
           }
         }
     }
-
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
