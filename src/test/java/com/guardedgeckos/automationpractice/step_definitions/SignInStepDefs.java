@@ -76,6 +76,7 @@ public class SignInStepDefs {
         @And("I insert an invalid password and click the 'login' button")
         public void iInsertAnInvalidPasswordAndClickLoginButton() {
                 //loginPage.enterPassword("SpartaGlobal1");
+                //loginPage.clickLogInButton();
         }
 
         @Then("I will stay in the Login Page")
@@ -94,12 +95,12 @@ public class SignInStepDefs {
 
         }
 
-        @When("I am on the login page and {string}")
+        @When("I am on the login page and click on 'Create Account'")
         public void iAmOnTheLoginPageAndClickOnCreateAccount() {
 
         }
 
-        @Then("I will be able redirected to another page to finish the account creation")
+        @Then("I will be redirected to another page to finish the account creation")
         public void iWillBeAbleRedirectedToAnotherPageToFinishTheAccountCreation() {
                 //Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", loginPage.getCurrentURL());
         }

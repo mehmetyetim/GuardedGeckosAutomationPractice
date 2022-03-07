@@ -30,7 +30,7 @@ Feature: As a registered user with valid email and password I will be able to lo
     ## http://automationpractice.com/index.php?controller=password
 
   Scenario: Creating a new account from the login page
-    When I am on the login page and 'click on Create Account'
+    When I am on the login page and click on 'Create Account'
     Then I will be able redirected to another page to finish the account creation
 
      ## http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation
