@@ -23,6 +23,8 @@ public class OrderHistoryPage {
     private By linkButton = new By.ByClassName("link-button");
     private By button = new By.ByClassName("btn");
     private By myAccountPageFooter = new By.ByClassName("footer_links");
+    private By footableRow = new By.ByClassName("footable-row-detail-row");
+    private By foottableRowValue = new By.ByClassName("footable-row-detail-value");
 
     //My account page footer buttons
     private final int backToYourAccountButton = 0;
@@ -44,27 +46,23 @@ public class OrderHistoryPage {
 
 
     public int getOrderHistorySize(int orderIndex) {                        //Get total orders in order history
-        int output;
         try {
-            output =
+            return
                     webDriver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .size();
         }catch (NoSuchElementException e){
-            output = 0;
             System.out.println("ALERT: NO ORDER HISTORY FOUND");
-            return output;
+            return 0;
         }
-        return output;
     }
 
 
 
     public String getOrderReference(int orderIndex){
-        String output;
         try {
-            output =
+            return
             webDriver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
@@ -72,17 +70,14 @@ public class OrderHistoryPage {
                     .findElement(orderReferenceColumn)
                     .getText();
         }catch (IndexOutOfBoundsException e){
-            output = "ALERT: INVALID INDEX";
             System.out.println("ALERT: INVALID INDEX");
-            return output;
+            return "ALERT: INVALID INDEX";
         }
-        return output;
     }
 
     public String getOrderDate(int orderIndex){
-        String output;
         try {
-            output =
+            return
                     webDriver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
@@ -90,17 +85,14 @@ public class OrderHistoryPage {
                             .findElement(orderDateColumn)
                             .getText();
         }catch (IndexOutOfBoundsException e){
-            output = "ALERT: INVALID INDEX";
             System.out.println("ALERT: INVALID INDEX");
-            return output;
+            return "ALERT: INVALID INDEX";
         }
-        return output;
     }
 
     public String getOrderPrice(int orderIndex){
-        String output;
         try {
-            output =
+            return
                     webDriver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
@@ -108,17 +100,14 @@ public class OrderHistoryPage {
                             .findElement(orderPriceColumn)
                             .getText();
         }catch (IndexOutOfBoundsException e){
-            output = "ALERT: INVALID INDEX";
             System.out.println("ALERT: INVALID INDEX");
-            return output;
+            return "ALERT: INVALID INDEX";
         }
-        return output;
     }
 
     public String getOrderStatus(int orderIndex){
-        String output;
         try {
-            output =
+            return
                     webDriver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
@@ -126,11 +115,9 @@ public class OrderHistoryPage {
                             .findElement(orderStatusColumn)
                             .getText();
         }catch (IndexOutOfBoundsException e){
-            output = "ALERT: INVALID INDEX";
             System.out.println("ALERT: INVALID INDEX");
-            return output;
+            return "ALERT: INVALID INDEX";
         }
-        return output;
     }
 
     public void clickOrderInvoiceButton(int orderIndex){                                      //Can't see this web element if the browser window is too small!
@@ -187,13 +174,65 @@ public class OrderHistoryPage {
         }
     }
 
-    public void clickPDFButtonInFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large
+    public String getPaymentTypeFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
+        try {
+            return
+            webDriver.findElement(orderHistoryTable)
+                    .findElement(orderHistoryList)
+                    .findElements(orderTableRow)
+                    .get(orderIndex+1)
+                    .findElements(footableRow)
+                    .get(0)
+                    .findElement(foottableRowValue)
+                    .getText();
+        }catch (IndexOutOfBoundsException| ElementNotInteractableException e){
+            System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
+            return "ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE";
+        }
+    }
+
+    public void clickPDFButtonFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
+        try {
+                    webDriver.findElement(orderHistoryTable)
+                            .findElement(orderHistoryList)
+                            .findElements(orderTableRow)
+                            .get(orderIndex+1)
+                            .findElements(footableRow)
+                            .get(1)
+                            .findElement(foottableRowValue)
+                            .findElement(linkButton)
+                            .click();
+        }catch (IndexOutOfBoundsException| ElementNotInteractableException e){
+            System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
+        }
+    }
+
+    public void clickDetailsButtonFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
         try {
             webDriver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex+1)
-                    .findElement(plusButton)
+                    .findElements(footableRow)
+                    .get(2)
+                    .findElement(foottableRowValue)
+                    .findElement(button)
+                    .click();
+        }catch (IndexOutOfBoundsException| ElementNotInteractableException e){
+            System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
+        }
+    }
+
+    public void clickReorderButtonFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
+        try {
+            webDriver.findElement(orderHistoryTable)
+                    .findElement(orderHistoryList)
+                    .findElements(orderTableRow)
+                    .get(orderIndex+1)
+                    .findElements(footableRow)
+                    .get(2)
+                    .findElement(foottableRowValue)
+                    .findElement(linkButton)
                     .click();
         }catch (IndexOutOfBoundsException| ElementNotInteractableException e){
             System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
