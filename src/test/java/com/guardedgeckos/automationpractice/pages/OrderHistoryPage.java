@@ -5,6 +5,8 @@ import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class OrderHistoryPage {
 
     private WebDriver webDriver;
@@ -12,13 +14,19 @@ public class OrderHistoryPage {
     private By orderHistoryTable = new By.ById("order-list");
     private By orderHistoryList = new By.ByTagName("tbody");
     private By orderTableRow = new By.ByTagName("tr");
-    private By orderReferenceColumn = new By.ByClassName("color-myaccount");
     private By orderDateColumn = new By.ByClassName("history_date");
     private By orderPriceColumn = new By.ByClassName("price");
     private By orderStatusColumn = new By.ByClassName("label");
     private By orderHistoryDetailColumn = new By.ByClassName("history_detail");
     private By plusButton = new By.ByClassName("footable-toggle");
 
+    private By orderReferenceBox = new By.ByClassName("box");
+
+    private By infoOrderBox = new By.ByClassName("info-order");
+
+    private By colorMyAccountText = new By.ByClassName("color-myaccount");
+    private By paragraph = new By.ByTagName("p");
+    private By darkText = new By.ByClassName("dark");
     private By buttonLink = new By.ByTagName("a");
     private By linkButton = new By.ByClassName("link-button");
     private By button = new By.ByClassName("btn");
@@ -67,7 +75,7 @@ public class OrderHistoryPage {
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex)
-                    .findElement(orderReferenceColumn)
+                    .findElement(colorMyAccountText)
                     .getText();
         }catch (IndexOutOfBoundsException e){
             System.out.println("ALERT: INVALID INDEX");
@@ -238,6 +246,69 @@ public class OrderHistoryPage {
             System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
         }
     }
+
+    public void clickGreenRecorderButton(){
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        try {
+            webDriver.findElement(orderReferenceBox).findElement(buttonLink).click();
+        }catch (NoSuchElementException e){
+            System.out.println("NO SUCH ELEMENT OR ELEMENT NO LOADED");
+        }
+    }
+
+    public String getOrderReferenceText(){
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        try {
+            return webDriver.findElement(orderReferenceBox).findElement(darkText).getText();
+        }catch (NoSuchElementException e){
+            System.out.println("NO ELEMENT OR ELEMENT NO LOADED");
+            return "NO SUCH ELEMENT OR ELEMENT NO LOADED";
+        }
+    }
+
+    public String getCarrierFromInfoReferenceBox(){
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        try {
+            return webDriver
+                    .findElement(infoOrderBox)
+                    .findElements(paragraph).get(0)
+                    .findElement(darkText)
+                    .getText();
+        }catch (NoSuchElementException e){
+            System.out.println("NO ELEMENT OR ELEMENT NO LOADED");
+            return "NO SUCH ELEMENT OR ELEMENT NO LOADED";
+        }
+    }
+
+    public String getPaymentMethodFromInfoReferenceBox(){
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        try {
+            return webDriver
+                    .findElement(infoOrderBox)
+                    .findElements(paragraph).get(1)
+                    .findElement(colorMyAccountText)
+                    .getText();
+        }catch (NoSuchElementException e){
+            System.out.println("NO ELEMENT OR ELEMENT NO LOADED");
+            return "NO SUCH ELEMENT OR ELEMENT NO LOADED";
+        }
+    }
+
+    public void clickDownloadInvoiceFromInfoReferenceBox(){
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        try {
+             webDriver
+                    .findElement(infoOrderBox)
+                    .findElements(paragraph).get(2)
+                    .findElement(buttonLink)
+                    .click();
+
+        }catch (NoSuchElementException e){
+            System.out.println("NO ELEMENT OR ELEMENT NO LOADED");
+        }
+    }
+
+
 
 
     public void clickHomeButton(){
