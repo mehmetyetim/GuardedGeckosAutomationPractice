@@ -25,12 +25,12 @@ Feature: As a registered user with valid email and password I will be able to lo
 
   Scenario: Creating a new password in case of a forgotten one
     When I click on 'Forgot your password?
-    Then I will be redirected to another page to reset my password
+    Then I will be directed to another page to reset my password
 
     ## http://automationpractice.com/index.php?controller=password
 
   Scenario: Creating a new account from the login page
     When I am on the login page and click on 'Create Account'
-    Then I will be redirected to another page to finish the account creation
+    Then I will be directed to another page to finish the account creation
 
      ## http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation

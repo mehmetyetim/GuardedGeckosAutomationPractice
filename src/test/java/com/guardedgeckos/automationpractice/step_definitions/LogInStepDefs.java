@@ -49,7 +49,7 @@ public class LogInStepDefs {
                 //Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account", myAccountPage.getCurrentURL());
         }
 
-        // Is it needed?
+        // Maybe low priority?
         @And("I should see my account information")
         public void iShouldSeeMyAccountInformation() {
                 //myAccountPage.isInformationPresent();
@@ -70,6 +70,7 @@ public class LogInStepDefs {
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage() {
             //NEED CURRENT URL  //  Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getCurrentURL());
+                //driver.getCurrentURL()
         }
 
         @When("I insert a registered email")
@@ -87,6 +88,7 @@ public class LogInStepDefs {
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage1() {
             //NEED CURRENT URL    //Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", loginPage.getCurrentURL());
+                //driver.getCurrentURL()
         }
 
         @When("I click on 'Forgot your password?")
@@ -95,10 +97,10 @@ public class LogInStepDefs {
         }
 
         //High priority?
-        @Then("I will be redirected to another page to reset my password")
-        public void iWillBeRedirectedToAAnotherPageToResetMyPassword() {
+        @Then("I will be directed to another page to reset my password")
+        public void iWillRedirectedToAAnotherPageToResetMyPassword() {
            //NEED CURRENT URL     //Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", loginPage.getCurrentURL());
-
+                //driver.getCurrentURL()
         }
 
         @When("I am on the login page and click on 'Create Account'")
@@ -108,9 +110,10 @@ public class LogInStepDefs {
 
         }
 
-        @Then("I will be redirected to another page to finish the account creation")
-        public void iWillBeAbleRedirectedToAnotherPageToFinishTheAccountCreation() {
+        @Then("I will be directed to another page to finish the account creation")
+        public void iWillBeAbledirectedToAnotherPageToFinishTheAccountCreation() {
               //NEED CURRENT URL  //Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", loginPage.getCurrentURL());
+                //driver.getCurrentURL()
         }
 
         @After
