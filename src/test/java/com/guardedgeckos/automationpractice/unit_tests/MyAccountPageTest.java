@@ -69,4 +69,9 @@ public class MyAccountPageTest {
         Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", myWishlistsPage.getCurrentUrl());
     }
 
+    @AfterAll
+    static void close(){
+    webDriver.quit();
+    }
+
 }
