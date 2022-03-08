@@ -24,6 +24,7 @@ public class SignInTests
     @DisplayName("Check that the page defaults to the base url")
     void signInPageConstructorTest()
     {
+        signInPage = new SignInPage(driver);
         Assertions.assertEquals(signInPage.getDefaultUrl(), driver.getCurrentUrl());
     }
 
@@ -31,6 +32,8 @@ public class SignInTests
     @DisplayName("The user can enter a password")
     void signInPageEnterPasswordTest()
     {
+        signInPage = new SignInPage(driver);
+
         signInPage.enterPassword(signInPage.getDefaultPassword());
 
         Assertions.assertEquals(signInPage.getDefaultPassword(), signInPage.getPassword());
@@ -56,6 +59,53 @@ public class SignInTests
                 && (signInPage.getDefaultEmail().equals(signInPage.getEmail()));
 
         Assertions.assertTrue(bothAreEqual);
+    }
+
+    @Test
+    @DisplayName("The user can enter a registration email")
+    void signInPageRegistrationEmailTest()
+    {
+        signInPage.resetFields();
+        signInPage.enterRegistrationEmail(signInPage.getDefaultRegistrationEmail());
+
+        Assertions.assertEquals(signInPage.getDefaultRegistrationEmail(), signInPage.getRegistrationEmail());
+    }
+
+    @Test
+    @DisplayName("The user can enter a registration email")
+    void signInPageRegistrationEmailSubmitTest()
+    {
+        signInPage = new SignInPage(driver);
+
+        signInPage.resetFields();
+        signInPage.enterRegistrationEmail(signInPage.getDefaultRegistrationEmail());
+        signInPage.clickCreateAnAccountButton();
+
+        try
+        {
+            Thread.sleep(5000);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        boolean isOnAccountCreationPage = driver.getCurrentUrl().contains("#account-creation");
+
+        Assertions.assertTrue(isOnAccountCreationPage);
+    }
+
+    @Test
+    @DisplayName("The user can enter a registration email")
+    void signInPageForgotPasswordTest()
+    {
+        signInPage.resetFields();
+
+        signInPage.clickForgotPasswordLink();
+
+        boolean isOnAccountCreationPage = driver.getCurrentUrl().contains("controller=password");
+
+        Assertions.assertTrue(isOnAccountCreationPage);
     }
     //endregion
 
