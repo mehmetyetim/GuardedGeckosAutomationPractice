@@ -1,5 +1,6 @@
 package com.guardedgeckos.automationpractice.unit_tests;
 
+import com.guardedgeckos.automationpractice.pages.IHopeYouGuysAreHappy;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.*;
 import com.guardedgeckos.automationpractice.utilities.ConfigurationReader;
@@ -26,6 +27,7 @@ public class CartPageTests {
      CheckoutAddress checkoutAddress;
      PaymentClass paymentClass;
      ShippingPage shippingPage;
+     IHopeYouGuysAreHappy iHopeYouGuysAreHappy;
 
      SignInPage signInPage;
 
@@ -38,9 +40,42 @@ public class CartPageTests {
           driver.findElement(By.id("SubmitLogin")).click();
      }
 
+     public void timer(){
+          try {
+               Thread.sleep(4000);
+          } catch (InterruptedException e) {
+               e.printStackTrace();
+          }
+     }
+
+     @Test
+     @DisplayName("Full walkthrough of the cart structure")
+     public void fullWalkthroughOfTheCartStructure() {
+          driver.get("http://automationpractice.com/index.php?id_product=1&controller=product");
+          driver.findElement(By.name("Submit")).click();
+
+          //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
+          timer();
+
+          iHopeYouGuysAreHappy = new IHopeYouGuysAreHappy(driver);
+          iHopeYouGuysAreHappy.proceedToCheckout();
+          cartPage = new CartPage(driver);
+          System.out.println(driver.getCurrentUrl());
+          timer();
+          checkoutAddress = (CheckoutAddress) CartPage.Links.CHECKOUT_LOGGED_IN.getPage(driver);
+          System.out.println(driver.getCurrentUrl());
+          timer();
+          shippingPage = (ShippingPage) CheckoutAddress.Links.CHECKOUT_LOGGED_IN.getPage(driver);
+          System.out.println(driver.getCurrentUrl());
+          timer();
+          paymentClass= (PaymentClass) ShippingPage.Links.CHECKOUT_LOGGED_IN.getPage(driver);
+          System.out.println(driver.getCurrentUrl());
+     }
+
      @Test
      @DisplayName("Testing the Cart Page of the website")
-     public void testingTheCardPageOfTheWebsite(){
+     public void testingTheCardPageOfTheWebsite() {
           driver.get("http://automationpractice.com/index.php?id_product=1&controller=product");
           driver.findElement(By.name("Submit")).click();
 

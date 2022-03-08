@@ -11,10 +11,10 @@ import java.util.List;
 
 public class CartPage extends BasePage {
 
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=order";
+    //protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=order";
 
     public CartPage(WebDriver driver) {
-        super(driver, DEFAULT_URL);
+        super(driver);
     }
 
     public enum Links implements LinksInterface {
@@ -37,14 +37,14 @@ public class CartPage extends BasePage {
           @Override
           public BasePage getPage(WebDriver driver){
               driver.findElement(BY_CHECKOUT).click();
-              return null; // return CheckoutPageOne(driver, user)
+              return new CheckoutAddress(driver);
           }
         }
     }
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByClassName("standard-checkout"),
+            BY_CHECKOUT = new By.ByXPath("//*[@id=\"center_column\"]/p[2]/a[1]/span/text()"),
             BY_CART_PRODUCTS = new By.ByClassName("cart_item");
 
 

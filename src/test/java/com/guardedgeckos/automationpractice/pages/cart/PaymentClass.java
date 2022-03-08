@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class PaymentClass extends BasePage {
 
-    protected PaymentClass(WebDriver driver) {
+    public PaymentClass(WebDriver driver) {
         super(driver);
     }
 
@@ -16,7 +16,7 @@ public class PaymentClass extends BasePage {
             @Override
             public BasePage getPage(WebDriver driver) {
                 driver.findElement(BY_CONTINUE_SHOPPING).click();
-                return new ShippingPage(driver, "http://automationpractice.com/index.php?controller=order&step=2");
+                return new ShippingPage(driver);
                 }
             }
 

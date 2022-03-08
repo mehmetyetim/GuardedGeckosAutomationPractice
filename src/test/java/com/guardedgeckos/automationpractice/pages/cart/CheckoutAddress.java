@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckoutAddress extends BasePage {
 
-    protected CheckoutAddress(WebDriver driver) {
+    public CheckoutAddress(WebDriver driver) {
         super(driver);
     }
 
@@ -16,14 +16,14 @@ public class CheckoutAddress extends BasePage {
             @Override
             public BasePage getPage(WebDriver driver) {
                 driver.findElement(BY_CONTINUE_SHOPPING).click();
-                return null; // return MainPage? ProductPage? IDK
+                return null;
             }
         },
         CHECKOUT_LOGGED_IN{
             @Override
             public BasePage getPage(WebDriver driver){
                 driver.findElement(BY_CHECKOUT).click();
-                return null; // return CheckoutPageOne(driver, user)
+                return new ShippingPage(driver);
             }
         },
         UPDATE_DELIVERY_ADDRESS {
@@ -42,12 +42,8 @@ public class CheckoutAddress extends BasePage {
         }
     }
 
-
-
-
-
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByClassName("standard-checkout"),
+            BY_CHECKOUT = new By.ByName("processAddress"),
             BY_UPDATE = new By.ByLinkText("Update");
 }
