@@ -25,7 +25,7 @@ public class BasePage {
     private By cart = new By.ByClassName("shopping_cart");
     private By productsList = new By.ByClassName("products");
     private By checkoutButton = new By.ByClassName("button_order_cart");
-    private By categoriesHeader = new By.ByClassName("sf-menu clearfix menu-content");
+    private By categoriesHeader = By.xpath("//div[@class='sf-menu clearfix menu-content']");
     private By womenHeader = new By.ByCssSelector("title='Women'");
     private By dressesHeader = new By.ByCssSelector("title='Dresses'");
     private By tshirtsHeader = new By.ByCssSelector("title='T-shirts'");
