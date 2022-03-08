@@ -23,8 +23,10 @@ public class MyAccountPage {
     //My account page footer buttons
     private final int homeButton = 0;
 
-//    public MyAccountPage(WebDriver webDriver){
-//    }
+    public MyAccountPage(WebDriver webDriver){
+        this.webDriver = webDriver;
+        this.webDriver.get("http://automationpractice.com/index.php?controller=my-account");
+    }
 
     public void clickOrderHistoryAndDetailsButton(){
         webDriver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(orderHistoryButton).click();
@@ -49,4 +51,8 @@ public class MyAccountPage {
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
 
+
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
+    }
 }

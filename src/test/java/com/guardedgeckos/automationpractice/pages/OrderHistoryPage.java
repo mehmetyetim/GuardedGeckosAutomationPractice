@@ -49,9 +49,10 @@ public class OrderHistoryPage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
-//    public OrderHistoryPage(WebDriver webDriver){
-//    }
-
+    public OrderHistoryPage(WebDriver webDriver){
+        this.webDriver = webDriver;
+        this.webDriver.get("http://automationpractice.com/index.php?controller=history");
+    }
 
     public String getAlertText(){
         try {
@@ -64,7 +65,7 @@ public class OrderHistoryPage {
     }
 
 
-    public int getOrderHistorySize(int orderIndex) {                        //Get total orders in order history
+    public int getOrderHistorySize() {                        //Get total orders in order history
         try {
             return
                     webDriver.findElement(orderHistoryTable)
@@ -79,7 +80,7 @@ public class OrderHistoryPage {
 
 
 
-    public String getOrderReference(int orderIndex){
+    public String getOrderReferenceText(int orderIndex){
         try {
             return
             webDriver.findElement(orderHistoryTable)
@@ -91,6 +92,19 @@ public class OrderHistoryPage {
         }catch (IndexOutOfBoundsException e){
             System.out.println("INVALID INDEX");
             return "INVALID INDEX";
+        }
+    }
+
+    public void clickOrderReference(int orderIndex){
+        try {
+                    webDriver.findElement(orderHistoryTable)
+                            .findElement(orderHistoryList)
+                            .findElements(orderTableRow)
+                            .get(orderIndex)
+                            .findElement(colorMyAccountText)
+                            .click();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("INVALID INDEX");
         }
     }
 
@@ -350,6 +364,10 @@ public class OrderHistoryPage {
     }
     public void clickBackToYourAccountButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
+    }
+
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
     }
 
 }

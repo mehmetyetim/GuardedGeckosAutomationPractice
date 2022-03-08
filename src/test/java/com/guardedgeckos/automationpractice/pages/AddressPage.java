@@ -28,9 +28,11 @@ public class AddressPage {
     private By clearfix = new By.ByClassName("clearfix");
     private By options = new By.ByTagName("option");
 
+    public AddressPage(WebDriver webDriver){
+        this.webDriver = webDriver;
+        this.webDriver.get("http://automationpractice.com/index.php?controller=address");
+    }
 
-    //    public AddressPage(WebDriver webDriver){
-//       }
 
     public String getAlertText(){
         try {
@@ -100,5 +102,8 @@ public class AddressPage {
 
 
 
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
+    }
 
 }

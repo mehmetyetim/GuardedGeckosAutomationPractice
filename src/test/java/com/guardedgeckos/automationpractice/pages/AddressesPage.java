@@ -37,8 +37,11 @@ public class AddressesPage {
     private final int homeButton = 1;
 
 
-//    public AddressesPage(WebDriver webDriver){
-//       }
+    public AddressesPage(WebDriver webDriver){
+        this.webDriver = webDriver;
+        this.webDriver.get("http://automationpractice.com/index.php?controller=addresses");
+    }
+
 
     public void clickAddANewAddressButton(){
         webDriver
@@ -186,6 +189,9 @@ public class AddressesPage {
     }
 
 
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
+    }
 
 
 }

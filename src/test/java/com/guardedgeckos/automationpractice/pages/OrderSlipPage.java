@@ -26,8 +26,10 @@ public class OrderSlipPage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
-//    public OrderSlipPage(WebDriver webDriver){
-//      }
+    public OrderSlipPage(WebDriver webDriver){
+        this.webDriver = webDriver;
+        this.webDriver.get("http://automationpractice.com/index.php?controller=order-slip");
+    }
 
     public String getAlertText(){
         try {
@@ -46,5 +48,8 @@ public class OrderSlipPage {
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
+    }
 
 }
