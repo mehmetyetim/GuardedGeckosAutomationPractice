@@ -1,2 +1,0 @@
-@signin
-Feature: Sign in
