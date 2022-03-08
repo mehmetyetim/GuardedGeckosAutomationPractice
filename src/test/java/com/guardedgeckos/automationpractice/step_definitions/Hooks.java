@@ -15,7 +15,7 @@ public class Hooks {
     public void setUp(Scenario scenario){
         scenario.getName();
         DriverFactory.get().manage().window().maximize();
-        DriverFactory.get().get("https://automationexercise.com/");
+        DriverFactory.get().get("https://automationpractice.com/");
         DriverFactory.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
