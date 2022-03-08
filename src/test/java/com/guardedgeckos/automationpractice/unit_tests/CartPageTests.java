@@ -5,5 +5,5 @@ import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.openqa.selenium.WebDriver;
 
 public class CartPageTests {
-    private WebDriver driver =
+    // WebDriver driver =
 }

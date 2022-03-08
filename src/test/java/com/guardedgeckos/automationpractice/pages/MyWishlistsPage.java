@@ -2,12 +2,19 @@ package com.guardedgeckos.automationpractice.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class MyWishlistsPage extends BasePage {
+public class MyWishlistsPage extends BasePage
+{
 
     WebDriver webDriver;
 
-    public MyWishlistsPage(WebDriver webDriver){
-        super(webDriver);
-        this.webDriver.get("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist");
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist";
+
+    public MyWishlistsPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
+    }
+
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
     }
 }

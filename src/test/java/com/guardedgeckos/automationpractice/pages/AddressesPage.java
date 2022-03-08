@@ -3,8 +3,8 @@ package com.guardedgeckos.automationpractice.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AddressesPage extends BasePage {
-
+public class AddressesPage extends BasePage
+{
     private WebDriver webDriver;
 
     private By centerColumn = new By.ById("center_column");
@@ -36,12 +36,12 @@ public class AddressesPage extends BasePage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=addresses";
 
-    public AddressesPage(WebDriver webDriver){
-        super(webDriver);
-        this.webDriver.get("http://automationpractice.com/index.php?controller=addresses");
+    public AddressesPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
-
 
     public void clickAddANewAddressButton(){
         webDriver
@@ -187,5 +187,11 @@ public class AddressesPage extends BasePage {
     public void clickBackToYourAccountButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
+
+
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
+    }
+
 
 }

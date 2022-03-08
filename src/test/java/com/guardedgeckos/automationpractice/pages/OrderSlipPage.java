@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class OrderSlipPage extends BasePage {
-
+public class OrderSlipPage extends BasePage
+{
     private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
-
 
     //General
     private By options = new By.ByTagName("option");
@@ -26,9 +25,11 @@ public class OrderSlipPage extends BasePage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
-    public OrderSlipPage(WebDriver webDriver){
-        super(webDriver);
-        this.webDriver.get("http://automationpractice.com/index.php?controller=order-slip");
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=order-slip";
+
+    public OrderSlipPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
 
     public String getAlertText(){
@@ -46,6 +47,10 @@ public class OrderSlipPage extends BasePage {
     }
     public void clickBackToYourAccountButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
+    }
+
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
     }
 
 }

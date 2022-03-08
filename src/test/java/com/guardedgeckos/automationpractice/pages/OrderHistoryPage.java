@@ -7,7 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class OrderHistoryPage extends BasePage {
+public class OrderHistoryPage extends BasePage
+{
 
     private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
@@ -49,9 +50,11 @@ public class OrderHistoryPage extends BasePage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
-    public OrderHistoryPage(WebDriver webDriver){
-        super(webDriver);
-        this.webDriver.get("http://automationpractice.com/index.php?controller=history");
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=history";
+
+    public OrderHistoryPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
 
     public String getAlertText(){
@@ -77,6 +80,7 @@ public class OrderHistoryPage extends BasePage {
             return 0;
         }
     }
+
 
 
     public String getOrderReferenceText(int orderIndex){
@@ -271,10 +275,6 @@ public class OrderHistoryPage extends BasePage {
         }
     }
 
-    // --------
-
-
-
     public void clickGreenRecorderButton(){
       //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
@@ -366,4 +366,9 @@ public class OrderHistoryPage extends BasePage {
     public void clickBackToYourAccountButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
+
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
     }
+
+}
