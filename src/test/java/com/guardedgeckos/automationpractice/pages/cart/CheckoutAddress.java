@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckoutAddress extends BasePage {
 
-    protected CheckoutAddress(WebDriver driver, String url) {
-        super(driver, url);
+    protected CheckoutAddress(WebDriver driver) {
+        super(driver);
     }
 
     public enum Links implements LinksInterface {
