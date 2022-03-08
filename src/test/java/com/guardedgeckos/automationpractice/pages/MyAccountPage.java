@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class MyAccountPage extends BasePage
 {
 
-    private WebDriver webDriver;
+
 
     private By myAccountButtonList = new By.ByClassName("myaccount-link-list");
     private By myAccountPageFooter = new By.ByClassName("footer_links");
@@ -31,30 +31,30 @@ public class MyAccountPage extends BasePage
     }
 
     public void clickOrderHistoryAndDetailsButton(){
-        webDriver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(orderHistoryButton).click();
+        driver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(orderHistoryButton).click();
     }
     public void clickMyCreditSlipsButton(){
-        webDriver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(myCreditSlipsButton).click();
+        driver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(myCreditSlipsButton).click();
     }
 
     public void clickMyAddressesButton(){
-        webDriver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(myAddressesButton).click();
+        driver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(myAddressesButton).click();
     }
 
     public void clickMyPersonalInformationButton(){
-        webDriver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(myPersonalInfoButton).click();
+        driver.findElements(myAccountButtonList).get(0).findElements(buttonLink).get(myPersonalInfoButton).click();
     }
 
     public void clickMyWishlistsButton(){
-        webDriver.findElements(myAccountButtonList).get(1).findElements(buttonLink).get(myWishlistsButton).click();
+        driver.findElements(myAccountButtonList).get(1).findElements(buttonLink).get(myWishlistsButton).click();
     }
 
     public void clickHomeButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
 
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 }
