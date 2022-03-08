@@ -1,5 +1,6 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 public class OrderHistoryPage extends BasePage
 {
 
-    private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
     private By orderHistoryTable = new By.ById("order-list");
     private By orderHistoryList = new By.ByTagName("tbody");
@@ -59,19 +59,19 @@ public class OrderHistoryPage extends BasePage
 
     public String getAlertText(){
         try {
-            webDriver.findElement(alert).getText();
+            driver.findElement(alert).getText();
         }catch (NoSuchElementException e){
             e.printStackTrace();
             return "NO ALERT";
         }
-        return webDriver.findElement(alert).getText();
+        return driver.findElement(alert).getText();
     }
 
 
     public int getOrderHistorySize() {                        //Get total orders in order history
         try {
             return
-                    webDriver.findElement(orderHistoryTable)
+                    driver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .size();
@@ -86,7 +86,7 @@ public class OrderHistoryPage extends BasePage
     public String getOrderReferenceText(int orderIndex){
         try {
             return
-            webDriver.findElement(orderHistoryTable)
+                    driver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex)
@@ -100,7 +100,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickOrderReference(int orderIndex){
         try {
-                    webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .get(orderIndex)
@@ -114,7 +114,7 @@ public class OrderHistoryPage extends BasePage
     public String getOrderDate(int orderIndex){
         try {
             return
-                    webDriver.findElement(orderHistoryTable)
+                    driver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .get(orderIndex)
@@ -129,7 +129,7 @@ public class OrderHistoryPage extends BasePage
     public String getOrderPrice(int orderIndex){
         try {
             return
-                    webDriver.findElement(orderHistoryTable)
+                    driver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .get(orderIndex)
@@ -144,7 +144,7 @@ public class OrderHistoryPage extends BasePage
     public String getOrderStatus(int orderIndex){
         try {
             return
-                    webDriver.findElement(orderHistoryTable)
+                    driver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .get(orderIndex)
@@ -158,7 +158,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickOrderInvoiceButton(int orderIndex){                                      //Can't see this web element if the browser window is too small!
         try {
-                    webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .get(orderIndex)
@@ -171,7 +171,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickOrderDetailsButton(int orderIndex){                                      //Can't see this web element if the browser window is too small!
         try {
-            webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex)
@@ -185,7 +185,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickReorderButtonFromTable(int orderIndex){                                     //Can't see this web element if the browser window is too small!
         try {
-            webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex)
@@ -199,7 +199,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickPlusButton(int orderIndex){                                                 //Can't see this web element if the browser window is too Large
         try {
-            webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex)
@@ -213,7 +213,7 @@ public class OrderHistoryPage extends BasePage
     public String getPaymentTypeFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
         try {
             return
-            webDriver.findElement(orderHistoryTable)
+                    driver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex+1)
@@ -229,7 +229,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickPDFButtonFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
         try {
-                    webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                             .findElement(orderHistoryList)
                             .findElements(orderTableRow)
                             .get(orderIndex+1)
@@ -245,7 +245,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickDetailsButtonFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
         try {
-            webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex+1)
@@ -261,7 +261,7 @@ public class OrderHistoryPage extends BasePage
 
     public void clickReorderButtonFromFootableBox(int orderIndex){                                                 //Can't see this web element if the browser window is too Large / can only be used after pressing the plus button
         try {
-            webDriver.findElement(orderHistoryTable)
+            driver.findElement(orderHistoryTable)
                     .findElement(orderHistoryList)
                     .findElements(orderTableRow)
                     .get(orderIndex+1)
@@ -278,7 +278,7 @@ public class OrderHistoryPage extends BasePage
     public void clickGreenRecorderButton(){
       //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
-            webDriver.findElement(orderReferenceBox).findElement(buttonLink).click();
+            driver.findElement(orderReferenceBox).findElement(buttonLink).click();
         }catch (NoSuchElementException e){
             System.out.println("NO SUCH ELEMENT OR ELEMENT NO LOADED");
         }
@@ -287,7 +287,7 @@ public class OrderHistoryPage extends BasePage
     public String getOrderReferenceText(){
        // webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
-            return webDriver.findElement(orderReferenceBox).findElement(darkText).getText();
+            return driver.findElement(orderReferenceBox).findElement(darkText).getText();
         }catch (NoSuchElementException e){
             System.out.println("NO ELEMENT OR ELEMENT NO LOADED");
             return "NO SUCH ELEMENT OR ELEMENT NO LOADED";
@@ -297,7 +297,7 @@ public class OrderHistoryPage extends BasePage
     public String getCarrierFromInfoReferenceBox(){
       //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
-            return webDriver
+            return driver
                     .findElement(infoOrderBox)
                     .findElements(paragraph).get(0)
                     .findElement(darkText)
@@ -311,7 +311,7 @@ public class OrderHistoryPage extends BasePage
     public String getPaymentMethodFromInfoReferenceBox(){
       //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
-            return webDriver
+            return driver
                     .findElement(infoOrderBox)
                     .findElements(paragraph).get(1)
                     .findElement(colorMyAccountText)
@@ -325,7 +325,7 @@ public class OrderHistoryPage extends BasePage
     public void clickDownloadInvoiceFromInfoReferenceBox(){
        // webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
-             webDriver
+            driver
                     .findElement(infoOrderBox)
                     .findElements(paragraph).get(2)
                     .findElement(buttonLink)
@@ -339,8 +339,8 @@ public class OrderHistoryPage extends BasePage
     public void chooseProductInAddAMessage(int index){                                                              // 0 = --choose--
         //webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
-            webDriver.findElement(addMessageProductList).click();
-            webDriver.findElement(addMessageProductList).findElements(options).get(index).click();
+            driver.findElement(addMessageProductList).click();
+            driver.findElement(addMessageProductList).findElements(options).get(index).click();
         }catch (IndexOutOfBoundsException e){
             System.out.println("INVALID INDEX");
         }
@@ -348,12 +348,12 @@ public class OrderHistoryPage extends BasePage
 
     public void typeMessageInMessageBox(String string){                                                              // 0 = --choose--
         //webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
-        webDriver.findElement(messageTextBox).sendKeys(string);
+        driver.findElement(messageTextBox).sendKeys(string);
     }
 
     public void sendMessage(){
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        webDriver
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver
                 .findElement(sendOrderMessageField)
                 .findElement(submitField)
                 .findElement(submitFieldButton)
@@ -361,14 +361,14 @@ public class OrderHistoryPage extends BasePage
     }
 
     public void clickHomeButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
     public void clickBackToYourAccountButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
 }

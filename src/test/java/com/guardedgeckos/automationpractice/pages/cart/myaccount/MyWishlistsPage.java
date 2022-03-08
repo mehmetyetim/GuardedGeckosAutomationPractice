@@ -1,11 +1,10 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 
 public class MyWishlistsPage extends BasePage
 {
-
-    WebDriver webDriver;
 
     protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist";
 
@@ -15,6 +14,6 @@ public class MyWishlistsPage extends BasePage
     }
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 }
