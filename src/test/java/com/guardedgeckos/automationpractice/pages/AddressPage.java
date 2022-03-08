@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class AddressPage {
+public class AddressPage extends BasePage {
 
     private WebDriver webDriver;
 
@@ -29,7 +29,7 @@ public class AddressPage {
     private By options = new By.ByTagName("option");
 
     public AddressPage(WebDriver webDriver){
-        this.webDriver = webDriver;
+        super(webDriver);
         this.webDriver.get("http://automationpractice.com/index.php?controller=address");
     }
 
@@ -100,10 +100,5 @@ public class AddressPage {
         webDriver.findElement(submitButton).click();
     }
 
-
-
-    public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
-    }
 
 }

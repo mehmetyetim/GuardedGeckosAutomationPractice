@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class OrderSlipPage {
+public class OrderSlipPage extends BasePage {
 
     private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
@@ -27,7 +27,7 @@ public class OrderSlipPage {
     private final int homeButton = 1;
 
     public OrderSlipPage(WebDriver webDriver){
-        this.webDriver = webDriver;
+        super(webDriver);
         this.webDriver.get("http://automationpractice.com/index.php?controller=order-slip");
     }
 
@@ -46,10 +46,6 @@ public class OrderSlipPage {
     }
     public void clickBackToYourAccountButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
-    }
-
-    public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
     }
 
 }

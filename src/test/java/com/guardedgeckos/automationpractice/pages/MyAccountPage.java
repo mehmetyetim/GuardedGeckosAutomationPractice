@@ -3,7 +3,7 @@ package com.guardedgeckos.automationpractice.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MyAccountPage {
+public class MyAccountPage extends BasePage{
 
     private WebDriver webDriver;
 
@@ -24,7 +24,7 @@ public class MyAccountPage {
     private final int homeButton = 0;
 
     public MyAccountPage(WebDriver webDriver){
-        this.webDriver = webDriver;
+        super(webDriver);
         this.webDriver.get("http://automationpractice.com/index.php?controller=my-account");
     }
 
@@ -51,8 +51,4 @@ public class MyAccountPage {
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
 
-
-    public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
-    }
 }

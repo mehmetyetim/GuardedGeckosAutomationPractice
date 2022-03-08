@@ -3,7 +3,7 @@ package com.guardedgeckos.automationpractice.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AddressesPage {
+public class AddressesPage extends BasePage {
 
     private WebDriver webDriver;
 
@@ -38,7 +38,7 @@ public class AddressesPage {
 
 
     public AddressesPage(WebDriver webDriver){
-        this.webDriver = webDriver;
+        super(webDriver);
         this.webDriver.get("http://automationpractice.com/index.php?controller=addresses");
     }
 
@@ -187,11 +187,5 @@ public class AddressesPage {
     public void clickBackToYourAccountButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
-
-
-    public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
-    }
-
 
 }

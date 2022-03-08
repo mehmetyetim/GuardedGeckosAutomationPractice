@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class OrderHistoryPage {
+public class OrderHistoryPage extends BasePage {
 
     private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
@@ -50,7 +50,7 @@ public class OrderHistoryPage {
     private final int homeButton = 1;
 
     public OrderHistoryPage(WebDriver webDriver){
-        this.webDriver = webDriver;
+        super(webDriver);
         this.webDriver.get("http://automationpractice.com/index.php?controller=history");
     }
 
@@ -77,7 +77,6 @@ public class OrderHistoryPage {
             return 0;
         }
     }
-
 
 
     public String getOrderReferenceText(int orderIndex){
@@ -272,6 +271,10 @@ public class OrderHistoryPage {
         }
     }
 
+    // --------
+
+
+
     public void clickGreenRecorderButton(){
       //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
@@ -363,9 +366,4 @@ public class OrderHistoryPage {
     public void clickBackToYourAccountButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
-
-    public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
     }
-
-}
