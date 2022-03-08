@@ -18,20 +18,6 @@ public class PaymentClass extends BasePage {
                 driver.findElement(BY_CONTINUE_SHOPPING).click();
                 return new ShippingPage(driver, "http://automationpractice.com/index.php?controller=order&step=2");
                 }
-            },
-            BANK_WIRE{
-                @Override
-                public BasePage getPage(WebDriver driver) {
-                    driver.findElement(BY_BANKWIRE).click();
-                    return null;
-                }
-            },
-            CHECK{
-                @Override
-                public BasePage getPage(WebDriver driver) {
-                    driver.findElement(BY_CHECK).click();
-                    return null;
-                }
             }
 
     }
@@ -40,5 +26,10 @@ public class PaymentClass extends BasePage {
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
             BY_BANKWIRE = new By.ByClassName("bankwire"),
             BY_CHECK = new By.ByClassName("check");
+
+
+    public void BankWireTransfer(WebDriver driver){
+        driver.findElement(By.className("bankwire")).click();
+    }
 
 }
