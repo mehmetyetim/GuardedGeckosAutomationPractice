@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class OrderHistoryPage {
 
     private WebDriver webDriver;
-    private By noOrderAlert = new By.ByClassName("alert");
+    private By alert = new By.ByClassName("alert");
     private By orderHistoryTable = new By.ById("order-list");
     private By orderHistoryList = new By.ByTagName("tbody");
     private By orderTableRow = new By.ByTagName("tr");
@@ -24,6 +24,15 @@ public class OrderHistoryPage {
 
     private By infoOrderBox = new By.ByClassName("info-order");
 
+    private By addMessageProductList = new By.ByName("id_product");
+    private By messageTextBox = new By.ByName("msgText");
+    private By submitButton = new By.ByName("submitMessage");
+
+    private By sendOrderMessageField = new By.ById("sendOrderMessage");
+    private By submitField = new By.ByClassName("submit");
+    private By submitFieldButton = new By.ByClassName("button");
+
+    private By options = new By.ByTagName("option");
     private By colorMyAccountText = new By.ByClassName("color-myaccount");
     private By paragraph = new By.ByTagName("p");
     private By darkText = new By.ByClassName("dark");
@@ -42,14 +51,14 @@ public class OrderHistoryPage {
 //    }
 
 
-    public String getNoOrderAlertText(){                                    //This alert only shows up with no order history
+    public String getAlertText(){
         try {
-            webDriver.findElement(noOrderAlert).getText();
+            webDriver.findElement(alert).getText();
         }catch (NoSuchElementException e){
             e.printStackTrace();
-            return "No Alert";
+            return "NO ALERT";
         }
-        return webDriver.findElement(noOrderAlert).getText();
+        return webDriver.findElement(alert).getText();
     }
 
 
@@ -61,7 +70,7 @@ public class OrderHistoryPage {
                             .findElements(orderTableRow)
                             .size();
         }catch (NoSuchElementException e){
-            System.out.println("ALERT: NO ORDER HISTORY FOUND");
+            System.out.println("NO ORDER HISTORY FOUND");
             return 0;
         }
     }
@@ -78,8 +87,8 @@ public class OrderHistoryPage {
                     .findElement(colorMyAccountText)
                     .getText();
         }catch (IndexOutOfBoundsException e){
-            System.out.println("ALERT: INVALID INDEX");
-            return "ALERT: INVALID INDEX";
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
         }
     }
 
@@ -93,8 +102,8 @@ public class OrderHistoryPage {
                             .findElement(orderDateColumn)
                             .getText();
         }catch (IndexOutOfBoundsException e){
-            System.out.println("ALERT: INVALID INDEX");
-            return "ALERT: INVALID INDEX";
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
         }
     }
 
@@ -108,8 +117,8 @@ public class OrderHistoryPage {
                             .findElement(orderPriceColumn)
                             .getText();
         }catch (IndexOutOfBoundsException e){
-            System.out.println("ALERT: INVALID INDEX");
-            return "ALERT: INVALID INDEX";
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
         }
     }
 
@@ -123,8 +132,8 @@ public class OrderHistoryPage {
                             .findElement(orderStatusColumn)
                             .getText();
         }catch (IndexOutOfBoundsException e){
-            System.out.println("ALERT: INVALID INDEX");
-            return "ALERT: INVALID INDEX";
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
         }
     }
 
@@ -137,7 +146,7 @@ public class OrderHistoryPage {
                             .findElement(linkButton)
                             .click();
         }catch (IndexOutOfBoundsException e){
-            System.out.println("ALERT: INVALID INDEX");
+            System.out.println("INVALID INDEX");
         }
     }
 
@@ -151,7 +160,7 @@ public class OrderHistoryPage {
                     .findElement(button)
                     .click();
         }catch (IndexOutOfBoundsException e){
-            System.out.println("ALERT: INVALID INDEX");
+            System.out.println("INVALID INDEX");
         }
     }
 
@@ -165,7 +174,7 @@ public class OrderHistoryPage {
                     .findElement(linkButton)
                     .click();
         }catch (IndexOutOfBoundsException e){
-            System.out.println("ALERT: INVALID INDEX");
+            System.out.println("INVALID INDEX");
         }
     }
 
@@ -178,7 +187,7 @@ public class OrderHistoryPage {
                     .findElement(plusButton)
                     .click();
         }catch (IndexOutOfBoundsException| ElementNotInteractableException e){
-            System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
+            System.out.println("INVALID INDEX OR ELEMENT NOT INTERACTABLE");
         }
     }
 
@@ -194,8 +203,8 @@ public class OrderHistoryPage {
                     .findElement(foottableRowValue)
                     .getText();
         }catch (IndexOutOfBoundsException| ElementNotInteractableException e){
-            System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
-            return "ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE";
+            System.out.println("INVALID INDEX OR ELEMENT NOT INTERACTABLE");
+            return "INVALID INDEX OR ELEMENT NOT INTERACTABLE";
         }
     }
 
@@ -211,7 +220,7 @@ public class OrderHistoryPage {
                             .findElement(linkButton)
                             .click();
         }catch (IndexOutOfBoundsException| ElementNotInteractableException e){
-            System.out.println("ALERT: INVALID INDEX OR ELEMENT NOT INTERACTABLE");
+            System.out.println("INVALID INDEX OR ELEMENT NOT INTERACTABLE");
         }
     }
 
@@ -308,6 +317,29 @@ public class OrderHistoryPage {
         }
     }
 
+    public void chooseProductInAddAMessage(int index){                                                              // 0 = --choose--
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        try {
+            webDriver.findElement(addMessageProductList).click();
+            webDriver.findElement(addMessageProductList).findElements(options).get(index).click();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("INVALID INDEX");
+        }
+    }
+
+    public void typeMessageInMessageBox(String string){                                                              // 0 = --choose--
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        webDriver.findElement(messageTextBox).sendKeys(string);
+    }
+
+    public void sendMessage(){
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        webDriver
+                .findElement(sendOrderMessageField)
+                .findElement(submitField)
+                .findElement(submitFieldButton)
+                .click();
+    }
 
 
 
