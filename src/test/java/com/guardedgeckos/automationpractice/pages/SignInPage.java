@@ -8,9 +8,7 @@ import org.openqa.selenium.WebElement;
 public class SignInPage extends BasePage
 {
     //region Variables
-    private WebDriver driver;
-
-    private static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
     private static final String DEFAULT_EMAIL = "JohnSmith@gmail.com";
     private static final String DEFAULT_PASSWORD = "Password";
 
@@ -21,12 +19,6 @@ public class SignInPage extends BasePage
     //endregion
 
     //region Getters
-
-    public String getDefaultUrl()
-    {
-        return DEFAULT_URL;
-    }
-
     public String getDefaultPassword()
     {
         return DEFAULT_PASSWORD;
@@ -85,8 +77,7 @@ public class SignInPage extends BasePage
     //region Constructor
     public SignInPage(WebDriver driver)
     {
-        this.driver = driver;
-        this.driver.get(DEFAULT_URL);
+        super(driver, DEFAULT_URL);
     }
     //endregion
 
@@ -130,8 +121,6 @@ public class SignInPage extends BasePage
     {
         enterEmail(email);
         enterPassword(password);
-
-        clickSignInButton();
     }
 
     public void clickSignInButton()
