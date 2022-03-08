@@ -2,7 +2,6 @@ package com.guardedgeckos.automationpractice.unit_tests;
 
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
-import org.junit.Before;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
@@ -48,7 +47,7 @@ public class SignInTests
 
     @Test
     @DisplayName("The user can sign in")
-    void signInPageSignInTest()
+    void signInPageSignInFillsFieldsTest()
     {
         signInPage.resetFields();
         signInPage.login(signInPage.getDefaultEmail());

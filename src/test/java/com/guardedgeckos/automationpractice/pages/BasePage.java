@@ -41,14 +41,16 @@ public class BasePage {
     private By storeInformationFooter = new By.ById("block_contact_infos");
 
 
-    protected BasePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void SignInPage(WebDriver driver)
+    protected BasePage(WebDriver driver)
     {
         this.driver = driver;
         this.driver.get(DEFAULT_URL);
+    }
+
+    protected BasePage(WebDriver driver, String url)
+    {
+        this.driver = driver;
+        this.driver.get(url);
     }
 
     public String getCurrentUrl() {

@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 public class PaymentClass extends BasePage {
 
-    protected PaymentClass(WebDriver driver, String url) {
-        super(driver, url);
+    protected PaymentClass(WebDriver driver) {
+        super(driver);
     }
 
     public enum Links implements LinksInterface{

@@ -3,7 +3,8 @@ package com.guardedgeckos.automationpractice.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MyAccountPage {
+public class MyAccountPage extends BasePage
+{
 
     private WebDriver webDriver;
 
@@ -22,10 +23,11 @@ public class MyAccountPage {
 
     //My account page footer buttons
     private final int homeButton = 0;
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=my-account";
 
-    public MyAccountPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        this.webDriver.get("http://automationpractice.com/index.php?controller=my-account");
+    public MyAccountPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
 
     public void clickOrderHistoryAndDetailsButton(){

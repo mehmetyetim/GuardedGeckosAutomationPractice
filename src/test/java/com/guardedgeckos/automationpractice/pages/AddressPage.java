@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class AddressPage {
-
+public class AddressPage extends BasePage
+{
     private WebDriver webDriver;
 
     private By alert = new By.ByClassName("alert");
@@ -28,11 +28,12 @@ public class AddressPage {
     private By clearfix = new By.ByClassName("clearfix");
     private By options = new By.ByTagName("option");
 
-    public AddressPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        this.webDriver.get("http://automationpractice.com/index.php?controller=address");
-    }
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=address";
 
+    public AddressPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
+    }
 
     public String getAlertText(){
         try {
