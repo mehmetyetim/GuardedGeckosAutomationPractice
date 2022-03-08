@@ -3,13 +3,13 @@ package com.guardedgeckos.automationpractice.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class IHopeYouGuysAreHappy extends BasePage{
+public class IHopeYouGuysAreHappy extends BasePage
+{
     protected static WebDriver driver;
-    protected static String URL;
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php";
 
     public IHopeYouGuysAreHappy(WebDriver webDriver){
-        this.driver = webDriver;
-        this.driver.get("http://automationpractice.com/index.php");
+        super(driver, DEFAULT_URL);
     }
     
     public String getCurrentUrl() {

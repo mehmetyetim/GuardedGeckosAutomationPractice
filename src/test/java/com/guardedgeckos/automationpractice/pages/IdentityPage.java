@@ -4,7 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class IdentityPage {
+public class IdentityPage extends BasePage
+{
 
     private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
@@ -40,10 +41,11 @@ public class IdentityPage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=identity";
 
-    public IdentityPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        this.webDriver.get("http://automationpractice.com/index.php?controller=identity");
+    public IdentityPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
 
 
