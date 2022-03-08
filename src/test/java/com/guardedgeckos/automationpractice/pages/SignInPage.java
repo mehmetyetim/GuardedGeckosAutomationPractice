@@ -85,8 +85,7 @@ public class SignInPage extends BasePage
     //region Constructor
     public SignInPage(WebDriver driver)
     {
-        this.driver = driver;
-        this.driver.get(DEFAULT_URL);
+        super(driver);
     }
     //endregion
 
