@@ -7,6 +7,14 @@ public class IHopeYouGuysAreHappy extends BasePage{
     protected static WebDriver driver;
     protected static String URL;
 
+    public IHopeYouGuysAreHappy(WebDriver webDriver){
+        this.driver = webDriver;
+        this.driver.get("http://automationpractice.com/index.php");
+    }
+    
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
     /**
      * Adds the given item to the cart.
      * @param i the item to add.
