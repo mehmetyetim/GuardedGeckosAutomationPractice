@@ -3,6 +3,7 @@ package com.guardedgeckos.automationpractice.unit_tests;
 import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -15,6 +16,7 @@ public class HomeTests {
         DriverFactory.get().manage().window().maximize();
         DriverFactory.get().get("https://automationpractice.com/");
         DriverFactory.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(DriverFactory.get(), Duration.ofSeconds(30));
     }
 
     @Test
@@ -83,6 +85,37 @@ public class HomeTests {
     @DisplayName("Check title on the image 2 is correct")
     public void checkTitleOnTheImage2IsCorrect(){
         Assertions.assertTrue(homePage.isTitleOnImageCorrect(2));
+    }
+
+    @Test
+    @DisplayName("Go to next image clicking on right arrow button and asserting first image not present")
+    public void goToNextImageClickingOnRightArrowButtonAndAssertingFirstImageNotPresent() {
+        Assertions.assertTrue(homePage.goToNextImageAndCheckIfTheNextImageDisplayed());
+    }
+
+    @Test
+    @DisplayName("Check if price on first product displayed")
+    public void checkIfPriceOnFirstProductDisplayed(){
+        Assertions.assertFalse(homePage.isPriceOnFirstProductDisplayed());
+    }
+
+    @Test
+    @DisplayName("Check if price on first product displayed when you hover over it")
+    public void checkIfPriceOnFirstProductDisplayedWhenYouHoverOverIt(){
+        homePage.hoverOverFirstProduct();
+        Assertions.assertTrue(homePage.isPriceOnFirstProductDisplayed());
+    }
+
+    @Test
+    @DisplayName("Check if third moving image is not displayed")
+    public void checkIfThirdMovingImageIsNotDisplayed(){
+        Assertions.assertFalse(homePage.isThirdMovingImageDisplayed());
+    }
+
+    @Test
+    @DisplayName("Check images are moving and the third is displayed")
+    public void checkImagesAreMovingAndTheThirdIsDisplayed(){
+        Assertions.assertTrue(homePage.isThirdMovingImageDisplayedAfterAWhile());
     }
 
     @AfterEach
