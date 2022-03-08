@@ -273,7 +273,7 @@ public class OrderHistoryPage {
     }
 
     public void clickGreenRecorderButton(){
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+      //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
             webDriver.findElement(orderReferenceBox).findElement(buttonLink).click();
         }catch (NoSuchElementException e){
@@ -282,7 +282,7 @@ public class OrderHistoryPage {
     }
 
     public String getOrderReferenceText(){
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+       // webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
             return webDriver.findElement(orderReferenceBox).findElement(darkText).getText();
         }catch (NoSuchElementException e){
@@ -292,7 +292,7 @@ public class OrderHistoryPage {
     }
 
     public String getCarrierFromInfoReferenceBox(){
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+      //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
             return webDriver
                     .findElement(infoOrderBox)
@@ -306,7 +306,7 @@ public class OrderHistoryPage {
     }
 
     public String getPaymentMethodFromInfoReferenceBox(){
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+      //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
             return webDriver
                     .findElement(infoOrderBox)
@@ -320,7 +320,7 @@ public class OrderHistoryPage {
     }
 
     public void clickDownloadInvoiceFromInfoReferenceBox(){
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+       // webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
              webDriver
                     .findElement(infoOrderBox)
@@ -334,7 +334,7 @@ public class OrderHistoryPage {
     }
 
     public void chooseProductInAddAMessage(int index){                                                              // 0 = --choose--
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        //webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
             webDriver.findElement(addMessageProductList).click();
             webDriver.findElement(addMessageProductList).findElements(options).get(index).click();
@@ -344,7 +344,7 @@ public class OrderHistoryPage {
     }
 
     public void typeMessageInMessageBox(String string){                                                              // 0 = --choose--
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
+        //webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         webDriver.findElement(messageTextBox).sendKeys(string);
     }
 
@@ -356,8 +356,6 @@ public class OrderHistoryPage {
                 .findElement(submitFieldButton)
                 .click();
     }
-
-
 
     public void clickHomeButton(){
         webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
