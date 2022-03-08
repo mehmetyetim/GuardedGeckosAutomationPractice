@@ -1,5 +1,6 @@
 package com.guardedgeckos.automationpractice.step_definitions;
 
+import com.guardedgeckos.automationpractice.pages.MyAccountPage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -15,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class LogInStepDefs {
         private static WebDriver webDriver;
         private static SignInPage signInPage;
+        private static MyAccountPage myAccountPage;
 
         @Before
         public void setup() {
@@ -27,6 +29,7 @@ public class LogInStepDefs {
                 webDriver = new ChromeDriver();
                 signInPage = new SignInPage(webDriver);
                 signInPage.clickSignInButton();
+                webDriver.getCurrentUrl();
                 webDriver.get("http://automationpractice.com/index.php");
         }
 
@@ -42,17 +45,18 @@ public class LogInStepDefs {
                 signInPage.clickSignInButton();
         }
 
-        //NEED MY ACCOUNTS PAGE
+
         @Then("I will go to the My Account page")
         public void iWillGoToTheMyAccountPage() {
-                //myAccountPage = new MyAccountPage(webdriver);
-                //Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account", myAccountPage.getCurrentURL());
+                myAccountPage = new MyAccountPage(webDriver);
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account", myAccountPage.getCurrentUrl());
         }
 
-        // Maybe low priority?
+
         @And("I should see my account information")
         public void iShouldSeeMyAccountInformation() {
-                //myAccountPage.isInformationPresent();
+              //  myAccountPage.
+                myAccountPage.getStoreInformationFooter();
         }
 
         @When("I insert an unregistered email")
@@ -69,8 +73,8 @@ public class LogInStepDefs {
 
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage() {
-            //NEED CURRENT URL  //  Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getCurrentURL());
-                //driver.getCurrentURL()
+              Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getCurrentUrl());
+
         }
 
         @When("I insert a registered email")
@@ -85,11 +89,14 @@ public class LogInStepDefs {
                 signInPage.clickSignInButton();
         }
 
+        /*
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage1() {
-            //NEED CURRENT URL    //Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", loginPage.getCurrentURL());
-                //driver.getCurrentURL()
+            Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getCurrentUrl());
+
         }
+
+         */
 
         @When("I click on 'Forgot your password?")
         public void iClickOnForgotYourPassword() {
@@ -99,8 +106,8 @@ public class LogInStepDefs {
         //High priority?
         @Then("I will be directed to another page to reset my password")
         public void iWillRedirectedToAAnotherPageToResetMyPassword() {
-           //NEED CURRENT URL     //Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", loginPage.getCurrentURL());
-                //driver.getCurrentURL()
+           Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", signInPage.getCurrentUrl());
+
         }
 
         @When("I am on the login page and click on 'Create Account'")
@@ -112,8 +119,8 @@ public class LogInStepDefs {
 
         @Then("I will be directed to another page to finish the account creation")
         public void iWillBeAbledirectedToAnotherPageToFinishTheAccountCreation() {
-              //NEED CURRENT URL  //Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", loginPage.getCurrentURL());
-                //driver.getCurrentURL()
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", signInPage.getCurrentUrl());
+
         }
 
         @After
