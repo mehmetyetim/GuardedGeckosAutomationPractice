@@ -32,6 +32,8 @@ public class OrderHistoryPage {
     private By submitField = new By.ByClassName("submit");
     private By submitFieldButton = new By.ByClassName("button");
 
+
+    //General
     private By options = new By.ByTagName("option");
     private By colorMyAccountText = new By.ByClassName("color-myaccount");
     private By paragraph = new By.ByTagName("p");
