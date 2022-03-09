@@ -55,8 +55,12 @@ public class LogInStepDefs {
 
         @And("I should see my account information")
         public void iShouldSeeMyAccountInformation() {
-              //  myAccountPage.
-              //  myAccountPage.getAccount();
+               myAccountPage.clickOrderHistoryAndDetailsButton();
+               myAccountPage.clickMyAddressesButton();
+               myAccountPage.clickMyPersonalInformationButton();
+               myAccountPage.clickMyCreditSlipsButton();
+               myAccountPage.clickMyWishlistsButton();
+               myAccountPage.getAccount();
         }
 
         @When("I insert an unregistered email")
