@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +14,7 @@ public abstract class BasePage {
     //region Variables
     protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
     protected static WebDriver driver;
-    private Actions action = new Actions(driver);
+    private Actions action;
 
     private By banner = new By.ByClassName("img-responsive");
     private By shopPhone = new By.ByClassName("shop-phone");
@@ -27,26 +29,29 @@ public abstract class BasePage {
 
     private By cart = new By.ByClassName("shopping_cart");
 
-    private WebElement cartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/a"));
-
-    private WebElement checkOutButtonHovered = driver.findElement(new By.ByXPath("//*[@id='button_order_cart']/span"));
-    private WebElement shippingFeesCartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[2]/span[1]"));
-    private WebElement totalCartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[1]/span[1]"));
+    private By cartHovered = new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/a");
+    private By itemImageLinkCart = new By.ByClassName("cart-images");
+    private By quantityItemCart = new By.ByClassName("quantity");
+    private By itemNameLinkCart = new By.ByClassName("cart_block_product_name");
+    private By productDetailsCart = new By.ByCssSelector("title=Product detail'");
+    private By itemPriceCart = new By.ByClassName("price");
+    private By removeItemCart = new By.ByClassName("ajax_cart_block_remove_link");
+    private By checkOutButtonHovered = new By.ByXPath("//*[@id='button_order_cart']/span");
+    private By shippingFeesCartHovered = new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[2]/span[1]");
+    private By totalCartHovered = new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[1]/span[1]");
 
     private By categoriesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul");
 
     private By womenHeader = new By.ByCssSelector("title='Women'");
-    private WebElement womenAccessHeader = driver.findElement(categoriesHeader).findElement(womenHeader);
-    private WebElement tshirtWomenHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[1]/a"));
-    private WebElement blousesWomenHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[2]/a"));
-    private WebElement casualDresserWomenHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[1]/a"));
-    private WebElement eveningDressesWomenHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[2]/a"));
-    private WebElement summerDressesWomenHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[3]/a"));
+    private By tshirtWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[1]/a");
+    private By blousesWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[2]/a");
+    private By casualDresserWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[1]/a");
+    private By eveningDressesWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[2]/a");
+    private By summerDressesWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[3]/a");
     private By dressesHeader = new By.ByCssSelector("title='Dresses'");
-    private WebElement dressesAccessHeader = driver.findElement(categoriesHeader).findElement(dressesHeader);
-    private WebElement casualDressesHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a"));
-    private WebElement eveningDressesHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[2]/a"));
-    private WebElement summerDressesHeader = driver.findElement(new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[3]/a"));
+    private By casualDressesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a");
+    private By eveningDressesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[2]/a");
+    private By summerDressesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[3]/a");
     private By tshirtsHeader = new By.ByCssSelector("title='T-shirts'");
 
     private By newsletterBox = new By.ById("newsletter-input");
@@ -77,9 +82,18 @@ public abstract class BasePage {
     private By signOutFooter = new By.ByXPath("//*[@id='footer']/div/section[5]/div/ul/li[5]/a");
     //endregion
 
-    protected BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver)
+    {
         this.driver = driver;
         this.driver.get(DEFAULT_URL);
+        this.action = new Actions(driver);
+    }
+
+    protected BasePage(WebDriver driver, String url)
+    {
+        this.driver = driver;
+        this.driver.get(url);
+        this.action = new Actions(driver);
     }
 
     public String getDefaultUrl () {
@@ -157,6 +171,7 @@ public abstract class BasePage {
         }
     }
 
+    //region Cart
     public void getCart () {
         try {
             this.driver.findElement(cart).click();
@@ -165,10 +180,70 @@ public abstract class BasePage {
         }
     }
 
+    public List<WebElement> getItemsImagesCart() {
+        List<WebElement> itemsImages = new ArrayList<>();
+        try {
+            driver.findElements(itemImageLinkCart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemsImages;
+    }
+
+    public List<WebElement> getItemsQuantitiesCart() {
+        List<WebElement> itemsQuantity = new ArrayList<>();
+        try {
+            driver.findElements(quantityItemCart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemsQuantity;
+    }
+
+    public List<WebElement> getItemsNamesCart() {
+        List<WebElement> itemsNames = new ArrayList<>();
+        try {
+            driver.findElements(itemNameLinkCart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemsNames;
+    }
+
+    public List<WebElement> getItemsDetailsCart() {
+        List<WebElement> itemsDetails = new ArrayList<>();
+        try {
+            driver.findElements(productDetailsCart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemsDetails;
+    }
+
+    public List<WebElement> getItemsPricesCart() {
+        List<WebElement> itemsPrices = new ArrayList<>();
+        try {
+            driver.findElements(itemPriceCart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemsPrices;
+    }
+
+    public List<WebElement> getItemsToRemoveCart() {
+        List<WebElement> itemsToRemove = new ArrayList<>();
+        try {
+            driver.findElements(removeItemCart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemsToRemove;
+    }
+
     public void getCheckOut () {
         try {
-            action.moveToElement(cartHovered);
-            action.moveToElement(checkOutButtonHovered);
+            action.moveToElement(driver.findElement(cartHovered));
+            action.moveToElement(driver.findElement(checkOutButtonHovered));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -177,8 +252,8 @@ public abstract class BasePage {
 
     public void getShippingFeesCartHovered () {
         try {
-            action.moveToElement(cartHovered);
-            action.moveToElement(shippingFeesCartHovered);
+            action.moveToElement(driver.findElement(cartHovered));
+            action.moveToElement(driver.findElement(shippingFeesCartHovered));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -187,18 +262,19 @@ public abstract class BasePage {
 
     public void getTotalCartHovered () {
         try {
-            action.moveToElement(cartHovered);
-            action.moveToElement(totalCartHovered);
+            action.moveToElement(driver.findElement(cartHovered));
+            action.moveToElement(driver.findElement(totalCartHovered));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    //endregion
 
     //region Categories
     public void getNavWomen () {
         try {
-            womenAccessHeader.click();
+            driver.findElement(categoriesHeader).findElement(womenHeader).click();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -206,7 +282,7 @@ public abstract class BasePage {
 
     public void getNavDresses () {
         try {
-            dressesAccessHeader.click();
+            driver.findElement(categoriesHeader).findElement(dressesHeader).click();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -214,8 +290,8 @@ public abstract class BasePage {
 
     public void getTshirtsWomenHeader () {
         try {
-            action.moveToElement(womenAccessHeader);
-            action.moveToElement(tshirtWomenHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(womenHeader));
+            action.moveToElement(driver.findElement(tshirtWomenHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -224,8 +300,8 @@ public abstract class BasePage {
 
     public void getBlousesWomenHeader () {
         try {
-            action.moveToElement(womenAccessHeader);
-            action.moveToElement(blousesWomenHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(womenHeader));
+            action.moveToElement(driver.findElement(blousesWomenHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -234,8 +310,8 @@ public abstract class BasePage {
 
     public void getCasualDressesWomenHeader () {
         try {
-            action.moveToElement(womenAccessHeader);
-            action.moveToElement(casualDresserWomenHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(womenHeader));
+            action.moveToElement(driver.findElement(casualDresserWomenHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -244,8 +320,8 @@ public abstract class BasePage {
 
     public void getEveningDressesWomenHeader () {
         try {
-            action.moveToElement(womenAccessHeader);
-            action.moveToElement(eveningDressesWomenHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(womenHeader));
+            action.moveToElement(driver.findElement(eveningDressesWomenHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -254,8 +330,8 @@ public abstract class BasePage {
 
     public void getSummerDressesWomenHeader () {
         try {
-            action.moveToElement(womenAccessHeader);
-            action.moveToElement(summerDressesWomenHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(womenHeader));
+            action.moveToElement(driver.findElement(summerDressesWomenHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -264,8 +340,8 @@ public abstract class BasePage {
 
     public void getCasualDresses () {
         try {
-            action.moveToElement(dressesAccessHeader);
-            action.moveToElement(casualDressesHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(dressesHeader));
+            action.moveToElement(driver.findElement(casualDressesHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -274,8 +350,8 @@ public abstract class BasePage {
 
     public void getEveningDresses () {
         try {
-            action.moveToElement(dressesAccessHeader);
-            action.moveToElement(eveningDressesHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(dressesHeader));
+            action.moveToElement(driver.findElement(eveningDressesHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
@@ -284,8 +360,8 @@ public abstract class BasePage {
 
     public void getSummerDresses () {
         try {
-            action.moveToElement(dressesAccessHeader);
-            action.moveToElement(summerDressesHeader);
+            action.moveToElement(driver.findElement(categoriesHeader).findElement(dressesHeader));
+            action.moveToElement(driver.findElement(summerDressesHeader));
             action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
