@@ -95,6 +95,15 @@ public abstract class BasePage {
         this.driver.get(url);
         this.action = new Actions(driver);
     }
+    protected BasePage(WebDriver driver, boolean doRefresh)
+    {
+        this.driver = driver;
+        if (doRefresh){
+            this.driver.get(DEFAULT_URL);
+        }
+        this.action = new Actions(driver);
+    }
+
 
     public String getDefaultUrl () {
         return DEFAULT_URL;
