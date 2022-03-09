@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class OrderHistoryPageTest {
-    private static WebDriver webDriver = webDriver = DriverFactory.get();
+    private static WebDriver webDriver = DriverFactory.get();
     static MyAccountPage myAccountPage;
     static OrderHistoryPage orderHistoryPage;
     static SignInPage signInPage;

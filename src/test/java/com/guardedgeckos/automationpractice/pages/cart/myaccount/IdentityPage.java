@@ -23,6 +23,7 @@ public class IdentityPage extends BasePage
     private By daysOption = new By.ByName("days");
     private By monthsOption = new By.ByName("months");
     private By yearsOption = new By.ByName("years");
+    private By submitButton = new By.ByName("submitIdentity");
 
 
     //General
@@ -128,16 +129,15 @@ public class IdentityPage extends BasePage
         }
     }
 
+    public void clickSubmitButton(){
+        driver.findElement(submitButton).click();
+    }
+
     public void clickHomeButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
     public void clickBackToYourAccountButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
-    }
-
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
     }
 
 }

@@ -101,10 +101,4 @@ public class AddressPage extends BasePage
         driver.findElement(submitButton).click();
     }
 
-
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
-
 }
