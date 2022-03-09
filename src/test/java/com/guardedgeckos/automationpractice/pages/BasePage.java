@@ -31,6 +31,7 @@ public abstract class BasePage {
 
     private By cartHovered = new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/a");
     private By itemImageLinkCart = new By.ByClassName("cart-images");
+    private By totalQuantityCart = new By.ByClassName("ajax_cart_quantity");
     private By quantityItemCart = new By.ByClassName("quantity");
     private By itemNameLinkCart = new By.ByClassName("cart_block_product_name");
     private By productDetailsCart = new By.ByCssSelector("title=Product detail'");
@@ -187,6 +188,16 @@ public abstract class BasePage {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getTotalItemsQuantityCart() {
+        String totalItemsCart = "";
+        try {
+            totalItemsCart = this.driver.findElement(totalQuantityCart).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalItemsCart;
     }
 
     public List<WebElement> getItemsImagesCart() {
