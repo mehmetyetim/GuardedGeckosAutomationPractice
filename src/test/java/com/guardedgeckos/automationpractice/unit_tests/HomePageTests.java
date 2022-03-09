@@ -3,6 +3,7 @@ package com.guardedgeckos.automationpractice.unit_tests;
 import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
