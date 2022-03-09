@@ -7,13 +7,13 @@ public class Cart {
     private String size;
     private String available;
     private double singlePrice;
-    private long quantity;
+    private String quantity;
     private double allPrice;
-    private double shipping;
+    private String shipping;
     //endregion
 
     //region Constructor
-    public Cart(String name, String color, String size, String available, double singlePrice, long quantity, double allPrice, double shipping) {
+    public Cart(String name, String color, String size, String available, double singlePrice, String quantity, double allPrice, String shipping) {
         this.name = name;
         this.color = color;
         this.size = size;
@@ -42,13 +42,13 @@ public class Cart {
     public double getSinglePrice() {
         return singlePrice;
     }
-    public long getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
     public double getAllPrice() {
         return allPrice;
     }
-    public double getShipping() {
+    public String getShipping() {
         return shipping;
     }
     // endregion
@@ -69,14 +69,27 @@ public class Cart {
     public void setSinglePrice(double singlePrice) {
         this.singlePrice = singlePrice;
     }
-    public void setQuantity(long quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
     public void setAllPrice(double allPrice) {
         this.allPrice = allPrice;
     }
-    public void setShipping(double shipping) {
+    public void setShipping(String shipping) {
         this.shipping = shipping;
     }
     // endregion
+
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "\nname='" + name + '\'' + "\n" + color + '\'' + "\n"  + size + '\'' +
+                ", \navailable='" + available + '\'' +
+                ", \nsinglePrice=" + singlePrice +
+                ", \nquantity=" + quantity +
+                ", \nallPrice=" + allPrice +
+                ", \nshipping=" + shipping +
+                '}';
+    }
 }
