@@ -77,6 +77,8 @@ public class LogInStepDefs {
 
         }
 
+       /*
+
         @When("I insert a registered email")
         public void iInsertARegisteredEmail() {
                 signInPage = new SignInPage(webDriver);
@@ -89,7 +91,7 @@ public class LogInStepDefs {
                 signInPage.clickSignInButton();
         }
 
-        /*
+
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage1() {
             Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getCurrentUrl());
