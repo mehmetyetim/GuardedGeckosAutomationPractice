@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BasePage {
+public abstract class BasePage {
     //region Variables
     protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
     protected static WebDriver driver;
@@ -27,6 +27,7 @@ public class BasePage {
 
     private By cart = new By.ByClassName("shopping_cart");
     private WebElement cartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/a"));
+    
     private WebElement checkOutButtonHovered = driver.findElement(new By.ByXPath("//*[@id='button_order_cart']/span"));
     private WebElement shippingFeesCartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[2]/span[1]"));
     private WebElement totalCartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[1]/span[1]"));
