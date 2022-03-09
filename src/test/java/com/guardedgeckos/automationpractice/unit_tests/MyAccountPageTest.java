@@ -35,8 +35,8 @@ public class MyAccountPageTest {
     public void checkOrderHistoryButtonInMyAccountPage(){
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickOrderHistoryAndDetailsButton();
-//        orderHistoryPage = new OrderHistoryPage(webDriver);
-//        Assertions.assertEquals("http://automationpractice.com/index.php?controller=history", orderHistoryPage.getCurrentUrl());
+        orderHistoryPage = new OrderHistoryPage(webDriver);
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=history", orderHistoryPage.getCurrentUrl());
     }
 
     @Test
