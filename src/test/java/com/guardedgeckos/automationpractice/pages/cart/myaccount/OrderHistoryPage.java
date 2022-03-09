@@ -33,6 +33,7 @@ public class OrderHistoryPage extends BasePage
     private By submitField = new By.ByClassName("submit");
     private By submitFieldButton = new By.ByClassName("button");
 
+    private By footableSorter = new By.ByClassName("footable-sortable");
 
     //General
     private By options = new By.ByTagName("option");
@@ -275,6 +276,20 @@ public class OrderHistoryPage extends BasePage
         }
     }
 
+    public void clickSortDate(){
+        driver.findElements(footableSorter).get(0).click();
+    }
+
+    public void clickSortTotalPrice(){
+        driver.findElements(footableSorter).get(1).click();
+    }
+
+    public void clickSortStatus(){
+        driver.findElements(footableSorter).get(2).click();
+    }
+
+    //------------------------------------------------------------------------------------
+
     public void clickGreenRecorderButton(){
       //  webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
@@ -284,7 +299,7 @@ public class OrderHistoryPage extends BasePage
         }
     }
 
-    public String getOrderReferenceText(){
+    public String getOrderReferenceTextInTableBelow(){
        // webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);                                    //give time to load order details
         try {
             return driver.findElement(orderReferenceBox).findElement(darkText).getText();
