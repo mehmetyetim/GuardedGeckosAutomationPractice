@@ -57,9 +57,7 @@ public class CartPageTests {
           //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
           timer();
-
-          iHopeYouGuysAreHappy = new IHopeYouGuysAreHappy(driver);
-          iHopeYouGuysAreHappy.proceedToCheckout();
+          
           cartPage = new CartPage(driver);
           System.out.println(driver.getCurrentUrl());
           timer();

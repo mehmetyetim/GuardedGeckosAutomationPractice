@@ -14,7 +14,7 @@ public class CartPage extends BasePage {
     //protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=order";
 
     public CartPage(WebDriver driver) {
-        super(driver);
+        super(driver, "http://automationpractice.com/index.php?controller=order");
     }
 
     public enum Links implements LinksInterface {

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class PaymentClass extends BasePage {
 
     public PaymentClass(WebDriver driver) {
-        super(driver);
+        super(driver, "http://automationpractice.com/index.php?controller=order&multi-shipping=");
     }
 
     public enum Links implements LinksInterface{

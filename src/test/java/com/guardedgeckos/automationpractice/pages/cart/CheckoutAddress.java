@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class CheckoutAddress extends BasePage {
 
     public CheckoutAddress(WebDriver driver) {
-        super(driver);
+        super(driver, "http://automationpractice.com/index.php?controller=order&step=1");
     }
 
     public enum Links implements LinksInterface {
