@@ -1,5 +1,6 @@
 package com.guardedgeckos.automationpractice.step_definitions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
 import io.cucumber.java.After;
@@ -36,13 +37,14 @@ public class LogInStepDefs {
         @When("I enter my registered email")
         public void iEnterMyRegisteredEmail() {
                 signInPage = new SignInPage(webDriver);
-                signInPage.enterEmail("sajad.gulzar2022@hotmail.co.uk");
+                signInPage.enterEmail("sajad.gulzar98@gmail.com");
         }
 
         @And("I enter my correct password and click the 'login' button")
         public void iEnterMyCorrectPasswordAndClickLoginButton() {
-                signInPage.enterPassword("Neil Weightman");
+                signInPage.enterPassword("Beastlfc134");
                 signInPage.clickSignInButton();
+
         }
 
 
@@ -77,55 +79,64 @@ public class LogInStepDefs {
 
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage() {
-              Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getDefaultUrl());
+              Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication", signInPage.getDefaultUrl());
 
         }
 
-       /*
-
+        /*
         @When("I insert a registered email")
         public void iInsertARegisteredEmail() {
                 signInPage = new SignInPage(webDriver);
-                signInPage.enterEmail("finalproject@test.com");
+                signInPage.enterEmail("sajad.gulzar98@gmail.com");
         }
 
         @And("I insert an invalid password and click the 'login' button")
         public void iInsertAnInvalidPasswordAndClickLoginButton() {
-                signInPage.enterPassword("SpartaGlobal1");
+                signInPage.enterPassword("sdhjzgflzshdgf12");
                 signInPage.clickSignInButton();
         }
 
 
+
+
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage1() {
-            Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getCurrentUrl());
+            Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication", signInPage.getDefaultUrl());
 
         }
+*/
 
-         */
 
         @When("I click on 'Forgot your password?")
         public void iClickOnForgotYourPassword() {
+                signInPage = new SignInPage(webDriver);
+                signInPage.clickForgotPasswordLink();
 
         }
 
         //High priority?
         @Then("I will be directed to another page to reset my password")
-        public void iWillRedirectedToAAnotherPageToResetMyPassword() {
+        public void iWillBeDirectedToAnotherPageToResetMyPassword() {
            Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", signInPage.getDefaultUrl());
 
         }
 
-        @When("I am on the login page and click on 'Create Account'")
+        @When("I am on the login page")
         public void iAmOnTheLoginPageAndClickOnCreateAccount() {
                 signInPage = new SignInPage(webDriver);
-                signInPage.enterEmail("sajad.northlondon@hotmail.com");
+                signInPage.enterRegistrationEmail("sajad_northLondon@hotmail.com");
 
         }
 
+        @And("I click on 'Create Account'")
+        public void clickOnCreateAccount() {
+                signInPage.clickCreateAnAccountButton();
+        }
+
+
         @Then("I will be directed to another page to finish the account creation")
-        public void iWillBeAbledirectedToAnotherPageToFinishTheAccountCreation() {
-                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", signInPage.getDefaultUrl());
+        public void iWillBeDirectedToAnotherPageToFinishTheAccountCreation() {
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", webDriver.getCurrentUrl());
 
         }
 
