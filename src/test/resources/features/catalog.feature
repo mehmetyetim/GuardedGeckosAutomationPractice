@@ -1,10 +1,11 @@
-@Catalog
+@catalog
+Feature: Catalog pages
+  Catalog pages that need testing
 
-Feature : Catalog pages
-
-  Scenario: I can mouse over "Women" Header
+  @Women
+  Scenario: I can mouse over Women Header
     Given I am on the home page
-    And I mouse of the "Women" header
+    When I mouse of the "Women" header
     Then The "Women" dropdown appears
 
   Scenario: I can click on a header
@@ -35,9 +36,10 @@ Feature : Catalog pages
     And I click add to compare
     Then the product is added to the compare page
 
-    Scenario: I want to inspect a product
-      Given I am on the category page
-      And I Hover over a product
-      And I click the quick view
-      Then I am taken to the product page
+  Scenario: I want to inspect a product
+    Given I am on the category page
+    And I Hover over a product
+    And I click the quick view
+    Then I am taken to the product page
+
 

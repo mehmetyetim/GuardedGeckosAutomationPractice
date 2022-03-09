@@ -1,6 +1,7 @@
-Feature : Product pages
+Feature: Product pages
 
 
+  @AddtoCart
   Scenario: Add to cart
     Given I am on a product page
     And I click add to basket

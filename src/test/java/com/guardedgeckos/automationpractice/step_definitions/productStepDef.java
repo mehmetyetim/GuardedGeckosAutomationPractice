@@ -1,13 +1,28 @@
 package com.guardedgeckos.automationpractice.step_definitions;
 
+import com.guardedgeckos.automationpractice.pages.IHopeYouGuysAreHappy;
+import com.guardedgeckos.automationpractice.pages.SignInPage;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class productStepDef {
+
+    private static WebDriver webDriver;
+    private static IHopeYouGuysAreHappy mainPage;
+
+    @Before
+    public void setup() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+
+        webDriver = new ChromeDriver();
+    }
+
     @Given("I am on a product page")
     public void iAmOnAProductPage() {
-        
     }
 
     @And("I change the number of quantity")
