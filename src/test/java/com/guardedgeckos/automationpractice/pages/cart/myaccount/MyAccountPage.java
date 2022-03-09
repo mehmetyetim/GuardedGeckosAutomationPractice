@@ -51,5 +51,4 @@ public class MyAccountPage extends BasePage
     public void clickHomeButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
-
 }
