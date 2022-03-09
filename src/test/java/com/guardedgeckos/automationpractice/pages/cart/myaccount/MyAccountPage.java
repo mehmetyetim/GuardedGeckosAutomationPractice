@@ -1,12 +1,11 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MyAccountPage extends BasePage
 {
-
-
 
     private By myAccountButtonList = new By.ByClassName("myaccount-link-list");
     private By myAccountPageFooter = new By.ByClassName("footer_links");
@@ -53,8 +52,4 @@ public class MyAccountPage extends BasePage
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
 
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
 }
