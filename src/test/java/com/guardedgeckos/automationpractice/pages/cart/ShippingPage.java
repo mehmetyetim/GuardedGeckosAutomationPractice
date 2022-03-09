@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class ShippingPage extends BasePage{
 
     protected ShippingPage(WebDriver driver, String url) {
-        super(driver, url);
+        super(driver);
     }
 
     public enum Links implements LinksInterface{
@@ -16,7 +16,7 @@ public class ShippingPage extends BasePage{
             @Override
             public BasePage getPage(WebDriver driver) {
                 driver.findElement(BY_CONTINUE_SHOPPING).click();
-                return new CheckoutAddress(driver, "http://automationpractice.com/index.php?controller=order");
+                return new CheckoutAddress(driver);
             }
         },
         CHECKOUT_LOGGED_IN{

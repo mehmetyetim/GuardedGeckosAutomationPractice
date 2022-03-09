@@ -26,8 +26,9 @@ public abstract class BasePage {
     private By buttonSearchBox = new By.ById("searchbox");
 
     private By cart = new By.ByClassName("shopping_cart");
+
     private WebElement cartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/a"));
-    
+
     private WebElement checkOutButtonHovered = driver.findElement(new By.ByXPath("//*[@id='button_order_cart']/span"));
     private WebElement shippingFeesCartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[2]/span[1]"));
     private WebElement totalCartHovered = driver.findElement(new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[1]/span[1]"));
@@ -55,7 +56,7 @@ public abstract class BasePage {
     private By twitter = new By.ByClassName("twitter");
     private By youtube = new By.ByClassName("youtube");
     private By googlePlus = new By.ByClassName("google-plus");
-
+    
     private By myAccountFooter = new By.ByXPath("//*[@id='footer']/div/section[5]/div");
 
     private By womenFooter = new By.ByXPath("//*[@id='footer']/div/section[2]/div/div/ul/li/a");
@@ -76,18 +77,17 @@ public abstract class BasePage {
     private By signOutFooter = new By.ByXPath("//*[@id='footer']/div/section[5]/div/ul/li[5]/a");
     //endregion
 
-    public BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver) {
         this.driver = driver;
         this.driver.get(DEFAULT_URL);
     }
 
-    public String getDefaultUrl()
-    {
+    public String getDefaultUrl () {
         return DEFAULT_URL;
     }
 
     //region Header
-    public void bannerURL() {
+    public void bannerURL () {
         try {
             this.driver.findElement(banner).getAttribute("img");
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public abstract class BasePage {
     }
 
     //region NavBar
-    public String businessPhoneNumber() {
+    public String businessPhoneNumber () {
         try {
             Pattern pattern = Pattern.compile("[0-9]{4}-[0-9]{3}-[0-9]{3}");
             Matcher matcher = pattern.matcher(this.driver.findElement(shopPhone).getText());
@@ -107,7 +107,7 @@ public abstract class BasePage {
         return "";
     }
 
-    public void getContactUs() {
+    public void getContactUs () {
         try {
             this.driver.findElement(contactUs).click();
         } catch (Exception e) {
@@ -115,7 +115,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getSigIn() {
+    public void getSigIn () {
         try {
             this.driver.findElement(signIn).click();
         } catch (Exception e) {
@@ -123,7 +123,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getSigOut() {
+    public void getSigOut () {
         try {
             driver.findElement(sigOut).click();
         } catch (Exception e) {
@@ -131,7 +131,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getAccount() {
+    public void getAccount () {
         try {
             driver.findElement(account).click();
         } catch (Exception e) {
@@ -139,7 +139,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getHomePage() {
+    public void getHomePage () {
         try {
             this.driver.findElement(yourLogoImg).click();
         } catch (Exception e) {
@@ -148,7 +148,7 @@ public abstract class BasePage {
     }
     //endregion
 
-    public void getSearchBox(String word) {
+    public void getSearchBox (String word){
         try {
             this.driver.findElement(searchBox).sendKeys(word);
             this.driver.findElement(buttonSearchBox).click();
@@ -157,7 +157,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getCart() {
+    public void getCart () {
         try {
             this.driver.findElement(cart).click();
         } catch (Exception e) {
@@ -165,7 +165,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getCheckOut() {
+    public void getCheckOut () {
         try {
             action.moveToElement(cartHovered);
             action.moveToElement(checkOutButtonHovered);
@@ -175,7 +175,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getShippingFeesCartHovered() {
+    public void getShippingFeesCartHovered () {
         try {
             action.moveToElement(cartHovered);
             action.moveToElement(shippingFeesCartHovered);
@@ -185,7 +185,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getTotalCartHovered() {
+    public void getTotalCartHovered () {
         try {
             action.moveToElement(cartHovered);
             action.moveToElement(totalCartHovered);
@@ -196,7 +196,7 @@ public abstract class BasePage {
     }
 
     //region Categories
-    public void getNavWomen() {
+    public void getNavWomen () {
         try {
             womenAccessHeader.click();
         } catch (Exception e) {
@@ -204,7 +204,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getNavDresses() {
+    public void getNavDresses () {
         try {
             dressesAccessHeader.click();
         } catch (Exception e) {
@@ -212,7 +212,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getTshirtsWomenHeader() {
+    public void getTshirtsWomenHeader () {
         try {
             action.moveToElement(womenAccessHeader);
             action.moveToElement(tshirtWomenHeader);
@@ -222,7 +222,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getBlousesWomenHeader() {
+    public void getBlousesWomenHeader () {
         try {
             action.moveToElement(womenAccessHeader);
             action.moveToElement(blousesWomenHeader);
@@ -232,7 +232,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getCasualDressesWomenHeader() {
+    public void getCasualDressesWomenHeader () {
         try {
             action.moveToElement(womenAccessHeader);
             action.moveToElement(casualDresserWomenHeader);
@@ -242,7 +242,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getEveningDressesWomenHeader() {
+    public void getEveningDressesWomenHeader () {
         try {
             action.moveToElement(womenAccessHeader);
             action.moveToElement(eveningDressesWomenHeader);
@@ -252,7 +252,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getSummerDressesWomenHeader() {
+    public void getSummerDressesWomenHeader () {
         try {
             action.moveToElement(womenAccessHeader);
             action.moveToElement(summerDressesWomenHeader);
@@ -262,7 +262,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getCasualDresses() {
+    public void getCasualDresses () {
         try {
             action.moveToElement(dressesAccessHeader);
             action.moveToElement(casualDressesHeader);
@@ -272,7 +272,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getEveningDresses() {
+    public void getEveningDresses () {
         try {
             action.moveToElement(dressesAccessHeader);
             action.moveToElement(eveningDressesHeader);
@@ -282,7 +282,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getSummerDresses() {
+    public void getSummerDresses () {
         try {
             action.moveToElement(dressesAccessHeader);
             action.moveToElement(summerDressesHeader);
@@ -292,7 +292,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getNavTShirts() {
+    public void getNavTShirts () {
         try {
             this.driver.findElement(categoriesHeader).findElement(tshirtsHeader).click();
         } catch (Exception e) {
@@ -304,7 +304,7 @@ public abstract class BasePage {
     //endregion
 
     //region Footer
-    public void subscribeNewsletter(String email) {
+    public void subscribeNewsletter (String email){
         try {
             this.driver.findElement(newsletterBox).sendKeys(email);
             this.driver.findElement(newsletterButton).click();
@@ -313,7 +313,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getFacebook() {
+    public void getFacebook () {
         try {
             this.driver.findElement(facebook).click();
         } catch (Exception e) {
@@ -321,7 +321,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getTwitter() {
+    public void getTwitter () {
         try {
             this.driver.findElement(twitter).click();
         } catch (Exception e) {
@@ -329,7 +329,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getYoutube() {
+    public void getYoutube () {
         try {
             this.driver.findElement(youtube).click();
         } catch (Exception e) {
@@ -337,7 +337,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getGooglePlus() {
+    public void getGooglePlus () {
         try {
             this.driver.findElement(googlePlus).click();
         } catch (Exception e) {
@@ -345,7 +345,7 @@ public abstract class BasePage {
         }
     }
 
-    public void myAccountFooter() {
+    public void myAccountFooter () {
         try {
             this.driver.findElement(myAccountFooter).click();
         } catch (Exception e) {
@@ -355,7 +355,7 @@ public abstract class BasePage {
     //endregion
 
     //region FooterWebPageLinks
-    public void getWomenFooter() {
+    public void getWomenFooter () {
         try {
             driver.findElement(womenFooter).click();
         } catch (Exception e) {
@@ -363,7 +363,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getSpecialFooter() {
+    public void getSpecialFooter () {
         try {
             driver.findElement(specialsFooter).click();
         } catch (Exception e) {
@@ -371,7 +371,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getNewProductsFooter() {
+    public void getNewProductsFooter () {
         try {
             driver.findElement(newProductsFooter).click();
         } catch (Exception e) {
@@ -379,7 +379,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getBestSellersFooter() {
+    public void getBestSellersFooter () {
         try {
             driver.findElement(bestSellersFooter).click();
         } catch (Exception e) {
@@ -387,7 +387,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getOurStoresFooter() {
+    public void getOurStoresFooter () {
         try {
             driver.findElement(ourStoresFooter).click();
         } catch (Exception e) {
@@ -395,7 +395,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getContactUsFooter() {
+    public void getContactUsFooter () {
         try {
             driver.findElement(contactUsFooter).click();
         } catch (Exception e) {
@@ -403,7 +403,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getTermsFooter() {
+    public void getTermsFooter () {
         try {
             driver.findElement(termsFooter).click();
         } catch (Exception e) {
@@ -411,7 +411,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getAboutUsFooter() {
+    public void getAboutUsFooter () {
         try {
             driver.findElement(aboutUsFooter).click();
         } catch (Exception e) {
@@ -419,7 +419,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getSiteMapFooter() {
+    public void getSiteMapFooter () {
         try {
             driver.findElement(siteMapFooter).click();
         } catch (Exception e) {
@@ -427,7 +427,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getMyOrdersFooter() {
+    public void getMyOrdersFooter () {
         try {
             driver.findElement(myOrdersFooter).click();
         } catch (Exception e) {
@@ -435,7 +435,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getCreditSlipsFooter() {
+    public void getCreditSlipsFooter () {
         try {
             driver.findElement(creditSlipsFooter).click();
         } catch (Exception e) {
@@ -443,7 +443,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getAddressesFooter() {
+    public void getAddressesFooter () {
         try {
             driver.findElement(addressesFooter).click();
         } catch (Exception e) {
@@ -451,7 +451,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getPersonalInfoFooter() {
+    public void getPersonalInfoFooter () {
         try {
             driver.findElement(personalInfoFooter).click();
         } catch (Exception e) {
@@ -459,7 +459,7 @@ public abstract class BasePage {
         }
     }
 
-    public void getSignOutFooter() {
+    public void getSignOutFooter () {
         try {
             driver.findElement(signOutFooter).click();
         } catch (Exception e) {

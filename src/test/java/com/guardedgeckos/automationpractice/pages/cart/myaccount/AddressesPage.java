@@ -1,11 +1,11 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AddressesPage {
-
-    private WebDriver webDriver;
+public class AddressesPage extends BasePage
+{
 
     private By centerColumn = new By.ById("center_column");
 
@@ -36,15 +36,15 @@ public class AddressesPage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=addresses";
 
-    public AddressesPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        this.webDriver.get("http://automationpractice.com/index.php?controller=addresses");
+    public AddressesPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
 
-
     public void clickAddANewAddressButton(){
-        webDriver
+        driver
                 .findElement(centerColumn)
                 .findElement(clearfix)
                 .findElement(button)
@@ -53,7 +53,7 @@ public class AddressesPage {
 
     public String getAddressAlias(int rowIndex, int columnIndex){
         try {
-            return webDriver
+            return driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(rowIndex)
                     .findElements(addressFieldColumn).get(columnIndex)
@@ -66,7 +66,7 @@ public class AddressesPage {
 
     public String getAddressCompanyName(int rowIndex, int columnIndex){
         try {
-            return webDriver
+            return driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(rowIndex)
                     .findElements(addressFieldColumn).get(columnIndex)
@@ -79,7 +79,7 @@ public class AddressesPage {
 
     public String getAddressAddressOne(int rowIndex, int columnIndex){
         try {
-            return webDriver
+            return driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(rowIndex)
                     .findElements(addressFieldColumn).get(columnIndex)
@@ -92,7 +92,7 @@ public class AddressesPage {
 
     public String getAddressAddressTwo(int rowIndex, int columnIndex){
         try {
-            return webDriver
+            return driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(rowIndex)
                     .findElements(addressFieldColumn).get(columnIndex)
@@ -105,7 +105,7 @@ public class AddressesPage {
 
     public String getAddressPhoneNum(int blockRowIndex, int blockColumnIndex){
         try {
-            return webDriver
+            return driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(blockRowIndex)
                     .findElements(addressFieldColumn).get(blockColumnIndex)
@@ -118,7 +118,7 @@ public class AddressesPage {
 
     public String getAddressMobilePhoneNum(int blockRowIndex, int blockColumnIndex){
         try {
-            return webDriver
+            return driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(blockRowIndex)
                     .findElements(addressFieldColumn).get(blockColumnIndex)
@@ -132,7 +132,7 @@ public class AddressesPage {
 
     public void updateAddressBlock(int blockRowIndex, int blockColumnIndex){
         try {
-            webDriver
+            driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(blockRowIndex)
                     .findElements(addressFieldColumn).get(blockColumnIndex)
@@ -146,7 +146,7 @@ public class AddressesPage {
 
     public void deleteAddressBlock(int blockRowIndex, int blockColumnIndex, boolean areYouSure){
         try {
-            webDriver
+            driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(blockRowIndex)
                     .findElements(addressFieldColumn).get(blockColumnIndex)
@@ -154,9 +154,9 @@ public class AddressesPage {
                     .click();
 
             if(areYouSure){
-             webDriver.switchTo().alert().accept();
+                driver.switchTo().alert().accept();
             }else {
-                webDriver.switchTo().alert().dismiss();
+                driver.switchTo().alert().dismiss();
             }
 
         }catch (IndexOutOfBoundsException e){
@@ -169,7 +169,7 @@ public class AddressesPage {
 
     public String getStringInAddressBlock(int blockRowIndex, int blockColumnIndex, int rowIndex){
         try {
-            return webDriver
+            return driver
                     .findElement(addressField)
                     .findElements(addressFieldRow).get(blockRowIndex)
                     .findElements(addressFieldColumn).get(blockColumnIndex)
@@ -182,15 +182,15 @@ public class AddressesPage {
     }
 
     public void clickHomeButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
     public void clickBackToYourAccountButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
 

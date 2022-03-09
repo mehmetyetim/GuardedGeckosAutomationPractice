@@ -8,25 +8,20 @@ import org.openqa.selenium.WebElement;
 public class SignInPage extends BasePage
 {
     //region Variables
-    private WebDriver driver;
-
-    private static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
     private static final String DEFAULT_EMAIL = "JohnSmith@gmail.com";
+    private static final String DEFAULT_REGISTRATION_EMAIL = "MohnBmith@gmail.com";
     private static final String DEFAULT_PASSWORD = "Password";
 
     private static final By BY_EMAIL = new By.ById("email");
     private static final By BY_REGISTRATION_EMAIL = new By.ById("email_create");
     private static final By BY_PASSWORD = new By.ById("passwd");
     private static final By BY_SIGNIN_BUTTON = new By.ById("SubmitLogin");
+    private static final By BY_CREATE_AN_ACCOUNT = new By.ById("SubmitCreate");
+    private static final By BY_FORGOTTEN_PASSWORD = By.xpath("//a[@href='http://automationpractice.com/index.php?controller=password']");
     //endregion
 
     //region Getters
-
-    public String getDefaultUrl()
-    {
-        return DEFAULT_URL;
-    }
-
     public String getDefaultPassword()
     {
         return DEFAULT_PASSWORD;
@@ -40,6 +35,11 @@ public class SignInPage extends BasePage
     public String getDefaultEmail()
     {
         return DEFAULT_EMAIL;
+    }
+
+    public String getDefaultRegistrationEmail()
+    {
+        return DEFAULT_REGISTRATION_EMAIL;
     }
 
     public String getEmail()
@@ -85,7 +85,7 @@ public class SignInPage extends BasePage
     //region Constructor
     public SignInPage(WebDriver driver)
     {
-        super(driver);
+        super(driver, DEFAULT_URL);
     }
     //endregion
 
@@ -129,13 +129,21 @@ public class SignInPage extends BasePage
     {
         enterEmail(email);
         enterPassword(password);
-
-        clickSignInButton();
     }
 
     public void clickSignInButton()
     {
         driver.findElement(BY_SIGNIN_BUTTON).click();
+    }
+
+    public void clickCreateAnAccountButton()
+    {
+        driver.findElement(BY_CREATE_AN_ACCOUNT).click();
+    }
+
+    public void clickForgotPasswordLink()
+    {
+        driver.findElement(BY_FORGOTTEN_PASSWORD).click();
     }
     //endregion
 }
