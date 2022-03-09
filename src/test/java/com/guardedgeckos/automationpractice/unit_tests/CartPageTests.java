@@ -1,6 +1,5 @@
 package com.guardedgeckos.automationpractice.unit_tests;
 
-import com.guardedgeckos.automationpractice.pages.IHopeYouGuysAreHappy;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.*;
 import com.guardedgeckos.automationpractice.utilities.ConfigurationReader;
@@ -27,7 +26,6 @@ public class CartPageTests {
      CheckoutAddress checkoutAddress;
      PaymentClass paymentClass;
      ShippingPage shippingPage;
-     IHopeYouGuysAreHappy iHopeYouGuysAreHappy;
 
      SignInPage signInPage;
 
