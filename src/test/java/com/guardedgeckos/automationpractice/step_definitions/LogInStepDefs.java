@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class LogInStepDefs {
         private static WebDriver webDriver;
@@ -51,19 +53,9 @@ public class LogInStepDefs {
         @Then("I will go to the My Account page")
         public void iWillGoToTheMyAccountPage() {
                 myAccountPage = new MyAccountPage(webDriver);
-                Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account", myAccountPage.getDefaultUrl());
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account", webDriver.getCurrentUrl());
         }
 
-
-        @And("I should see my account information")
-        public void iShouldSeeMyAccountInformation() {
-               myAccountPage.clickOrderHistoryAndDetailsButton();
-               myAccountPage.clickMyAddressesButton();
-               myAccountPage.clickMyPersonalInformationButton();
-               myAccountPage.clickMyCreditSlipsButton();
-               myAccountPage.clickMyWishlistsButton();
-               myAccountPage.getAccount();
-        }
 
         @When("I insert an unregistered email")
         public void iInsertAnUnregisteredEmail() {
@@ -114,30 +106,29 @@ public class LogInStepDefs {
 
         }
 
-        //High priority?
         @Then("I will be directed to another page to reset my password")
         public void iWillBeDirectedToAnotherPageToResetMyPassword() {
-           Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", signInPage.getDefaultUrl());
+           Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", webDriver.getCurrentUrl());
 
         }
 
-        @When("I am on the login page")
-        public void iAmOnTheLoginPageAndClickOnCreateAccount() {
+        @When("I am on the login page and I click on 'Create Account'")
+        public void iAmOnTheLoginPageAndIClickOnCreateAccount() {
                 signInPage = new SignInPage(webDriver);
                 signInPage.enterRegistrationEmail("sajad_northLondon@hotmail.com");
-
-        }
-
-        @And("I click on 'Create Account'")
-        public void clickOnCreateAccount() {
                 signInPage.clickCreateAnAccountButton();
-        }
 
+        }
 
         @Then("I will be directed to another page to finish the account creation")
         public void iWillBeDirectedToAnotherPageToFinishTheAccountCreation() {
-                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", webDriver.getCurrentUrl());
-
+               // webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+                try {
+                        Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication#account-creation", webDriver.getCurrentUrl());
         }
 
         @After
