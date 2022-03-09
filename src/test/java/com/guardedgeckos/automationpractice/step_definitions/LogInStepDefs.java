@@ -1,7 +1,7 @@
 package com.guardedgeckos.automationpractice.step_definitions;
 
-import com.guardedgeckos.automationpractice.pages.MyAccountPage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
+import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -49,14 +49,14 @@ public class LogInStepDefs {
         @Then("I will go to the My Account page")
         public void iWillGoToTheMyAccountPage() {
                 myAccountPage = new MyAccountPage(webDriver);
-                Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account", myAccountPage.getCurrentUrl());
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account", myAccountPage.getDefaultUrl());
         }
 
 
         @And("I should see my account information")
         public void iShouldSeeMyAccountInformation() {
               //  myAccountPage.
-                myAccountPage.getStoreInformationFooter();
+              //  myAccountPage.getAccount();
         }
 
         @When("I insert an unregistered email")
@@ -73,7 +73,7 @@ public class LogInStepDefs {
 
         @Then("I will stay in the Login Page")
         public void iWillStayInTheLoginPage() {
-              Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getCurrentUrl());
+              Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account", signInPage.getDefaultUrl());
 
         }
 
@@ -108,7 +108,7 @@ public class LogInStepDefs {
         //High priority?
         @Then("I will be directed to another page to reset my password")
         public void iWillRedirectedToAAnotherPageToResetMyPassword() {
-           Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", signInPage.getCurrentUrl());
+           Assertions.assertEquals("http://automationpractice.com/index.php?controller=password", signInPage.getDefaultUrl());
 
         }
 
@@ -121,7 +121,7 @@ public class LogInStepDefs {
 
         @Then("I will be directed to another page to finish the account creation")
         public void iWillBeAbledirectedToAnotherPageToFinishTheAccountCreation() {
-                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", signInPage.getCurrentUrl());
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation", signInPage.getDefaultUrl());
 
         }
 
