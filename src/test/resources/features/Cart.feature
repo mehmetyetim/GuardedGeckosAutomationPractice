@@ -101,3 +101,9 @@ Feature: As a User I want to be able buy the products that I want.
       Given I am on the Order summary page
       When I click on confirm my order
       Then I should be taken to the order confirmation page
+
+    Scenario: As a Customer I should be able to contact customer support
+      so that I can have any questions or concerns answered
+      Given I am on the order confirmation page
+      When I click on the expert customer support team
+      Then take me to the contact us page
