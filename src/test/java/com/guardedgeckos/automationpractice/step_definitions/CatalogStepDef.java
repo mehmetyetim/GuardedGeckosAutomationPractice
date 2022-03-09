@@ -54,8 +54,10 @@ public class CatalogStepDef {
 
     @Given("I am on a category page")
     public void iAmOnACategoryPage() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 
-
+        webDriver = new ChromeDriver();
+        webDriver.get("http://automationpractice.com/index.php?id_category=3&controller=category");
     }
 
     @And("I click {string} size button")
