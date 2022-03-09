@@ -23,6 +23,7 @@ public class IdentityPage extends BasePage
     private By daysOption = new By.ByName("days");
     private By monthsOption = new By.ByName("months");
     private By yearsOption = new By.ByName("years");
+    private By submitButton = new By.ByName("submitIdentity");
 
 
     //General
@@ -126,6 +127,10 @@ public class IdentityPage extends BasePage
         catch (IndexOutOfBoundsException e){
             System.out.println("INVALID INDEX");
         }
+    }
+
+    public void clickSubmitButton(){
+        driver.findElement(submitButton).click();
     }
 
     public void clickHomeButton(){
