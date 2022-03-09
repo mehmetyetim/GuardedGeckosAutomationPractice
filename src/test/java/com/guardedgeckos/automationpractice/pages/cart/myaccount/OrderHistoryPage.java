@@ -17,6 +17,7 @@ public class OrderHistoryPage extends BasePage
     private By orderTableRow = new By.ByTagName("tr");
     private By orderDateColumn = new By.ByClassName("history_date");
     private By orderPriceColumn = new By.ByClassName("price");
+    private By orderPaymentColumn = new By.ByClassName("history_method");
     private By orderStatusColumn = new By.ByClassName("label");
     private By orderHistoryDetailColumn = new By.ByClassName("history_detail");
     private By plusButton = new By.ByClassName("footable-toggle");
@@ -38,7 +39,7 @@ public class OrderHistoryPage extends BasePage
     private By orderDetailContentTable = new By.ById("order-detail-content");
 
     private By addressBlockField = new By.ByClassName("adresses_bloc");
-    private By addressBlocks = new By.ByClassName("addesss");
+    private By addressBlocks = new By.ByClassName("address");
     private By addressSubheading = new By.ByClassName("page-subheading");
     private By addressFirstname = new By.ByClassName("address_firstname");
     private By addressLastname = new By.ByClassName("address_lastname");
@@ -177,6 +178,21 @@ public class OrderHistoryPage extends BasePage
                             .get(orderIndex)
                             .findElement(orderStatusColumn)
                             .getText();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
+        }
+    }
+
+    public String getPayment(int orderIndex){
+        try {
+            return
+                    driver.findElement(orderHistoryTable)
+                            .findElement(orderHistoryList)
+                            .findElements(orderTableRow)
+                            .get(orderIndex)
+                            .findElement(orderPaymentColumn)
+                            .getAttribute("innerHTML");
         }catch (IndexOutOfBoundsException e){
             System.out.println("INVALID INDEX");
             return "INVALID INDEX";
@@ -341,7 +357,6 @@ public class OrderHistoryPage extends BasePage
             return driver
                     .findElement(infoOrderBox)
                     .findElements(paragraph).get(0)
-                    .findElement(darkText)
                     .getText();
         }catch (NoSuchElementException e){
             System.out.println("NO ELEMENT OR ELEMENT NO LOADED");
