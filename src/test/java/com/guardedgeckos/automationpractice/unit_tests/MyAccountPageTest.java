@@ -69,7 +69,7 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyWishlistsButton();
         myWishlistsPage = new MyWishlistsPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", myWishlistsPage.getCurrentUrl());
+        Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", webDriver.getCurrentUrl());
     }
 
     @AfterAll
