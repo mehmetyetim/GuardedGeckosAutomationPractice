@@ -3,6 +3,7 @@ package com.guardedgeckos.automationpractice.step_definitions;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
+import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -17,19 +18,12 @@ import java.util.concurrent.TimeUnit;
 
 
 public class LogInStepDefs {
-        private static WebDriver webDriver;
+        private static WebDriver webDriver = DriverFactory.get();
         private static SignInPage signInPage;
         private static MyAccountPage myAccountPage;
 
-        @Before
-        public void setup() {
-               System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-               System.out.println("setup");
-        }
-
         @Given("I am on the login page")
         public void iAmOnTheLoginPage() {
-                webDriver = new ChromeDriver();
                 signInPage = new SignInPage(webDriver);
                 signInPage.clickSignInButton();
                 webDriver.getCurrentUrl();
@@ -63,7 +57,7 @@ public class LogInStepDefs {
                 signInPage.enterEmail("sajaaad.gulzar2000@gmail.com");
         }
 
-        @And("I insert a valid password and click the 'login' button")
+        @And("I insert a valid password and click the login button")
         public void iInsertAValidPasswordAndClickLoginButton() {
                 signInPage.enterPassword("Neil Nishant");
                 signInPage.clickSignInButton();
@@ -75,28 +69,22 @@ public class LogInStepDefs {
 
         }
 
-        /*
-        @When("I insert a registered email")
-        public void iInsertARegisteredEmail() {
+        @When("I insert a invalid password")
+        public void iInsertAInvalidPassword() {
                 signInPage = new SignInPage(webDriver);
+                signInPage.enterPassword("Lfcnbve123");
+        }
+
+        @And("I insert a registered email and click the login button")
+        public void iInsertARegisteredEmailAndClickTheLoginButton() {
                 signInPage.enterEmail("sajad.gulzar98@gmail.com");
         }
 
-        @And("I insert an invalid password and click the 'login' button")
-        public void iInsertAnInvalidPasswordAndClickLoginButton() {
-                signInPage.enterPassword("sdhjzgflzshdgf12");
-                signInPage.clickSignInButton();
-        }
-
-
-
-
-        @Then("I will stay in the Login Page")
-        public void iWillStayInTheLoginPage1() {
-            Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication", signInPage.getDefaultUrl());
+        @Then("I will stay in the Login webPage")
+        public void iWillStayInTheLoginWebPage() {
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication", signInPage.getDefaultUrl());
 
         }
-*/
 
 
         @When("I click on 'Forgot your password?")
@@ -129,13 +117,5 @@ public class LogInStepDefs {
                         e.printStackTrace();
                 }
                 Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication#account-creation", webDriver.getCurrentUrl());
-        }
-
-        @After
-        public static void tearDown() {
-                if (webDriver != null) {
-                        //    manager.quitDriver();
-                        System.out.println("tearDown login");
-                }
         }
 }

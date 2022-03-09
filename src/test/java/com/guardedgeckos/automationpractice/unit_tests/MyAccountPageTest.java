@@ -63,17 +63,16 @@ public class MyAccountPageTest {
         identityPage = new IdentityPage(webDriver);
         Assertions.assertEquals("http://automationpractice.com/index.php?controller=identity", identityPage.getCurrentUrl());
     }
-   /*
+
     @Test
     @DisplayName("Check wishlists buttons in the myAccountPage")
     public void checkWhishlistButtonInMyAccountPage(){
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyWishlistsButton();
         myWishlistsPage = new MyWishlistsPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", myWishlistsPage.getCurrentUrl());
+     //   Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", myWishlistsPage.getCurrentUrl());
     }
 
-    */
 
     @AfterAll
     static void close(){
