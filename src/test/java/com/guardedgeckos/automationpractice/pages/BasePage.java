@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BasePage {
-    protected static String DEFAULT_URL = "http://automationpractice.com/index.php";
+    public static String DEFAULT_URL = "http://automationpractice.com/index.php";
     protected static WebDriver driver;
     private By banner = new By.ByClassName("img-responsive");
     private By shopPhone = new By.ByClassName("shop-phone");

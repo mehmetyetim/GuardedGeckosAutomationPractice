@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class IHopeYouGuysAreHappy extends BasePage
 {
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php";
+    public static String DEFAULT_URL = "http://automationpractice.com/index.php";
 
     private final By proceedToCheckoutButton = By.xpath("//a[@title='Proceed to checkout']");
     private final By continueShoppingButton = By.xpath("//span[@title='Continue shopping']");

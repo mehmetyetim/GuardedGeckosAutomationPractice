@@ -15,7 +15,6 @@ public class HomePageTests {
     static void setupAll(TestInfo testInfo)
     {
         home = new IHopeYouGuysAreHappy(driver);
-
         driver.get("http://automationpractice.com/");
     }
 
@@ -23,7 +22,7 @@ public class HomePageTests {
     @DisplayName("Check that the page defaults to the base url")
     void homePageConstructorTest()
     {
-        Assertions.assertEquals(home.getDefaultUrl(), driver.getCurrentUrl());
+        Assertions.assertEquals(IHopeYouGuysAreHappy.DEFAULT_URL, driver.getCurrentUrl());
     }
     @Test
     @DisplayName("Check that the page defaults to the base url")
