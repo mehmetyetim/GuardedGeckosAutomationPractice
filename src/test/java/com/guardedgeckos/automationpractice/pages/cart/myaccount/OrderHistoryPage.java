@@ -37,6 +37,22 @@ public class OrderHistoryPage extends BasePage
 
     private By orderDetailContentTable = new By.ById("order-detail-content");
 
+    private By addressBlockField = new By.ByClassName("adresses_bloc");
+    private By addressBlocks = new By.ByClassName("addesss");
+    private By addressSubheading = new By.ByClassName("page-subheading");
+    private By addressFirstname = new By.ByClassName("address_firstname");
+    private By addressLastname = new By.ByClassName("address_lastname");
+    private By addressCompany = new By.ByClassName("address_company");
+    private By addressAddress1 = new By.ByClassName("address_address1");
+    private By addressAddress2 = new By.ByClassName("address_address2");
+    private By addressCity = new By.ByClassName("address_city");
+    private By adddressState = new By.ByClassName("address_State:name");
+    private By addressPostcode = new By.ByClassName("address_postcode");
+    private By addressCountry = new By.ByClassName("address_Country:name");
+    private By addressPhone = new By.ByClassName("address_phone");
+    private By addressPhoneMobile = new By.ByClassName("address_phone_mobile");
+
+
     private By price = new By.ByClassName("price");
     private By priceShipping = new By.ByClassName("price-shipping");
 
@@ -499,6 +515,156 @@ public class OrderHistoryPage extends BasePage
             return "NO SUCH ELEMENT";
         }
     }
+    //////////////////Address Blocks//////////////////////////////
+    public String getAddressBlockSubheadingText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressSubheading).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+    public String getAddressBlockFirstNameText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressFirstname).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+    public String getAddressBlockLastNameText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressLastname).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+    public String getAddressBlockCompanyText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressCompany).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+    public String getAddressBlockAddressOneText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressAddress1).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getAddressBlockAddressTwoText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressAddress2).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getAddressBlockCityText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressCity).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+
+    public String getAddressBlockStateText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(adddressState).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getAddressBlockPostCodeText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressPostcode).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getAddressBlockCountryText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressCountry).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+
+    public String getAddressBlockPhoneText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressPhone).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getAddressBlockMobilePhoneText(int blockIndex){
+        try {
+            return driver
+                    .findElement(addressBlockField)
+                    .findElements(addressBlocks).get(blockIndex)
+                    .findElement(addressPhoneMobile).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+////////////////////////////////////////////////////
+
+
+
+
+
+
+
 
     public void clickHomeButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
