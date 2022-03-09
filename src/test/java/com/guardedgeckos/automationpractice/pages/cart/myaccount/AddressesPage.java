@@ -187,11 +187,6 @@ public class AddressesPage extends BasePage
     public void clickBackToYourAccountButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
-
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
-
+    
 
 }
