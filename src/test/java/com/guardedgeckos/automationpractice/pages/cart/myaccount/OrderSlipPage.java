@@ -49,8 +49,5 @@ public class OrderSlipPage extends BasePage
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
 
 }

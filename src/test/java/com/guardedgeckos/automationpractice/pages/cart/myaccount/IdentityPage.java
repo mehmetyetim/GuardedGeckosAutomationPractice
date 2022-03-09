@@ -135,9 +135,4 @@ public class IdentityPage extends BasePage
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
-
 }
