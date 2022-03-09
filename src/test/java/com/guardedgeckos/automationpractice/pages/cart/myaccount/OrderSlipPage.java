@@ -1,14 +1,13 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class OrderSlipPage {
-
-    private WebDriver webDriver;
+public class OrderSlipPage extends BasePage
+{
     private By alert = new By.ByClassName("alert");
-
 
     //General
     private By options = new By.ByTagName("option");
@@ -26,30 +25,32 @@ public class OrderSlipPage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
-    public OrderSlipPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        this.webDriver.get("http://automationpractice.com/index.php?controller=order-slip");
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=order-slip";
+
+    public OrderSlipPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
 
     public String getAlertText(){
         try {
-            webDriver.findElement(alert).getText();
+            driver.findElement(alert).getText();
         }catch (NoSuchElementException e){
             e.printStackTrace();
             return "NO ALERT";
         }
-        return webDriver.findElement(alert).getText();
+        return driver.findElement(alert).getText();
     }
 
     public void clickHomeButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
     public void clickBackToYourAccountButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
 }

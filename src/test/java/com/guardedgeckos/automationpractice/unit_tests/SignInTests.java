@@ -2,12 +2,17 @@ package com.guardedgeckos.automationpractice.unit_tests;
 
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
-import org.junit.Before;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.WebDriver;
 
+@ExtendWith(MockitoExtension.class)
 public class SignInTests
 {
+    @Spy
     static WebDriver driver;
     static SignInPage signInPage;
 
@@ -25,6 +30,9 @@ public class SignInTests
     @DisplayName("Check that the page defaults to the base url")
     void signInPageConstructorTest()
     {
+        signInPage = new SignInPage(driver);
+        Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=authentication");
+
         Assertions.assertEquals(signInPage.getDefaultUrl(), driver.getCurrentUrl());
     }
 
@@ -32,6 +40,8 @@ public class SignInTests
     @DisplayName("The user can enter a password")
     void signInPageEnterPasswordTest()
     {
+        signInPage = new SignInPage(driver);
+
         signInPage.enterPassword(signInPage.getDefaultPassword());
 
         Assertions.assertEquals(signInPage.getDefaultPassword(), signInPage.getPassword());
@@ -48,7 +58,7 @@ public class SignInTests
 
     @Test
     @DisplayName("The user can sign in")
-    void signInPageSignInTest()
+    void signInPageSignInFillsFieldsTest()
     {
         signInPage.resetFields();
         signInPage.login(signInPage.getDefaultEmail());
@@ -57,6 +67,56 @@ public class SignInTests
                 && (signInPage.getDefaultEmail().equals(signInPage.getEmail()));
 
         Assertions.assertTrue(bothAreEqual);
+    }
+
+    @Test
+    @DisplayName("The user can enter a registration email")
+    void signInPageRegistrationEmailTest()
+    {
+        signInPage.resetFields();
+        signInPage.enterRegistrationEmail(signInPage.getDefaultRegistrationEmail());
+
+        Assertions.assertEquals(signInPage.getDefaultRegistrationEmail(), signInPage.getRegistrationEmail());
+    }
+
+    @Test
+    @DisplayName("The user can enter a registration email")
+    void signInPageRegistrationEmailSubmitTest()
+    {
+        signInPage = new SignInPage(driver);
+
+        signInPage.resetFields();
+        signInPage.enterRegistrationEmail(signInPage.getDefaultRegistrationEmail());
+        signInPage.clickCreateAnAccountButton();
+
+        try
+        {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation");
+
+        boolean isOnAccountCreationPage = driver.getCurrentUrl().contains("#account-creation");
+
+        Assertions.assertTrue(isOnAccountCreationPage);
+    }
+
+    @Test
+    @DisplayName("The user can enter a registration email")
+    void signInPageForgotPasswordTest()
+    {
+        signInPage.resetFields();
+
+        signInPage.clickForgotPasswordLink();
+
+        Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=password");
+        boolean isOnResetPasswordPage = driver.getCurrentUrl().contains("controller=password");
+
+        Assertions.assertTrue(isOnResetPasswordPage);
     }
     //endregion
 

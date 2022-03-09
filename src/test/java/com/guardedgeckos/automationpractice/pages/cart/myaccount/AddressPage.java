@@ -1,12 +1,12 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class AddressPage {
-
-    private WebDriver webDriver;
+public class AddressPage extends BasePage
+{
 
     private By alert = new By.ByClassName("alert");
 
@@ -28,82 +28,83 @@ public class AddressPage {
     private By clearfix = new By.ByClassName("clearfix");
     private By options = new By.ByTagName("option");
 
-    public AddressPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        this.webDriver.get("http://automationpractice.com/index.php?controller=address");
-    }
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=address";
 
+    public AddressPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
+    }
 
     public String getAlertText(){
         try {
-            webDriver.findElement(alert).getText();
+            driver.findElement(alert).getText();
         }catch (NoSuchElementException e){
             e.printStackTrace();
             return "NO ALERT";
         }
-        return webDriver.findElement(alert).getText();
+        return driver.findElement(alert).getText();
     }
 
 
     public void inputFirstName(String string){
-        webDriver.findElement(firstname).clear();
-        webDriver.findElement(firstname).sendKeys(string);
+        driver.findElement(firstname).clear();
+        driver.findElement(firstname).sendKeys(string);
     }
     public void inputLastName(String string){
-        webDriver.findElement(lastname).clear();
-        webDriver.findElement(lastname).sendKeys(string);
+        driver.findElement(lastname).clear();
+        driver.findElement(lastname).sendKeys(string);
     }
     public void inputAddressOne(String string){
-        webDriver.findElement(address1).clear();
-        webDriver.findElement(address1).sendKeys(string);
+        driver.findElement(address1).clear();
+        driver.findElement(address1).sendKeys(string);
     }
     public void inputAddressTwo(String string){
-        webDriver.findElement(address2).clear();
-        webDriver.findElement(address2).sendKeys(string);
+        driver.findElement(address2).clear();
+        driver.findElement(address2).sendKeys(string);
     }
     public void inputCity(String string){
-        webDriver.findElement(city).clear();
-        webDriver.findElement(city).sendKeys(string);
+        driver.findElement(city).clear();
+        driver.findElement(city).sendKeys(string);
     }
     public void inputPostcode(String string){
-        webDriver.findElement(postcode).clear();
-        webDriver.findElement(postcode).sendKeys(string);
+        driver.findElement(postcode).clear();
+        driver.findElement(postcode).sendKeys(string);
     }
     public void inputMobilePhone(String string){
-        webDriver.findElement(phoneMobile).clear();
-        webDriver.findElement(phoneMobile).sendKeys(string);
+        driver.findElement(phoneMobile).clear();
+        driver.findElement(phoneMobile).sendKeys(string);
     }
     public void inputPhone(String string){
-        webDriver.findElement(phone).clear();
-        webDriver.findElement(phone).sendKeys(string);
+        driver.findElement(phone).clear();
+        driver.findElement(phone).sendKeys(string);
     }
     public void inputOther(String string){
-        webDriver.findElement(other).clear();
-        webDriver.findElement(other).sendKeys(string);
+        driver.findElement(other).clear();
+        driver.findElement(other).sendKeys(string);
     }
     public void inputAlias(String string){
-        webDriver.findElement(alias).clear();
-        webDriver.findElement(alias).sendKeys(string);
+        driver.findElement(alias).clear();
+        driver.findElement(alias).sendKeys(string);
     }
 
     public void selectState(int index){                                             // 0 = --options--
-        webDriver.findElement(idState).click();
-        webDriver.findElement(idState).findElements(options).get(index).click();
+        driver.findElement(idState).click();
+        driver.findElement(idState).findElements(options).get(index).click();
     }
 
     public void selectCountry(int index){                                             // only 0 (United States) is available
-        webDriver.findElement(idCountry).click();
-        webDriver.findElement(idCountry).findElements(options).get(index).click();
+        driver.findElement(idCountry).click();
+        driver.findElement(idCountry).findElements(options).get(index).click();
     }
 
     public void clickSaveButton(){
-        webDriver.findElement(submitButton).click();
+        driver.findElement(submitButton).click();
     }
 
 
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
 }

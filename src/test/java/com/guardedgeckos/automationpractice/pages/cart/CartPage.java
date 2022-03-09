@@ -42,10 +42,6 @@ public class CartPage {
             BY_CART_PRODUCTS = new By.ByClassName("cart_item");
 
 
-//    public CartPage(WebDriver driver){
-//        super(driver, "http://automationpractice.com/index.php?controller=order")
-//    }
-
     public ArrayList<Cart> cartArrayListSet(WebDriver driver){
         ArrayList<Cart> cartArrayList = new ArrayList<>();
         List<WebElement> arrayList = driver.findElements(BY_CART_PRODUCTS);

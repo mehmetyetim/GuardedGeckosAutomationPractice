@@ -1,12 +1,13 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class IdentityPage {
+public class IdentityPage extends BasePage
+{
 
-    private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
 
     private By Mr = new By.ById("id_gender1");
@@ -40,66 +41,67 @@ public class IdentityPage {
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=identity";
 
-    public IdentityPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        this.webDriver.get("http://automationpractice.com/index.php?controller=identity");
+    public IdentityPage(WebDriver driver)
+    {
+        super(driver, DEFAULT_URL);
     }
 
 
     public String getAlertText(){
         try {
-            webDriver.findElement(alert).getText();
+            driver.findElement(alert).getText();
         }catch (NoSuchElementException e){
             e.printStackTrace();
             return "NO ALERT";
         }
-        return webDriver.findElement(alert).getText();
+        return driver.findElement(alert).getText();
     }
 
     public void clickMr(){
-            webDriver.findElement(Mr).click();
+        driver.findElement(Mr).click();
     }
 
     public void clickMrs(){
-        webDriver.findElement(Mrs).click();
+        driver.findElement(Mrs).click();
     }
 
     public void inputFirstName(String string){
-        webDriver.findElement(firstname).clear();
-        webDriver.findElement(firstname).sendKeys(string);
+        driver.findElement(firstname).clear();
+        driver.findElement(firstname).sendKeys(string);
     }
     public void inputLastName(String string){
-        webDriver.findElement(lastname).clear();
-        webDriver.findElement(lastname).sendKeys(string);
+        driver.findElement(lastname).clear();
+        driver.findElement(lastname).sendKeys(string);
     }
     public void inputEmail(String string){
-        webDriver.findElement(email).clear();
-        webDriver.findElement(email).sendKeys(string);
+        driver.findElement(email).clear();
+        driver.findElement(email).sendKeys(string);
     }
     public void inputOldPassword(String string){
-        webDriver.findElement(oldPasswd).clear();
-        webDriver.findElement(oldPasswd).sendKeys(string);
+        driver.findElement(oldPasswd).clear();
+        driver.findElement(oldPasswd).sendKeys(string);
     }
     public void inputNewPassword(String string){
-        webDriver.findElement(passwd).clear();
-        webDriver.findElement(passwd).sendKeys(string);
+        driver.findElement(passwd).clear();
+        driver.findElement(passwd).sendKeys(string);
     }
     public void inputConfirmNewPassword(String string){
-        webDriver.findElement(passwdConfirmation).clear();
-        webDriver.findElement(passwdConfirmation).sendKeys(string);
+        driver.findElement(passwdConfirmation).clear();
+        driver.findElement(passwdConfirmation).sendKeys(string);
     }
     public void clickNewsLetterCheckBox(){
-        webDriver.findElement(newsLetterCheckBox).click();
+        driver.findElement(newsLetterCheckBox).click();
     }
     public void clickSpecialOffersCheckbox(){
-        webDriver.findElement(specialOffersCheckBox).click();
+        driver.findElement(specialOffersCheckBox).click();
     }
 
     public void selectDay(int d){
         try{
-            webDriver.findElement(daysOption).click();
-            webDriver.findElement(daysOption).findElements(options).get(d).click();
+            driver.findElement(daysOption).click();
+            driver.findElement(daysOption).findElements(options).get(d).click();
         }
         catch (IndexOutOfBoundsException e){
             System.out.println("INVALID INDEX");
@@ -108,8 +110,8 @@ public class IdentityPage {
 
     public void selectMonth(int m){
         try{
-            webDriver.findElement(monthsOption).click();
-            webDriver.findElement(monthsOption).findElements(options).get(m).click();
+            driver.findElement(monthsOption).click();
+            driver.findElement(monthsOption).findElements(options).get(m).click();
         }
         catch (IndexOutOfBoundsException e){
             System.out.println("INVALID INDEX");
@@ -118,8 +120,8 @@ public class IdentityPage {
 
     public void selectYear(int y){                                                    //input = how many years ago
         try{
-            webDriver.findElement(yearsOption).click();
-            webDriver.findElement(yearsOption).findElements(options).get(y+1).click();
+            driver.findElement(yearsOption).click();
+            driver.findElement(yearsOption).findElements(options).get(y+1).click();
         }
         catch (IndexOutOfBoundsException e){
             System.out.println("INVALID INDEX");
@@ -127,15 +129,15 @@ public class IdentityPage {
     }
 
     public void clickHomeButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
     public void clickBackToYourAccountButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
 }
