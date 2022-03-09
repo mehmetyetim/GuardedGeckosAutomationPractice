@@ -1,12 +1,12 @@
-package com.guardedgeckos.automationpractice.pages;
+package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
+import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class OrderSlipPage extends BasePage
 {
-    private WebDriver webDriver;
     private By alert = new By.ByClassName("alert");
 
     //General
@@ -34,23 +34,23 @@ public class OrderSlipPage extends BasePage
 
     public String getAlertText(){
         try {
-            webDriver.findElement(alert).getText();
+            driver.findElement(alert).getText();
         }catch (NoSuchElementException e){
             e.printStackTrace();
             return "NO ALERT";
         }
-        return webDriver.findElement(alert).getText();
+        return driver.findElement(alert).getText();
     }
 
     public void clickHomeButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
     public void clickBackToYourAccountButton(){
-        webDriver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
+        driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
 
     public String getCurrentUrl() {
-        return webDriver.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
 }
