@@ -58,7 +58,7 @@ public class OrderHistoryPage extends BasePage
     private By priceShipping = new By.ByClassName("price-shipping");
 
     //General
-
+    private By tableBlock = new By.ByClassName("table_block");
     private By tableFoot = new By.ByTagName("tfoot");
     private By tableBody = new By.ByTagName("tbody");
     private By tableRow = new By.ByTagName("tr");
@@ -676,9 +676,21 @@ public class OrderHistoryPage extends BasePage
 
 
 
+    public String getMessageFrom(int index){
+        return driver
+                .findElements(tableBlock).get(2)
+                .findElement(tableBody)
+                .findElements(tableRow).get(index)
+                .findElements(tableData).get(0).getText();
+    }
 
-
-
+    public String getMessageContent(int index) {
+        return driver
+                .findElements(tableBlock).get(2)
+                .findElement(tableBody)
+                .findElements(tableRow).get(index)
+                .findElements(tableData).get(1).getText();
+    }
 
 
     public void clickHomeButton(){

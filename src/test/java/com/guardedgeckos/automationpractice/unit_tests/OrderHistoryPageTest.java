@@ -422,6 +422,25 @@ public class OrderHistoryPageTest {
         Assertions.assertEquals("$30.98", orderHistoryPage.getTotalPriceInOrderDetails());
     }
 
+    @Test
+    @DisplayName("get message from")
+    void getMessageFrom(){
+        orderHistoryPage = new OrderHistoryPage(webDriver);
+        orderHistoryPage.clickOrderReference(0);
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        assertThat(orderHistoryPage.getMessageFrom(1),containsString("First Last"));
+    }
+
+    @Test
+    @DisplayName("get message content")
+    void getMessageContent(){
+        orderHistoryPage = new OrderHistoryPage(webDriver);
+        orderHistoryPage.clickOrderReference(0);
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        Assertions.assertEquals("rregre", orderHistoryPage.getMessageContent(1));
+    }
+
+
 
     @AfterAll
     static void close(){
