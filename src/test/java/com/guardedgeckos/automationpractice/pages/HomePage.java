@@ -65,23 +65,11 @@ public class HomePage extends BasePage
         driver.findElement(By.xpath("//span[@class='ajax_cart_quantity']")).click();
     }
 
-    public void clickOnProceedToCheckout(){
-        driver.findElement(proceedToCheckoutButton).click();
-    }
-
-    public void clickOnContinueShopping(){
-        driver.findElement(continueShoppingButton).click();
-    }
-
-    public Integer getNumOfItemsInCart(){
-        return Integer.parseInt(driver.findElement(numOfItemsInCart).getText());
-    }
-
     private final WebDriverWait wait;
     Actions action;
 
     public HomePage(WebDriver driver) {
-        super(driver);
+        super(driver, DEFAULT_URL);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         action = new Actions(driver);
     }
