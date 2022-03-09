@@ -1,23 +1,53 @@
 package com.guardedgeckos.automationpractice.unit_tests;
 
 import com.guardedgeckos.automationpractice.pages.HomePage;
+import com.guardedgeckos.automationpractice.pages.Item;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
+import org.openqa.selenium.WebDriver;
 
 public class HomePageTests {
-    HomePage homePage = new HomePage(DriverFactory.get());
-
+    private static WebDriver driver = DriverFactory.get();
+    static HomePage homePage;
+    WebDriverWait wait;
+    @BeforeAll
+    static void setupAll(TestInfo testInfo) {
+        homePage = new HomePage(driver);
+        driver.get("http://automationpractice.com/");
+    }
     @BeforeEach
     public void setup(){
         DriverFactory.get().manage().window().maximize();
         DriverFactory.get().get("https://automationpractice.com/");
         DriverFactory.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        WebDriverWait wait = new WebDriverWait(DriverFactory.get(), Duration.ofSeconds(30));
+        wait = new WebDriverWait(DriverFactory.get(), Duration.ofSeconds(30));
     }
+
+    @Test
+    @DisplayName("Check that the page defaults to the base url")
+    void homePageConstructorTest()
+    {
+        Assertions.assertEquals(HomePage.DEFAULT_URL, driver.getCurrentUrl());
+    }
+
+    @Test
+    public void test() {
+        homePage.hoverOverFirstProductAndClickOnAddToCartButton();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ajax_cart_quantity")));
+        System.out.println("homePage.getTotalItemsQuantityCart() = " + homePage.getTotalItemsQuantityCart());
+        Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
+    }
+//    @Test
+//    @DisplayName("Check that the page defaults to the base url")
+//    void AddItemToCart(){
+//        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
+//    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     @Test
     @DisplayName("Click on first image")
@@ -120,13 +150,11 @@ public class HomePageTests {
 
     @AfterEach
     public void tearDown() {
-        DriverFactory.closeDriver();
+        //DriverFactory.closeDriver();
     }
 
-    @Test
-    @DisplayName("Check that the page defaults to the base url")
-    void signInPageConstructorTest()
-    {
-        Assertions.assertNotEquals(homePage.getDefaultUrl(), DriverFactory.get().getCurrentUrl());
+    @AfterAll
+    static void close(){
+        //driver.quit();
     }
 }
