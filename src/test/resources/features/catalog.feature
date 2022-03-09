@@ -16,7 +16,7 @@ Feature: Catalog pages
   Scenario: I want to use the filter buttons
     Given I am on a category page
     And I click "size" size button
-    Then the page only shows the relevant products
+    Then the site filters by size
 
   Scenario: I want to add to basket
     Given I am on a category page

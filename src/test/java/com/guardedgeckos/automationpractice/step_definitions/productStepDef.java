@@ -1,6 +1,7 @@
 package com.guardedgeckos.automationpractice.step_definitions;
 
-import com.guardedgeckos.automationpractice.pages.IHopeYouGuysAreHappy;
+import com.guardedgeckos.automationpractice.pages.HomePage;
+import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -12,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class productStepDef {
 
     private static WebDriver webDriver;
-    private static IHopeYouGuysAreHappy mainPage;
+    private static HomePage mainPage;
 
     @Before
     public void setup() {

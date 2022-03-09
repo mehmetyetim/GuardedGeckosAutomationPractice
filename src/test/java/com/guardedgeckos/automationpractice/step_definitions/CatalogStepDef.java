@@ -1,6 +1,6 @@
 package com.guardedgeckos.automationpractice.step_definitions;
 
-import com.guardedgeckos.automationpractice.pages.IHopeYouGuysAreHappy;
+import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -15,7 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class CatalogStepDef {
     private static WebDriver webDriver;
-    private static IHopeYouGuysAreHappy mainPage;
+    private static HomePage mainPage;
 
     @Before
     public void setup() {
@@ -60,33 +60,38 @@ public class CatalogStepDef {
         webDriver.get("http://automationpractice.com/index.php?id_category=3&controller=category");
     }
 
-    @And("I click {string} size button")
-    public void iClickSizeButton(String arg0) {
-        
+    @And("I click  size button")
+    public void iClickSizeButton() {
+        webDriver.findElement(By.xpath("//*[@id=\"layered_id_attribute_group_1\"]")).click();
     }
 
-    @Then("the page only shows the relevant products")
-    public void thePageOnlyShowsTheRelevantProducts() {
+    @Then("the site filters by size")
+    public void theSiteFiltersBySize() {
+        Assertions.assertTrue(webDriver.getCurrentUrl().contains("size-s"));
     }
 
     @And("I Hover over a product")
     public void iHoverOverAProduct() {
-        
+        WebElement l= webDriver.findElement(By.linkText("//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[1]/img"));
+
+        Actions a = new Actions(webDriver);
+        a.moveToElement(l);
     }
 
     @And("I click add to basket")
     public void iClickAddToBasket() {
-        
+        webDriver.findElement(By.xpath("//*[@id=\"layered_id_attribute_group_1\"]")).click();
+
     }
 
     @And("I click add to wishlist")
     public void iClickAddToWishlist() {
-        
+        webDriver.findElement(By.linkText("Add to Wishlist")).click();
     }
 
     @And("I click add to compare")
     public void iClickAddToCompare() {
-        
+        webDriver.findElement(By.linkText("Add to Compare")).click();
     }
 
     @Then("the product is added to the basket")
@@ -96,7 +101,7 @@ public class CatalogStepDef {
 
     @Then("the product is added to the wishlist")
     public void theProductIsAddedToTheWishlist() {
-        
+
     }
 
     @Then("the product is added to the compare page")
@@ -126,4 +131,6 @@ public class CatalogStepDef {
     @Then("I should be directed to the product page")
     public void iShouldBeDirectedToTheProductPage() {
     }
+
+
 }
