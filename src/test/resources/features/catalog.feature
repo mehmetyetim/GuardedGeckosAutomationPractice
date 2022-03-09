@@ -15,7 +15,7 @@ Feature: Catalog pages
 
   Scenario: I want to use the filter buttons
     Given I am on a category page
-    And I click "size" size button
+    And I click size button
     Then the site filters by size
 
   Scenario: I want to add to basket
@@ -24,22 +24,10 @@ Feature: Catalog pages
     And I click add to basket
     Then the product is added to the basket
 
-  Scenario: I want to add to wishlist
-    Given I am on a category page
-    And I Hover over a product
-    And I click add to wishlist
-    Then the product is added to the wishlist
-
   Scenario: I want to add to compare products
     Given I am on a category page
     And I Hover over a product
     And I click add to compare
     Then the product is added to the compare page
-
-  Scenario: I want to inspect a product
-    Given I am on the category page
-    And I Hover over a product
-    And I click the quick view
-    Then I am taken to the product page
 
 

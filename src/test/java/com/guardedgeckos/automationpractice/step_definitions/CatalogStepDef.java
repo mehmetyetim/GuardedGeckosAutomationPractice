@@ -60,7 +60,7 @@ public class CatalogStepDef {
         webDriver.get("http://automationpractice.com/index.php?id_category=3&controller=category");
     }
 
-    @And("I click  size button")
+    @And("I click size button")
     public void iClickSizeButton() {
         webDriver.findElement(By.xpath("//*[@id=\"layered_id_attribute_group_1\"]")).click();
     }
@@ -72,7 +72,7 @@ public class CatalogStepDef {
 
     @And("I Hover over a product")
     public void iHoverOverAProduct() {
-        WebElement l= webDriver.findElement(By.linkText("//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[1]/img"));
+        WebElement l= webDriver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[1]/img"));
 
         Actions a = new Actions(webDriver);
         a.moveToElement(l);
@@ -81,12 +81,6 @@ public class CatalogStepDef {
     @And("I click add to basket")
     public void iClickAddToBasket() {
         webDriver.findElement(By.xpath("//*[@id=\"layered_id_attribute_group_1\"]")).click();
-
-    }
-
-    @And("I click add to wishlist")
-    public void iClickAddToWishlist() {
-        webDriver.findElement(By.linkText("Add to Wishlist")).click();
     }
 
     @And("I click add to compare")
@@ -96,40 +90,20 @@ public class CatalogStepDef {
 
     @Then("the product is added to the basket")
     public void theProductIsAddedToTheBasket() {
-        
-    }
-
-    @Then("the product is added to the wishlist")
-    public void theProductIsAddedToTheWishlist() {
-
+        Assertions.assertTrue(webDriver.findElement(By.id("header")).getText().contains("Cart (1)"));
     }
 
     @Then("the product is added to the compare page")
     public void theProductIsAddedToTheComparePage() {
-    }
-
-    @Given("I am on the category page")
-    public void iAmOnTheCategoryPage() {
+        Assertions.assertTrue(webDriver.findElement(By.id("center_column")).getText().contains("Compare (1)"));
     }
 
     @And("I click the quick view")
     public void iClickTheQuickView() {
-    }
+        //*[@id="center_column"]/ul/li/div/div[1]/div/a[2]
+        //*[@id="center_column"]/ul/li/div/div[1]/div/a[2]/span
+        webDriver.findElement(By.xpath("Add to Compare")).click();
 
-    @Then("I am taken to the product page")
-    public void iAmTakenToTheProductPage() {
-    }
-
-    @Given("I have logged into the SwagLabs website")
-    public void iHaveLoggedIntoTheSwagLabsWebsite() {
-    }
-
-    @And("I click a product name")
-    public void iClickAProductName() {
-    }
-
-    @Then("I should be directed to the product page")
-    public void iShouldBeDirectedToTheProductPage() {
     }
 
 
