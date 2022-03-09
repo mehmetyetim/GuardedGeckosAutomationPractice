@@ -44,6 +44,6 @@ public class CheckoutAddress extends BasePage {
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByName("processAddress"),
+            BY_CHECKOUT = new By.ByXPath("//*[@id=\"center_column\"]/form/p/button"),
             BY_UPDATE = new By.ByLinkText("Update");
 }

@@ -44,7 +44,7 @@ public class CartPage extends BasePage {
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByXPath("//*[@id=\"center_column\"]/p[2]/a[1]/span/text()"),
+            BY_CHECKOUT = new By.ByClassName("standard-checkout"),
             BY_CART_PRODUCTS = new By.ByClassName("cart_item");
 
 

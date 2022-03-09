@@ -3,7 +3,6 @@ package com.guardedgeckos.automationpractice.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +50,14 @@ public class BasePage {
     {
         this.driver = driver;
         this.driver.get(url);
+    }
+
+    protected BasePage(WebDriver driver, boolean nottrue)
+    {
+        this.driver = driver;
+        if (nottrue){
+            this.driver.get(DEFAULT_URL);
+        }
     }
 
     public String getCurrentUrl() {

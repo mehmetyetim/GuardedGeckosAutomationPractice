@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class ShippingPage extends BasePage{
 
     public ShippingPage(WebDriver driver) {
-        super(driver, "http://automationpractice.com/index.php?controller=order");
+        super(driver, false);
     }
 
     public enum Links implements LinksInterface{
@@ -30,7 +30,7 @@ public class ShippingPage extends BasePage{
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByName("processName");
+            BY_CHECKOUT = new By.ByName("processCarrier");
 
 
     public void tickTheTermsBox(){

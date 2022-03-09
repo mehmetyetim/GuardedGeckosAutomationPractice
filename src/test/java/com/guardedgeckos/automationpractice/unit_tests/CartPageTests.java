@@ -33,6 +33,7 @@ public class CartPageTests {
 
      @BeforeAll
      static void setUp(){
+          DriverFactory.get().manage().window().maximize();
           driver.get("http://automationpractice.com/");
           driver.findElement(By.className("login")).click();
           driver.findElement(By.id("email")).sendKeys("cporteous@spartaglobal.com");
@@ -57,7 +58,7 @@ public class CartPageTests {
           //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
           timer();
-          
+
           cartPage = new CartPage(driver);
           System.out.println(driver.getCurrentUrl());
           timer();
@@ -66,8 +67,9 @@ public class CartPageTests {
           timer();
           shippingPage = (ShippingPage) CheckoutAddress.Links.CHECKOUT_LOGGED_IN.getPage(driver);
           System.out.println(driver.getCurrentUrl());
+          shippingPage.tickTheTermsBox();
           timer();
-          paymentClass= (PaymentClass) ShippingPage.Links.CHECKOUT_LOGGED_IN.getPage(driver);
+          paymentClass = (PaymentClass) ShippingPage.Links.CHECKOUT_LOGGED_IN.getPage(driver);
           System.out.println(driver.getCurrentUrl());
      }
 
