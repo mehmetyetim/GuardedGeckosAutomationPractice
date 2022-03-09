@@ -5,9 +5,9 @@ import com.guardedgeckos.automationpractice.pages.LinksInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutAddress extends BasePage {
+public class CheckoutAddressPage extends BasePage {
 
-    public CheckoutAddress(WebDriver driver) {
+    public CheckoutAddressPage(WebDriver driver) {
         super(driver, "http://automationpractice.com/index.php?controller=order&step=1");
     }
 
