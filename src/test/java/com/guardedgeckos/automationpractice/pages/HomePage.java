@@ -11,7 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class HomePage extends BasePage {
+public class HomePage extends BasePage
+{
+    private final By proceedToCheckoutButton = By.xpath("//a[@title='Proceed to checkout']");
+    private final By continueShoppingButton = By.xpath("//span[@title='Continue shopping']");
+    private final By numOfItemsInCart = By.className("ajax_cart_quantity");
 
     protected static final String DEFAULT_URL = "http://automationpractice.com/";
 
@@ -30,11 +34,54 @@ public class HomePage extends BasePage {
     private final By priceOnFirstProduct = By.xpath("(//span[@itemprop='price'])[1]");
     private final By firstProduct = By.xpath("(//div[@class='product-container'])[1]");
 
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+    /**
+     * Adds the given item to the cart.
+     * @param i the item to add.
+     */
+    public void addItemToCart(Item i) {
+        driver.findElement(i.BY_ADD).click();
+    }
+
+    /**
+     * Removes the given item from the cart.
+     * @param i the item to remove.
+     */
+    public void removeItem(Item i) {
+        driver.findElement(i.BY_REMOVE).click();
+    }
+
+    public void proceedToCheckout() {
+        driver.findElement(By.xpath("//a[@title='Proceed to checkout']")).click();
+    }
+
+    public void continueShopping() {
+        driver.findElement(By.xpath("//span[@title='Continue shopping']")).click();
+    }
+
+    public void NumOfItemsInCart() {
+        driver.findElement(By.xpath("//span[@class='ajax_cart_quantity']")).click();
+    }
+
+    public void clickOnProceedToCheckout(){
+        driver.findElement(proceedToCheckoutButton).click();
+    }
+
+    public void clickOnContinueShopping(){
+        driver.findElement(continueShoppingButton).click();
+    }
+
+    public Integer getNumOfItemsInCart(){
+        return Integer.parseInt(driver.findElement(numOfItemsInCart).getText());
+    }
+
     private final WebDriverWait wait;
     Actions action;
 
     public HomePage(WebDriver driver) {
-        super(driver, DEFAULT_URL);
+        super(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         action = new Actions(driver);
     }
@@ -212,7 +259,7 @@ public class HomePage extends BasePage {
         );
     }
 
-   // endregion
+    // endregion
 
     public boolean areAllImagesExceptTheBiggestPresent() {
         List<WebElement> images = driver.findElements(allImagesOnHomePageExceptTheBiggest);
@@ -265,5 +312,4 @@ public class HomePage extends BasePage {
     public boolean isNumberOfSmallImages7(){
         return driver.findElements(allImagesOnHomePageExceptTheBiggest).size() == 7;
     }
-
 }
