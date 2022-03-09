@@ -26,7 +26,8 @@ Feature: As a User I want to be able buy the products that I want.
 
     Scenario: As a Customer I should be able to see the total price
       for the products in my basket
-
+      When I make a change to the basket
+      Then the total price should change accordingly
 
     Scenario: As a Customer I should be able to update my delivery
       address during the checkout process so that my product
@@ -63,4 +64,40 @@ Feature: As a User I want to be able buy the products that I want.
       When I click on proceed to checkout
       Then I should see an error message
 
-      
+    Scenario: As a Customer I should be able to pay by bank wire so that
+      I can purchase my products
+      Given I am on the payment method page
+      When I click on the pay by bank wire button
+      Then I should be on the Order summary page
+
+    Scenario: As a Customer I should be able to pay by check so that
+      I can purchase my products
+      Given I am on the payment method page
+      When I click on the pay by check button
+      Then I should be on the Order summary page
+
+    Scenario: As a Customer I should be able to choose a delivery address
+      during the checkout process so that I can get my order delivered
+      to the correct address
+      Given I am on the address page
+      When I click on the choose a delivery address drop down list and select a different delivery address
+      Then the delivery address should be changed to the delivery address that I selected
+
+    Scenario: As a Customer I should be able to add an address during the
+      checkout process
+      Given I am on the address page
+      And I click on the add a new address button
+      When I fill out the form and click save
+      Then I should be able to select the newly added address when I choose a delivery address
+
+    Scenario: As a Customer I should be able to have a different address
+      for delivery address and billing address
+      Given I am on the address page and I uncheck the checkbox for use the same delivery address as the billing address
+      When I choose a different delivery address to the billing address
+      Then the two addresses should be different
+
+    Scenario: As a Customer I should be able to confirm my order after
+      seeing order summary with my chosen payment option
+      Given I am on the Order summary page
+      When I click on confirm my order
+      Then I should be taken to the order confirmation page
