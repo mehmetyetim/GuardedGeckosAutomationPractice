@@ -35,7 +35,17 @@ public class OrderHistoryPage extends BasePage
 
     private By footableSorter = new By.ByClassName("footable-sortable");
 
+    private By orderDetailContentTable = new By.ById("order-detail-content");
+
+    private By price = new By.ByClassName("price");
+    private By priceShipping = new By.ByClassName("price-shipping");
+
     //General
+
+    private By tableFoot = new By.ByTagName("tfoot");
+    private By tableBody = new By.ByTagName("tbody");
+    private By tableRow = new By.ByTagName("tr");
+    private By tableData = new By.ByTagName("td");
     private By options = new By.ByTagName("option");
     private By colorMyAccountText = new By.ByClassName("color-myaccount");
     private By paragraph = new By.ByTagName("p");
@@ -373,6 +383,121 @@ public class OrderHistoryPage extends BasePage
                 .findElement(submitField)
                 .findElement(submitFieldButton)
                 .click();
+    }
+
+    public String getOrderDetailContentReferenceText(int row){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableBody)
+                    .findElements(tableRow).get(row)
+                    .findElements(tableData).get(0).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getOrderDetailContentProductText(int row){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableBody)
+                    .findElements(tableRow).get(row)
+                    .findElements(tableData).get(1).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getOrderDetailContentQuantityText(int row){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableBody)
+                    .findElements(tableRow).get(row)
+                    .findElements(tableData).get(2).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+
+    public String getOrderDetailContentUnitPriceText(int row){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableBody)
+                    .findElements(tableRow).get(row)
+                    .findElements(tableData).get(3).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getOrderDetailContentTotalPriceText(int row){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableBody)
+                    .findElements(tableRow).get(row)
+                    .findElements(tableData).get(4).getText();
+        }catch (IndexOutOfBoundsException| NoSuchElementException e){
+            System.out.println("INVALID INDEX OR NO SUCH ELEMENT");
+            return "INVALID INDEX OR NO SUCH ELEMENT";
+        }
+    }
+
+    public String getItemsPriceExclTax(){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableFoot)
+                    .findElements(tableRow).get(0)
+                    .findElement(price).getText();
+        }catch (ElementNotInteractableException e){
+            System.out.println("NO SUCH ELEMENT");
+            return "NO SUCH ELEMENT";
+        }
+    }
+    public String getItemsPriceInclTax(){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableFoot)
+                    .findElements(tableRow).get(1)
+                    .findElement(price).getText();
+        }catch (ElementNotInteractableException e){
+            System.out.println("NO SUCH ELEMENT");
+            return "NO SUCH ELEMENT";
+        }
+    }
+    public String getShippingAndHandlingPriceInclTax(){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableFoot)
+                    .findElements(tableRow).get(2)
+                    .findElement(priceShipping).getText();
+        }catch (ElementNotInteractableException e){
+            System.out.println("NO SUCH ELEMENT");
+            return "NO SUCH ELEMENT";
+        }
+    }
+    public String getTotalPriceInOrderDetails(){
+        try {
+            return driver
+                    .findElement(orderDetailContentTable)
+                    .findElement(tableFoot)
+                    .findElements(tableRow).get(3)
+                    .findElement(price).getText();
+        }catch (ElementNotInteractableException e){
+            System.out.println("NO SUCH ELEMENT");
+            return "NO SUCH ELEMENT";
+        }
     }
 
     public void clickHomeButton(){
