@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class IHopeYouGuysAreHappy extends BasePage
 {
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php";
 
     private final By proceedToCheckoutButton = By.xpath("//a[@title='Proceed to checkout']");
     private final By continueShoppingButton = By.xpath("//span[@title='Continue shopping']");
@@ -25,18 +25,11 @@ public class IHopeYouGuysAreHappy extends BasePage
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
-    /**
-     * Adds the given item to the cart.
-     * @param i the item to add.
-     */
+
     public void addItemToCart(Item i) {
         driver.findElement(i.BY_ADD).click();
     }
 
-    /**
-     * Removes the given item from the cart.
-     * @param i the item to remove.
-     */
     public void removeItem(Item i) {
         driver.findElement(i.BY_REMOVE).click();
     }
@@ -85,6 +78,17 @@ public class IHopeYouGuysAreHappy extends BasePage
         }
     }
     public void getItemPhotos(int index){
+        try {
+            driver.findElement(itemsList)
+                    .findElement(itemsBlock)
+                    .findElements(itemPhoto)
+                    .get(index)
+                    .click();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Unable to click");
+        }
+    }
+    public void clickAddToCartForProduct(int index){
         try {
             driver.findElement(itemsList)
                     .findElement(itemsBlock)
