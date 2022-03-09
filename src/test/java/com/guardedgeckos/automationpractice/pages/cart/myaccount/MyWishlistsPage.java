@@ -14,6 +14,8 @@ public class MyWishlistsPage extends BasePage
 
     private By wishListBlock = new By.ById("block-history");
 
+    private By closeWishListButton = new By.ById("hideSendWishlist");
+
     private By hideProductsButton = new By.ById("hideBoughtProducts");
     private By showProductsButton = new By.ById("showBoughtProducts");
     private By hideProductsInfosButton = new By.ById("hideBoughtProductsInfos");
@@ -25,7 +27,16 @@ public class MyWishlistsPage extends BasePage
     private By sendWishlistFormField = new By.ByClassName("wl_send");
     private By wishlistFormGroup = new By.ByClassName("form-group");
 
+    private By saveLinkText = new By.ByLinkText("Save");
+
+    private By wishList = new By.ByClassName("wlp_bought_list");
+    private By productName = new By.ByClassName("product-name");
+    private By productImage = new By.ByClassName("product_image");
+
+    private By removeWishListItemButton = new By.ByClassName("lnkdel");
+
     //General
+    private By list = new By.ByTagName("li");
     private By formControl = new By.ByClassName("form-control");
     private By tableBody = new By.ByTagName("tbody");
     private By input = new By.ByTagName("input");
@@ -226,8 +237,82 @@ public class MyWishlistsPage extends BasePage
                 .findElement(sendWishlistFormField)
                 .findElement(submitWishlistButton).click();
     }
-    
 
+    public void clickCloseWishlistButton(){
+        driver.findElement(closeWishListButton).click();
+    }
+
+    //---------Wish list blocks--------\/
+
+    public String getItemNameTextInWishlist(int index){
+        try{
+            return driver
+                    .findElement(wishList)
+                    .findElements(list).get(index)
+                    .findElement(productName).getText();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
+        }
+    }
+
+    public int getHowManyItemsShowsInWishList(){
+        try{
+            return driver
+                .findElement(wishList)
+                .findElements(list).size();
+    }catch (IndexOutOfBoundsException e){
+    System.out.println("INVALID INDEX");
+    return 0;
+        }
+    }
+
+    public void clickImageLinkInWishList(int index){
+        driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElement(productImage)
+                .findElement(buttonLink).click();
+    }
+
+    public void inputQuantityInWishList(int index, String quantity){
+         driver
+                 .findElement(wishList)
+                 .findElements(list).get(index)
+                 .findElements(formControl).get(0).clear();
+        driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElements(formControl).get(0).sendKeys(quantity);
+    }
+
+    public void selectPriorityInWishList(int index, int priority){                        // 0 = high, 1 = mid, 2 = low
+        driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElements(formControl).get(1).click();
+        driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElements(formControl).get(1)
+                .findElements(options).get(priority).click();
+    }
+
+    public void clickRemoveWishListItem(int index){
+        driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElement(removeWishListItemButton).click();
+    }
+
+
+    public void clickSaveButtonInWishListItem(int index){
+        driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElement(saveLinkText).click();
+    }
+    
     public void clickHomeButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
