@@ -3,10 +3,16 @@ package com.guardedgeckos.automationpractice.unit_tests;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.WebDriver;
 
+@ExtendWith(MockitoExtension.class)
 public class SignInTests
 {
+    @Spy
     static WebDriver driver;
     static SignInPage signInPage;
 
@@ -25,6 +31,8 @@ public class SignInTests
     void signInPageConstructorTest()
     {
         signInPage = new SignInPage(driver);
+        Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=authentication");
+
         Assertions.assertEquals(signInPage.getDefaultUrl(), driver.getCurrentUrl());
     }
 
@@ -83,12 +91,14 @@ public class SignInTests
 
         try
         {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         }
         catch (InterruptedException e)
         {
             e.printStackTrace();
         }
+
+        Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation");
 
         boolean isOnAccountCreationPage = driver.getCurrentUrl().contains("#account-creation");
 
@@ -103,9 +113,10 @@ public class SignInTests
 
         signInPage.clickForgotPasswordLink();
 
-        boolean isOnAccountCreationPage = driver.getCurrentUrl().contains("controller=password");
+        Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=password");
+        boolean isOnResetPasswordPage = driver.getCurrentUrl().contains("controller=password");
 
-        Assertions.assertTrue(isOnAccountCreationPage);
+        Assertions.assertTrue(isOnResetPasswordPage);
     }
     //endregion
 
