@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 
 public class IHopeYouGuysAreHappy extends BasePage
 {
-    protected static WebDriver driver;
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php";
+    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
 
-    public IHopeYouGuysAreHappy(WebDriver webDriver){
+    public IHopeYouGuysAreHappy(WebDriver driver)
+    {
         super(driver, DEFAULT_URL);
     }
     
