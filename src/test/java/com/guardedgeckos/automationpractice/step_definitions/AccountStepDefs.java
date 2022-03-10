@@ -3,6 +3,7 @@ import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.*;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import io.cucumber.java.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,23 +14,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class AccountStepDefs {
 
     private static WebDriver webDriver;
-    private MyAccountPage myAccountPage = new MyAccountPage(webDriver);
-    private AddressesPage addressesPage = new AddressesPage(webDriver);
-    private OrderHistoryPage myOrderHistoryPage = new OrderHistoryPage(webDriver);
-    private OrderSlipPage creditSlipPage = new OrderSlipPage(webDriver);
-    private IdentityPage myPersonalInfoPage = new IdentityPage(webDriver);
-    private AddressPage myAddressPage = new AddressPage(webDriver);
-    private SignInPage signInPage = new SignInPage(webDriver);
-    private MyWishlistsPage wishListPage = new MyWishlistsPage(webDriver);
+    private static MyAccountPage myAccountPage = new MyAccountPage(webDriver);
+    private static AddressesPage addressesPage = new AddressesPage(webDriver);
+    private static OrderHistoryPage myOrderHistoryPage = new OrderHistoryPage(webDriver);
+    private static OrderSlipPage creditSlipPage = new OrderSlipPage(webDriver);
+    private static IdentityPage myPersonalInfoPage = new IdentityPage(webDriver);
+    private static AddressPage myAddressPage = new AddressPage(webDriver);
+    private static SignInPage signInPage = new SignInPage(webDriver);
+    private static MyWishlistsPage wishListPage = new MyWishlistsPage(webDriver);
 
         @Before
         public void start() {
-        webDriver = DriverFactory.get();
-        signInPage.clickSignInButton();
-        webDriver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        signInPage.enterEmail("1234@h.b");
-        signInPage.enterPassword("12345!");
-        signInPage.clickSignInButton();
+            webDriver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+            signInPage.enterEmail("1234@h.b");
+            signInPage.enterPassword("12345!");
+            signInPage.clickSignInButton();
         }
 
         @Given("i am on the account page")

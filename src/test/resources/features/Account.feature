@@ -1,6 +1,6 @@
 @account
 
-  Feature: as a signed in user i will be able to use the My Account functions
+  Feature:as a signed in user i will be able to use the My Account functions
 
     Background: valid user signed in
       Given i am on the account page
