@@ -123,8 +123,8 @@ public class AddressesPageTest {
 
     @Test
     @Order(7)
-    @DisplayName("IdentityPage constructor test")
-    public void identityPageConstructorTest(){
+    @DisplayName("Addresses page constructor test")
+    public void addressesPageConstructorTest(){
         addressesPage =  new AddressesPage(webDriver);
         Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=addresses");
         Assertions.assertEquals(AddressesPage.DEFAULT_URL,webDriver.getCurrentUrl());

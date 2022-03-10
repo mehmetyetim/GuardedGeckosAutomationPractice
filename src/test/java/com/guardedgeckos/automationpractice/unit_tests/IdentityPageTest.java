@@ -16,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(MockitoExtension.class)
 public class IdentityPageTest {
     @Spy
@@ -91,7 +91,7 @@ public class IdentityPageTest {
 
 
     @Test
-    @Order(5)
+    @Order(6)
     @DisplayName("IdentityPage constructor test")
     public void identityPageConstructorTest(){
         identityPage =  new IdentityPage(webDriver);

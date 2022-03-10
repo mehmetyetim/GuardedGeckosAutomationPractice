@@ -64,13 +64,12 @@ public class OrderSlipPageTest {
     }
     @Test
     @Order(4)
-    @DisplayName("IdentityPage constructor test")
-    public void identityPageConstructorTest(){
+    @DisplayName("Order slip page constructor test")
+    public void orderSlipPageConstructorTest(){
         orderSlipPage =  new OrderSlipPage(webDriver);
         Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=order-slip");
         Assertions.assertEquals(OrderSlipPage.DEFAULT_URL,webDriver.getCurrentUrl());
     }
-
 
 
     @AfterAll
