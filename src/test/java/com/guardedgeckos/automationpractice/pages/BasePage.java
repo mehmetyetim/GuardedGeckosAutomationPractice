@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -33,7 +34,7 @@ public class BasePage {
     private By totalQuantityCart = new By.ByClassName("ajax_cart_quantity");
     private By quantityItemCart = new By.ByClassName("quantity");
     private By itemNameLinkCart = new By.ByClassName("cart_block_product_name");
-    private By productDetailsCart = new By.ByCssSelector("title=Product detail'");
+    private By productDetailsCart = new By.ByClassName("product-atributes");
     private By itemPriceCart = new By.ByClassName("price");
     private By removeItemCart = new By.ByClassName("ajax_cart_block_remove_link");
     private By checkOutButtonHovered = new By.ByXPath("//*[@id='button_order_cart']/span");
@@ -42,17 +43,17 @@ public class BasePage {
 
     private By categoriesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul");
 
-    private By womenHeader = new By.ByCssSelector("title='Women'");
+    private By womenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/a");
     private By tshirtWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[1]/a");
     private By blousesWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li[2]/a");
     private By casualDresserWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[1]/a");
     private By eveningDressesWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[2]/a");
     private By summerDressesWomenHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/ul/li[3]/a");
-    private By dressesHeader = new By.ByCssSelector("title='Dresses'");
+    private By dressesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/a");
     private By casualDressesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[1]/a");
     private By eveningDressesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[2]/a");
     private By summerDressesHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[2]/ul/li[3]/a");
-    private By tshirtsHeader = new By.ByCssSelector("title='T-shirts'");
+    private By tshirtsHeader = new By.ByXPath("//*[@id='block_top_menu']/ul/li[3]/a");
 
     private By newsletterBox = new By.ById("newsletter-input");
     private By newsletterButton = new By.ByXPath("//*[@id='newsletter_block_left']/div/form/div/button");
@@ -86,7 +87,6 @@ public class BasePage {
     {
         this.driver = driver;
         this.driver.get(DEFAULT_URL);
-        this.action = new Actions(driver);
     }
 
     protected BasePage(WebDriver driver, String url)
@@ -112,7 +112,7 @@ public class BasePage {
     //region Header
     public void bannerURL () {
         try {
-            this.driver.findElement(banner).getAttribute("img");
+            this.driver.findElement(banner).click();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -261,9 +261,10 @@ public class BasePage {
 
     public void getCheckOut () {
         try {
-            action.moveToElement(driver.findElement(cartHovered));
+            Actions action = new Actions(driver);
+            action.moveToElement(driver.findElement(cartHovered)).perform();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             action.moveToElement(driver.findElement(checkOutButtonHovered));
-            action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -271,9 +272,10 @@ public class BasePage {
 
     public void getShippingFeesCartHovered () {
         try {
-            action.moveToElement(driver.findElement(cartHovered));
+            Actions action = new Actions(driver);
+            action.moveToElement(driver.findElement(cartHovered)).perform();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             action.moveToElement(driver.findElement(shippingFeesCartHovered));
-            action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -281,9 +283,10 @@ public class BasePage {
 
     public void getTotalCartHovered () {
         try {
-            action.moveToElement(driver.findElement(cartHovered));
+            Actions action = new Actions(driver);
+            action.moveToElement(driver.findElement(cartHovered)).perform();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             action.moveToElement(driver.findElement(totalCartHovered));
-            action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
         }
