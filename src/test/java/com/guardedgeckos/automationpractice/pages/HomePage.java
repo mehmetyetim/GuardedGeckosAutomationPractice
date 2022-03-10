@@ -1,5 +1,6 @@
 package com.guardedgeckos.automationpractice.pages;
 
+import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -37,12 +38,11 @@ public class HomePage extends BasePage
     private final By thirdMovingImage = By.xpath("(//img[@alt='sample-3'])[2]");
     private final By priceOnFirstProduct = By.xpath("(//span[@itemprop='price'])[1]");
     private final By firstProduct = By.xpath("(//div[@class='product-container'])[1]");
-    private final By addToCart = new By.ByLinkText("Add to cart");
     private final By items = new By.ByClassName("product-container");
     private final By itemName = new By.ByClassName("product-name");
-    private final By ADD_TO_CART_BUTTON = new By.ByPartialLinkText("Add to cart");
-    private final By AddToCartButton = By.xpath("//span[@span='Continue shopping']");
+    private final By addToCart = new By.ByPartialLinkText("Add to cart");
     private final By addToCartButtonUnderFirstProduct = By.xpath("(//a[@data-id-product='1'])[1]/span");
+    private final By movingImages = By.xpath("//li[@class='homeslider-container']");
 
     private final WebDriverWait wait;
     Actions action;
@@ -61,33 +61,35 @@ public class HomePage extends BasePage
     public List<WebElement> getProducts() {
         return driver.findElements(items);
     }
-    /*
-    private String getProductName(WebElement product) {
-        return product.findElement(itemName).getText();
+
+    private String getProductName(WebElement item) {
+        return item.findElement(itemName).getText();
     }
 
     public void addItemToCart(Item i) {
-        System.out.println("ITEM NAME"+i.NAME);
+        try{
+        //System.out.println("ITEM NAME"+i.NAME);
         List<WebElement> itemList= getProducts();
-        int t=1;
         for(WebElement item:itemList){
-            System.out.println("Item List:"+getProductName(item));
+            //System.out.println("Item List:"+getProductName(item));
             if(getProductName(item).equals(i.NAME)){
-                itemList.get(t);
                 addItem(item);
-                System.out.println("Item added to Basket");
+                //System.out.println("Item added to Basket");
                 break;
             }
-            t++;
         }
-        System.out.println("No items added");
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-    private void addItem(WebElement item) {
-         Actions actions = new Actions(driver);
-        actions.moveToElement(item.findElement(itemName)).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+    private void addItem(WebElement item) throws InterruptedException {
+        Actions action = new Actions(driver);
+        action.moveToElement(item).perform();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        action.moveToElement(item.findElement(addToCart)).click();
     }
-*/
+
     public void hoverOverAddToCartButtonUnderFirstProduct(){
         action.moveToElement(driver.findElement(addToCartButtonUnderFirstProduct)).perform();
     }
@@ -390,5 +392,40 @@ public class HomePage extends BasePage
 
     public boolean isNumberOfSmallImages7(){
         return driver.findElements(allImagesOnHomePageExceptTheBiggest).size() == 7;
+    }
+
+    public void clickOnFirstMovingImage(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages)
+                .get(0)));
+        driver.findElements(movingImages).get(0).click();
+    }
+
+    public String clickOnFirstMovingImageAndGetUrl(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages)
+                .get(0)));
+        driver.findElements(movingImages).get(1).click();
+        return driver.getCurrentUrl();
+    }
+
+    public void clickOnSecondMovingImage(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(1)));
+        driver.findElements(movingImages).get(1).click();
+    }
+
+    public String clickOnSecondMovingImageAndGetUrl(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(1)));
+        driver.findElements(movingImages).get(1).click();
+        return driver.getCurrentUrl();
+    }
+
+    public void clickOnThirdMovingImage(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(2)));
+        driver.findElements(movingImages).get(2).click();
+    }
+
+    public String clickOnThirdMovingImageAndGetUrl(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(2)));
+        driver.findElements(movingImages).get(2).click();
+        return driver.getCurrentUrl();
     }
 }
