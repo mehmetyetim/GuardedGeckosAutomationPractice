@@ -35,6 +35,8 @@
 
 ### **Overview**
 
+In this project, web-based application testing framework was created for http://www.automationpractice.com website.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -43,6 +45,7 @@
 
 ### **Project Planning (Agile - Scrum)**
 
+Agile methodology and scrum framework was implemented. Sprint planning, daily stand-up, and retrospective meetings were hold. They helped the group members to have good communication across the team. Due to the nature of Agile, there were flexibility in our requirements and iterative approach was tracked. There were many user stories and 4 sprints there were in the management of the project.
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -91,6 +94,8 @@
 
 ### **Tools and Dependencies**
 
+Lots of different tools and dependencies were used in this project.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -98,6 +103,8 @@
 <br/>
 
 #### IntelliJ
+
+Intellij is an integrated development environment(IDE) written in Java for developing computer software. There were many facilities helped the development of the project.
 
 <br/>
 <div align="left">
@@ -107,6 +114,8 @@
 
 #### Maven
 
+Maven is a build automation tool used primarily for Java projects. It has different lifecycles that the project can be managed in its different parts separately and reports can be produced using lifecycle. Plus, there are some plugins that the project can be configured.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -114,6 +123,8 @@
 <br/>
 
 #### JUnit Jupiter
+
+JUnit Jupiter is a dependency for unit testing in Java programming language. It is used to test our project internally. Also, assertions were used to check our tests.
 
 <br/>
 <div align="left">
@@ -123,6 +134,8 @@
 
 #### Cucumber Java
 
+Cucumber Java is a dependency to implement our test scenarios written in Gherkin language consisting of plain English such as When, Given, Then, Background etc. 
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -130,6 +143,8 @@
 <br/>
 
 #### Cucumber JUnit
+
+Cucumber JUnit is a dependency for Cucumber options that Cucumber tests can be managed and configured. 
 
 <br/>
 <div align="left">
@@ -139,6 +154,8 @@
 
 #### Selenium Java
 
+Selenium Java is a dependency that web elements can be automated. It also provides automated web drivers to use for testing.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -147,6 +164,8 @@
 
 #### Mockito Junit Jupiter
 
+Mockito JUnit Jupiter is a dependency which mocks can be initialized. Mocks are initialized before each test method.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -154,6 +173,8 @@
 <br/>
 
 #### Mockito Core
+
+Mockito Core is a dependency which objects can be mocked. In this project, mocking was used to be able to make some layers of the project independent of other layers and making sure that it is working.  
 
 <br/>
 <div align="left">
@@ -171,6 +192,8 @@
 
 #### Web Driver Management
 
+Web Driver Management is a dependency which enables us to use different browsers without adding .exe files to our project. If somehow it doesn't work, we need to have .exe files for the browser we want to use so that, by the help of Selenium, we can use these browsers.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -179,6 +202,8 @@
 
 #### Jira
 
+Jira is a track management tool that allows bug tracking and agile project management. Lots of user stories were created and assigned them to the responsible in Jira. 
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -186,6 +211,10 @@
 <br/>
 
 ### **Page Object Model Classes**
+
+Page Object Model (POM) is a design pattern in Selenium which a class can be created to locate all the elements in each page of the website. Therefore, you don't need to locate web elements for every time that you need them. The only thing you need to do is just to create a class and locate all web elements and create reusable methods inside the class one time, and use it many times. There are plenty of POM classes we have in this project as you can see them below.
+
+<img src="readme-images/pomclasses.png">
 
 <br/>
 <div align="left">
