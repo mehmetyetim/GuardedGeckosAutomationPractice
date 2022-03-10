@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = "com/guardedgeckos/automationpractice/step_definitions",
         dryRun = false,
         publish = true,
-        tags = "@signin"
+        tags = "@account"
 
 )
 public class TestRunner {

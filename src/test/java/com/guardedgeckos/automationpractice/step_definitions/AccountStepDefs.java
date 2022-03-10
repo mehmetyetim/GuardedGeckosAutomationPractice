@@ -3,32 +3,52 @@ import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.*;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import io.cucumber.java.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+
+import java.time.Duration;
 
 public class AccountStepDefs {
 
-    private static WebDriver webDriver;
-    private static MyAccountPage myAccountPage = new MyAccountPage(webDriver);
-    private static AddressesPage addressesPage = new AddressesPage(webDriver);
-    private static OrderHistoryPage myOrderHistoryPage = new OrderHistoryPage(webDriver);
-    private static OrderSlipPage creditSlipPage = new OrderSlipPage(webDriver);
-    private static IdentityPage myPersonalInfoPage = new IdentityPage(webDriver);
-    private static AddressPage myAddressPage = new AddressPage(webDriver);
-    private static SignInPage signInPage = new SignInPage(webDriver);
-    private static MyWishlistsPage wishListPage = new MyWishlistsPage(webDriver);
+    private WebDriver webDriver;
+    private static MyAccountPage myAccountPage;
+    private static AddressesPage addressesPage;
+    private static OrderHistoryPage myOrderHistoryPage;
+    private static OrderSlipPage creditSlipPage;
+    private static IdentityPage myPersonalInfoPage;
+    private static AddressPage myAddressPage;
+    private static SignInPage signInPage;
+    private static MyWishlistsPage wishListPage;
 
         @Before
         public void start() {
+            System.out.println("This is second");
+            webDriver = DriverFactory.get();
+            webDriver.manage().window().maximize();
+            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             webDriver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+            myAccountPage = new MyAccountPage(webDriver);
+            addressesPage = new AddressesPage(webDriver);
+            myOrderHistoryPage = new OrderHistoryPage(webDriver);
+            creditSlipPage = new OrderSlipPage(webDriver);
+            myPersonalInfoPage = new IdentityPage(webDriver);
+            myAddressPage = new AddressPage(webDriver);
+            signInPage = new SignInPage(webDriver);
+            wishListPage = new MyWishlistsPage(webDriver);
             signInPage.enterEmail("1234@h.b");
             signInPage.enterPassword("12345!");
             signInPage.clickSignInButton();
+            myAccountPage = new MyAccountPage(webDriver);
+            addressesPage = new AddressesPage(webDriver);
+            myOrderHistoryPage = new OrderHistoryPage(webDriver);
+            creditSlipPage = new OrderSlipPage(webDriver);
+            myPersonalInfoPage = new IdentityPage(webDriver);
+            myAddressPage = new AddressPage(webDriver);
+            signInPage = new SignInPage(webDriver);
+            wishListPage = new MyWishlistsPage(webDriver);
         }
 
         @Given("i am on the account page")
