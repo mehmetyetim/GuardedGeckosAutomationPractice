@@ -16,8 +16,7 @@ public class HomePage extends BasePage
 {
     public static String DEFAULT_URL = "http://automationpractice.com/index.php";
 
-    private final By proceedToCheckoutButton = By.xpath("//a[@title='Proceed to checkout']");
-    private final By continueShoppingButton = By.xpath("//span[@title='Continue shopping']");
+
     private final By numOfItemsInCart = new By.ByClassName("ajax_cart_quantity");
     private final By itemsList = new By.ByClassName("center_column");
     private final By itemsBlock = new By.ByClassName("ajax_block_product");
@@ -40,7 +39,11 @@ public class HomePage extends BasePage
     private final By firstProduct = By.xpath("(//div[@class='product-container'])[1]");
     private final By items = new By.ByClassName("product-container");
     private final By itemName = new By.ByClassName("product-name");
-    private final By addToCart = new By.ByPartialLinkText("Add to cart");
+    private final By itemImgName = new By.ByClassName("product-image-container");
+    private final By overlay = new By.ByClassName("fancybox-item");
+    private final By addToCart = new By.ByCssSelector("title='Add to cart'");
+    private final By proceedToCheckoutButton = By.xpath("//span[.='Proceed to checkout']");
+    private final By continueShoppingButton = By.xpath("//span[@title='Continue shopping']");
     private final By addToCartButtonUnderFirstProduct = By.xpath("(//a[@data-id-product='1'])[1]/span");
     private final By movingImages = By.xpath("//li[@class='homeslider-container']");
 
@@ -65,6 +68,13 @@ public class HomePage extends BasePage
     private String getProductName(WebElement item) {
         return item.findElement(itemName).getText();
     }
+    public Boolean isOverlay(){
+        if (driver.findElement(overlay)!=null){
+            return true;
+        }
+        return false;
+    }
+
 
     public void addItemToCart(Item i) {
         try{
@@ -80,6 +90,21 @@ public class HomePage extends BasePage
         }
         }catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+    private void clickProductImage(WebElement item) {
+        item.findElement(itemImgName).click();
+    }
+    public void quickView(Item i) {
+        //System.out.println("ITEM NAME"+i.NAME);
+        List<WebElement> itemList= getProducts();
+        for(WebElement item:itemList){
+            //System.out.println("Item List:"+getProductName(item));
+            if(getProductName(item).equals(i.NAME)){
+                clickProductImage(item);
+                //System.out.println("Item added to Basket");
+                break;
+            }
         }
     }
 
