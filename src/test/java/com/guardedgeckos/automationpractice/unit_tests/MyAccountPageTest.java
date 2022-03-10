@@ -1,17 +1,23 @@
 package com.guardedgeckos.automationpractice.unit_tests;
 
+import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.*;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.WebDriver;
 
 import java.sql.Driver;
 
-
+@ExtendWith(MockitoExtension.class)
 public class MyAccountPageTest {
 
-    private static WebDriver webDriver = DriverFactory.get();
+    @Spy
+    private static WebDriver webDriver;
     static MyAccountPage myAccountPage;
     static OrderHistoryPage orderHistoryPage;
     static OrderSlipPage orderSlipPage;
@@ -31,12 +37,21 @@ public class MyAccountPageTest {
     }
 
     @Test
+    @DisplayName("Constructor test")
+    void constructorTest(){
+        myAccountPage = new MyAccountPage(webDriver);
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=my-account");
+        Assertions.assertEquals(MyAccountPage.DEFAULT_URL, webDriver.getCurrentUrl());
+    }
+
+    @Test
     @DisplayName("Check order history buttons in the myAccountPage")
     public void checkOrderHistoryButtonInMyAccountPage(){
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickOrderHistoryAndDetailsButton();
         orderHistoryPage = new OrderHistoryPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=history", webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=history");
+        Assertions.assertEquals(OrderHistoryPage.DEFAULT_URL, webDriver.getCurrentUrl());
     }
 
     @Test
@@ -45,7 +60,8 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyCreditSlipsButton();
         orderSlipPage = new OrderSlipPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=order-slip", webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=order-slip");
+        Assertions.assertEquals(OrderSlipPage.DEFAULT_URL, webDriver.getCurrentUrl());
     }
     @Test
     @DisplayName("Check my addresses buttons in the myAccountPage")
@@ -53,7 +69,8 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyAddressesButton();
         addressesPage = new AddressesPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=addresses", webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=addresses");
+        Assertions.assertEquals(AddressesPage.DEFAULT_URL, webDriver.getCurrentUrl());
     }
     @Test
     @DisplayName("Check my personal information buttons in the myAccountPage")
@@ -61,7 +78,8 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyPersonalInformationButton();
         identityPage = new IdentityPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=identity", webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=identity");
+        Assertions.assertEquals(IdentityPage.DEFAULT_URL, webDriver.getCurrentUrl());
     }
     @Test
     @DisplayName("Check wishlists buttons in the myAccountPage")
@@ -69,7 +87,8 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyWishlistsButton();
         myWishlistsPage = new MyWishlistsPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist");
+        Assertions.assertEquals(MyWishlistsPage.DEFAULT_URL, webDriver.getCurrentUrl());
     }
 
     @Test
@@ -77,7 +96,8 @@ public class MyAccountPageTest {
     public void clickHomeButtonBackToHomePage(){
         myAccountPage =  new MyAccountPage(webDriver);
         myAccountPage.clickHomeButton();
-        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php");
+        Assertions.assertEquals(HomePage.DEFAULT_URL,webDriver.getCurrentUrl());
     }
 
     @AfterAll
