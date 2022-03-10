@@ -10,6 +10,7 @@ public class CategoriesPage extends BasePage {
     private final By womenIconNextToHomeIcon = By.className("navigation_page");
     private final By subcategories = By.className("replace-2x");
     private final By checkboxes = By.className("checker");
+    private final By smallSizeCheckbox = By.id("layered_id_attribute_group_1");
 
     public CategoriesPage(WebDriver driver) {
         super(driver);
@@ -39,5 +40,21 @@ public class CategoriesPage extends BasePage {
             }
         }
         return true;
+    }
+
+    public void checkSmallSize(){
+        if(!driver.findElement(smallSizeCheckbox).isSelected()) {
+            driver.findElement(smallSizeCheckbox).click();
+        }
+    }
+
+    public void uncheckSmallSize(){
+        if(driver.findElement(smallSizeCheckbox).isSelected()){
+            driver.findElement(smallSizeCheckbox).click();
+        }
+    }
+
+    public WebElement getSmallSizeCheckbox(){
+        return driver.findElement(smallSizeCheckbox);
     }
 }
