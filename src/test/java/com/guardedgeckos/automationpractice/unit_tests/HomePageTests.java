@@ -43,7 +43,7 @@ public class HomePageTests {
     }
 
     @Test
-    @DisplayName("Check that the page defaults to the base url")
+    @DisplayName("Add item to Cart")
     void AddItemToCart() {
         homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
         //not clicking
@@ -52,7 +52,7 @@ public class HomePageTests {
         Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
     }
     @Test
-    @DisplayName("Check that the page defaults to the base url")
+    @DisplayName("Clicks on the image view")
     void hoverImage() throws InterruptedException {
         homePage.quickView(Item.FADED_SHORT_SLEEVE_);
         Thread.sleep(5);
