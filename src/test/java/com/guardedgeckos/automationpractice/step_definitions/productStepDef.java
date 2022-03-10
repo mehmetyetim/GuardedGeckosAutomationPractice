@@ -49,4 +49,13 @@ public class productStepDef {
     @Then("the new size is selected")
     public void theNewSizeIsSelected() {
     }
+
+    @And("I click add to wishlist")
+    public void iClickAddToWishlist() {
+        
+    }
+
+    @Then("the product is added to the wishlist")
+    public void theProductIsAddedToTheWishlist() {
+    }
 }

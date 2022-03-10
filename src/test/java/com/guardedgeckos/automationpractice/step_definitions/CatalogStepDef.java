@@ -80,7 +80,9 @@ public class CatalogStepDef {
 
     @And("I click add to basket")
     public void iClickAddToBasket() {
-        webDriver.findElement(By.xpath("//*[@id=\"layered_id_attribute_group_1\"]")).click();
+        //*[@id="center_column"]/ul/li[1]/div/div[2]/div[2]/a[1]
+        //*[@id="center_column"]/ul/li[1]/div/div[2]/div[2]/a[1]/span
+        webDriver.findElement(By.xpath("(//a[@data-id-product='1'])[1]/span")).click();
     }
 
     @And("I click add to compare")
@@ -90,6 +92,7 @@ public class CatalogStepDef {
 
     @Then("the product is added to the basket")
     public void theProductIsAddedToTheBasket() {
+        System.out.println(webDriver.findElement(By.id("header")).getText());
         Assertions.assertTrue(webDriver.findElement(By.id("header")).getText().contains("Cart (1)"));
     }
 

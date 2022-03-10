@@ -18,6 +18,7 @@ Feature: Catalog pages
     And I click size button
     Then the site filters by size
 
+    #fails due to the system taking too long
   Scenario: I want to add to basket
     Given I am on a category page
     And I Hover over a product
@@ -29,5 +30,3 @@ Feature: Catalog pages
     And I Hover over a product
     And I click add to compare
     Then the product is added to the compare page
-
-
