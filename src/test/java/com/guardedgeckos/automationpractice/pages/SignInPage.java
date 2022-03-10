@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class SignInPage extends BasePage
 {
     //region Variables
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
+    public static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
     private static final String DEFAULT_EMAIL = "JohnSmith@gmail.com";
     private static final String DEFAULT_REGISTRATION_EMAIL = "MohnBmith@gmail.com";
     private static final String DEFAULT_PASSWORD = "Password";

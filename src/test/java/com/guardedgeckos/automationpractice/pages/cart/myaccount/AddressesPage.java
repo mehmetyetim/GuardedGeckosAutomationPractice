@@ -13,6 +13,7 @@ public class AddressesPage extends BasePage
     private By addressFieldRow = new By.ByClassName("bloc_adresses");               // row number
     private By addressFieldColumn = new By.ByClassName("col-xs-12");                // 2 blocks (index 0-1) in a row
 
+    private By addressFieldName = new By.ByClassName("address_name");
     private By addressFieldAlias = new By.ByClassName("page-subheading");
     private By addressFieldCompanyName = new By.ByClassName("address_company");
     private By addressFieldAddress1 = new By.ByClassName("address_address1");
@@ -21,6 +22,7 @@ public class AddressesPage extends BasePage
     private By addressFieldMobilePhoneNum = new By.ByClassName("address_phone_mobile");
 
     //General
+    private By address = new By.ByClassName("address");
     private By list = new By.ByTagName("li");
     private By clearfix = new By.ByClassName("clearfix");
     private By options = new By.ByTagName("option");
@@ -50,6 +52,40 @@ public class AddressesPage extends BasePage
                 .findElement(button)
                 .click();
     }
+
+    public int getAddressBlocksSize(){
+        return driver
+                .findElement(addressField)
+                .findElements(address).size();
+    }
+
+
+    public String getFirstName(int rowIndex, int columnIndex){
+        try {
+            return driver
+                    .findElement(addressField)
+                    .findElements(addressFieldRow).get(rowIndex)
+                    .findElements(addressFieldColumn).get(columnIndex)
+                    .findElements(addressFieldName).get(0).getText();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
+        }
+    }
+
+    public String getLastName(int rowIndex, int columnIndex){
+        try {
+            return driver
+                    .findElement(addressField)
+                    .findElements(addressFieldRow).get(rowIndex)
+                    .findElements(addressFieldColumn).get(columnIndex)
+                    .findElements(addressFieldName).get(1).getText();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("INVALID INDEX");
+            return "INVALID INDEX";
+        }
+    }
+
 
     public String getAddressAlias(int rowIndex, int columnIndex){
         try {
@@ -187,11 +223,6 @@ public class AddressesPage extends BasePage
     public void clickBackToYourAccountButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
-
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
-
+    
 
 }

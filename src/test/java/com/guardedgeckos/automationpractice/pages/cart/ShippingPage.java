@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 public class ShippingPage extends BasePage{
 
-    protected ShippingPage(WebDriver driver, String url) {
-        super(driver);
+    public ShippingPage(WebDriver driver) {
+        super(driver, false);
     }
 
     public enum Links implements LinksInterface{
@@ -16,24 +16,24 @@ public class ShippingPage extends BasePage{
             @Override
             public BasePage getPage(WebDriver driver) {
                 driver.findElement(BY_CONTINUE_SHOPPING).click();
-                return new CheckoutAddress(driver);
+                return new CheckoutAddressPage(driver);
             }
         },
         CHECKOUT_LOGGED_IN{
             @Override
             public BasePage getPage(WebDriver driver){
                 driver.findElement(BY_CHECKOUT).click();
-                return null; // return CheckoutPageOne(driver, user)
+                return new PaymentPage(driver);
             }
         }
     }
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByClassName("standard-checkout");
+            BY_CHECKOUT = new By.ByName("processCarrier");
 
 
-    public void tickTheTermsBox(WebDriver driver){
+    public void tickTheTermsBox(){
         driver.findElement(By.name("cgv")).click();
     }
 

@@ -11,7 +11,7 @@ import java.sql.Driver;
 
 public class MyAccountPageTest {
 
-    private static WebDriver webDriver = webDriver = DriverFactory.get();
+    private static WebDriver webDriver = DriverFactory.get();
     static MyAccountPage myAccountPage;
     static OrderHistoryPage orderHistoryPage;
     static OrderSlipPage orderSlipPage;
@@ -36,7 +36,7 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickOrderHistoryAndDetailsButton();
         orderHistoryPage = new OrderHistoryPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=history", orderHistoryPage.getCurrentUrl());
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=history", webDriver.getCurrentUrl());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyCreditSlipsButton();
         orderSlipPage = new OrderSlipPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=order-slip", orderSlipPage.getCurrentUrl());
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=order-slip", webDriver.getCurrentUrl());
     }
     @Test
     @DisplayName("Check my addresses buttons in the myAccountPage")
@@ -53,7 +53,7 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyAddressesButton();
         addressesPage = new AddressesPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=addresses", addressesPage.getCurrentUrl());
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=addresses", webDriver.getCurrentUrl());
     }
     @Test
     @DisplayName("Check my personal information buttons in the myAccountPage")
@@ -61,7 +61,7 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyPersonalInformationButton();
         identityPage = new IdentityPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=identity", identityPage.getCurrentUrl());
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=identity", webDriver.getCurrentUrl());
     }
     @Test
     @DisplayName("Check wishlists buttons in the myAccountPage")
@@ -69,7 +69,15 @@ public class MyAccountPageTest {
         myAccountPage = new MyAccountPage(webDriver);
         myAccountPage.clickMyWishlistsButton();
         myWishlistsPage = new MyWishlistsPage(webDriver);
-        Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", myWishlistsPage.getCurrentUrl());
+        Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", webDriver.getCurrentUrl());
+    }
+
+    @Test
+    @DisplayName("Click home button back to home page")
+    public void clickHomeButtonBackToHomePage(){
+        myAccountPage =  new MyAccountPage(webDriver);
+        myAccountPage.clickHomeButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
     }
 
     @AfterAll

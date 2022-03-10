@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class BasePage {
-    //region Variables
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
+public class BasePage {
+    public static String DEFAULT_URL = "http://automationpractice.com/index.php";
     protected static WebDriver driver;
     private Actions action;
 
@@ -62,7 +61,7 @@ public abstract class BasePage {
     private By twitter = new By.ByClassName("twitter");
     private By youtube = new By.ByClassName("youtube");
     private By googlePlus = new By.ByClassName("google-plus");
-    
+
     private By myAccountFooter = new By.ByXPath("//*[@id='footer']/div/section[5]/div");
 
     private By womenFooter = new By.ByXPath("//*[@id='footer']/div/section[2]/div/div/ul/li/a");
@@ -96,6 +95,15 @@ public abstract class BasePage {
         this.driver.get(url);
         this.action = new Actions(driver);
     }
+    protected BasePage(WebDriver driver, boolean doRefresh)
+    {
+        this.driver = driver;
+        if (doRefresh){
+            this.driver.get(DEFAULT_URL);
+        }
+        this.action = new Actions(driver);
+    }
+
 
     public String getDefaultUrl () {
         return DEFAULT_URL;
