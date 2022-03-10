@@ -22,7 +22,7 @@ public class MyAccountPage extends BasePage
 
     //My account page footer buttons
     private final int homeButton = 0;
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=my-account";
+    public static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=my-account";
 
     public MyAccountPage(WebDriver driver)
     {

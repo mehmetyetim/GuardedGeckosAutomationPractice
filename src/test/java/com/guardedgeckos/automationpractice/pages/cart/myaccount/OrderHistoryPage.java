@@ -78,7 +78,7 @@ public class OrderHistoryPage extends BasePage
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=history";
+    public static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=history";
 
     public OrderHistoryPage(WebDriver driver)
     {

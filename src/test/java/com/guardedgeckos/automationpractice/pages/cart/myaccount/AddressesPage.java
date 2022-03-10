@@ -38,7 +38,7 @@ public class AddressesPage extends BasePage
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=addresses";
+    public static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=addresses";
 
     public AddressesPage(WebDriver driver)
     {

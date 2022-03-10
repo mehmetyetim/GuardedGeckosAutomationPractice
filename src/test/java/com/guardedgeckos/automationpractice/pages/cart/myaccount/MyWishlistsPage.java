@@ -59,7 +59,7 @@ public class MyWishlistsPage extends BasePage
     private final int homeButton = 1;
 
 
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist";
+    public static final String DEFAULT_URL = "http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist";
 
     public MyWishlistsPage(WebDriver driver)
     {
