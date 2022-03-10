@@ -16,14 +16,14 @@ public class ShippingPage extends BasePage{
             @Override
             public BasePage getPage(WebDriver driver) {
                 driver.findElement(BY_CONTINUE_SHOPPING).click();
-                return new CheckoutAddress(driver);
+                return new CheckoutAddressPage(driver);
             }
         },
         CHECKOUT_LOGGED_IN{
             @Override
             public BasePage getPage(WebDriver driver){
                 driver.findElement(BY_CHECKOUT).click();
-                return new PaymentClass(driver);
+                return new PaymentPage(driver);
             }
         }
     }
