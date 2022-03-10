@@ -1,8 +1,11 @@
+@Cart
 Feature: As a User I want to be able buy the products that I want.
 
   Background:
-    Given I am on the shopping cart summary page
-    And I have shopping in the basket
+
+    Given I have shopping in the basket
+    And I am on the shopping cart summary page
+    And I am logged in
 
     Scenario: As a customer if I have a empty basket I should see that
       my shopping cart is empty
@@ -20,13 +23,13 @@ Feature: As a User I want to be able buy the products that I want.
       And I click on the  I agree tickbox
       When I click on the proceed to checkout button
       Then I should be on the payment method page
-
-    Scenario: As a Customer I should be kept on the shipping page when I
-      click proceed to checkout without agreeing to the terms of service
-      Given I am on the shipping page
-      And the terms of service checkbox is unticked
-      When I click on proceed to checkout
-      Then I should see an error message
+#    TODO: implement this scenario H
+#    Scenario: As a Customer I should be kept on the shipping page when I
+#      click proceed to checkout without agreeing to the terms of service
+#      Given I am on the shipping page
+#      And the terms of service checkbox is unticked
+#      When I click on proceed to checkout
+#      Then I should see an error message
 
     Scenario: As a Customer I should be able to pay by bank wire so that
       I can purchase my products
@@ -38,7 +41,7 @@ Feature: As a User I want to be able buy the products that I want.
       I can purchase my products
       Given I am on the payment method page
       When I click on the pay by check button
-      Then I should be on the Order summary page
+      Then I should be on the cheque Order summary page
 
 
     Scenario: As a Customer I should be able to confirm my order after
