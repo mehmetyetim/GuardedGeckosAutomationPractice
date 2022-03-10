@@ -26,10 +26,9 @@ public class AddressPage extends BasePage
     private By submitButton = new By.ByName("submitAddress");
 
     //General
-    private By clearfix = new By.ByClassName("clearfix");
     private By options = new By.ByTagName("option");
 
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=address";
+    public static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=address";
 
     public AddressPage(WebDriver driver)
     {
