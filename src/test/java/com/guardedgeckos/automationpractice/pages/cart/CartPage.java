@@ -37,15 +37,16 @@ public class CartPage extends BasePage {
           @Override
           public BasePage getPage(WebDriver driver){
               driver.findElement(BY_CHECKOUT).click();
-              return new CheckoutAddress(driver);
+              return new CheckoutAddressPage(driver);
           }
         }
     }
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByXPath("//*[@id=\"center_column\"]/p[2]/a[1]/span/text()"),
-            BY_CART_PRODUCTS = new By.ByClassName("cart_item");
+            BY_CHECKOUT = new By.ByClassName("standard-checkout"),
+            BY_CART_PRODUCTS = new By.ByClassName("cart_item"),
+            BY_DELETE = new By.ByClassName("cart_quantity_delete");
 
 
     public ArrayList<Cart> cartArrayListSet(WebDriver driver){
@@ -69,6 +70,12 @@ public class CartPage extends BasePage {
         }
 
         return cartArrayList;
+    }
+
+    public void deleteAllCartContentsOfFirstType(WebDriver driver){
+        if (!driver.findElement(By.className("alert-warning")).getText().equals("Your shopping cart is empty.")){
+            driver.findElement(BY_DELETE).click();
+        }
     }
 
 

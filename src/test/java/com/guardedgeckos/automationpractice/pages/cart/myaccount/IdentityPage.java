@@ -23,9 +23,14 @@ public class IdentityPage extends BasePage
     private By daysOption = new By.ByName("days");
     private By monthsOption = new By.ByName("months");
     private By yearsOption = new By.ByName("years");
+    private By submitButton = new By.ByName("submitIdentity");
+    private By dateText = new By.ById("uniform-days");
+    private By monthsText = new By.ById("uniform-months");
+    private By yearsText = new By.ById("uniform-years");
 
 
     //General
+    private By span = new By.ByTagName("span");
     private By options = new By.ByTagName("option");
     private By colorMyAccountText = new By.ByClassName("color-myaccount");
     private By paragraph = new By.ByTagName("p");
@@ -65,6 +70,22 @@ public class IdentityPage extends BasePage
 
     public void clickMrs(){
         driver.findElement(Mrs).click();
+    }
+
+    public String getFirstName(){
+        return driver.findElement(firstname).getAttribute("value");
+    }
+    public String getLastName(){
+        return driver.findElement(lastname).getAttribute("value");
+    }
+    public String getEmail(){
+        return driver.findElement(email).getAttribute("value");
+    }
+
+    public String getDateOfBirth(){
+        return    driver.findElement(dateText).findElement(By.tagName("span")).getText()
+                + driver.findElement(monthsText).findElement(By.tagName("span")).getText()
+                + driver.findElement(yearsText).findElement(By.tagName("span")).getText();
     }
 
     public void inputFirstName(String string){
@@ -128,16 +149,15 @@ public class IdentityPage extends BasePage
         }
     }
 
+    public void clickSubmitButton(){
+        driver.findElement(submitButton).click();
+    }
+
     public void clickHomeButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(homeButton).click();
     }
     public void clickBackToYourAccountButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
-    }
-
-
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
     }
 
 }

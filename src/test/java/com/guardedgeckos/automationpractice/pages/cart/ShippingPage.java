@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class ShippingPage extends BasePage{
 
     public ShippingPage(WebDriver driver) {
-        super(driver, "http://automationpractice.com/index.php?controller=order");
+        super(driver, false);
     }
 
     public enum Links implements LinksInterface{
@@ -16,21 +16,21 @@ public class ShippingPage extends BasePage{
             @Override
             public BasePage getPage(WebDriver driver) {
                 driver.findElement(BY_CONTINUE_SHOPPING).click();
-                return new CheckoutAddress(driver);
+                return new CheckoutAddressPage(driver);
             }
         },
         CHECKOUT_LOGGED_IN{
             @Override
             public BasePage getPage(WebDriver driver){
                 driver.findElement(BY_CHECKOUT).click();
-                return new PaymentClass(driver);
+                return new PaymentPage(driver);
             }
         }
     }
 
     private static final By
             BY_CONTINUE_SHOPPING = new By.ByClassName("button-exclusive"),
-            BY_CHECKOUT = new By.ByName("processName");
+            BY_CHECKOUT = new By.ByName("processCarrier");
 
 
     public void tickTheTermsBox(){

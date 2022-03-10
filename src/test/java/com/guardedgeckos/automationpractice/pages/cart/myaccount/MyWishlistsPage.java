@@ -2,6 +2,7 @@ package com.guardedgeckos.automationpractice.pages.cart.myaccount;
 
 import com.guardedgeckos.automationpractice.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
@@ -82,6 +83,15 @@ public class MyWishlistsPage extends BasePage
         }
         return driver.findElement(alert).getText();
     }
+
+    public int getWishlistsSize(){
+
+            return driver
+                    .findElement(wishListBlock)
+                    .findElement(tableBody)
+                    .findElements(tableRow).size();
+    }
+
 
     public String getWishlistName(int rowIndex){
         try{
@@ -227,7 +237,8 @@ public class MyWishlistsPage extends BasePage
                     .findElements(wishlistFormGroup).get(index)
                     .findElement(formControl).sendKeys(email);
         }
-        catch (NoSuchElementException e){
+        catch (NoSuchElementException| ElementNotInteractableException e){
+            e.printStackTrace();
             System.out.println("NO ELEMENT OR ELEMENT NO LOADED");
         }
     }
@@ -275,6 +286,27 @@ public class MyWishlistsPage extends BasePage
                 .findElement(buttonLink).click();
     }
 
+    public String getQuantityInWishList(int index){
+       return driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElements(formControl).get(0).getAttribute("value");
+    }
+
+    public String getPriorityInWishList(int index){
+        String string = driver
+                .findElement(wishList)
+                .findElements(list).get(index)
+                .findElements(formControl).get(1).getAttribute("value");
+        if(string.equals("0")){
+            return "High";
+        }else if(string.equals("1")){
+            return "Medium";
+        }else if (string.equals("2")){
+            return "Low";
+        }else return "Error";
+    }
+
     public void inputQuantityInWishList(int index, String quantity){
          driver
                  .findElement(wishList)
@@ -319,8 +351,6 @@ public class MyWishlistsPage extends BasePage
     public void clickBackToYourAccountButton(){
         driver.findElement(myAccountPageFooter).findElements(buttonLink).get(backToYourAccountButton).click();
     }
-
-
 
 
 }
