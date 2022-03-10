@@ -33,7 +33,7 @@ public class SignInTests
         signInPage = new SignInPage(driver);
         Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=authentication");
 
-        Assertions.assertEquals(signInPage.getDefaultUrl(), driver.getCurrentUrl());
+        Assertions.assertEquals(SignInPage.DEFAULT_URL, driver.getCurrentUrl());
     }
 
     @Test
