@@ -11,17 +11,19 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 
 public class HomePageTests {
-    private static WebDriver driver;
+    private static WebDriver driver = DriverFactory.get();
     static HomePage homePage;
     WebDriverWait wait;
-
+    @BeforeAll
+    static void setupAll(TestInfo testInfo) {
+        homePage = new HomePage(driver);
+        driver.get("http://automationpractice.com/");
+    }
     @BeforeEach
     public void setup(){
-        driver = DriverFactory.get();
-        driver.manage().window().maximize();
-        driver.get("https://automationpractice.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        homePage = new HomePage(driver);
+        DriverFactory.get().manage().window().maximize();
+        DriverFactory.get().get("https://automationpractice.com/");
+        DriverFactory.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(DriverFactory.get(), Duration.ofSeconds(30));
     }
 
@@ -33,17 +35,18 @@ public class HomePageTests {
     }
 
     @Test
-    public void test() {
+    public void clickAddToCart() {
         homePage.hoverOverFirstProductAndClickOnAddToCartButton();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ajax_cart_quantity")));
         System.out.println("homePage.getTotalItemsQuantityCart() = " + homePage.getTotalItemsQuantityCart());
         Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
     }
-//    @Test
-//    @DisplayName("Check that the page defaults to the base url")
-//    void AddItemToCart(){
-//        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
-//    }
+
+    @Test
+    @DisplayName("Check that the page defaults to the base url")
+    void AddItemToCart(){
+        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -146,51 +149,13 @@ public class HomePageTests {
         Assertions.assertTrue(homePage.isThirdMovingImageDisplayedAfterAWhile());
     }
 
-    @Test
-    @DisplayName("Check that clicked on first moving image")
-    public void checkThatClickedOnFirstMovingImage(){
-        homePage.clickOnFirstMovingImage();
-        Assertions.assertEquals("https://www.prestashop.com/en?utm_source=v16_homeslider",
-                driver.getCurrentUrl());
-    }
-
-    @Test
-    @DisplayName("Check that clicked on first moving image and get Url")
-    public void checkThatClickedOnFirstMovingImageAndGetUrl(){
-        Assertions.assertTrue(homePage.clickOnFirstMovingImageAndGetUrl().equals("https://www.prestashop.com/en?utm_source=v16_homeslider"));
-    }
-
-    @Test
-    @DisplayName("Check that clicked on second moving image")
-    public void checkThatClickedOnSecondMovingImage(){
-        homePage.clickOnSecondMovingImage();
-        Assertions.assertEquals("https://www.prestashop.com/en?utm_source=v16_homeslider",
-                driver.getCurrentUrl());
-    }
-
-    @Test
-    @DisplayName("Check that clicked on second moving image and get Url")
-    public void checkThatClickedOnSecondMovingImageAndGetUrl(){
-        Assertions.assertTrue(homePage.clickOnSecondMovingImageAndGetUrl().equals("https://www.prestashop.com/en?utm_source=v16_homeslider"));
-    }
-
-    @Test
-    @DisplayName("Check that clicked on third moving image")
-    public void checkThatClickedOnThirdMovingImage(){
-        homePage.clickOnThirdMovingImage();
-        Assertions.assertEquals("https://www.prestashop.com/en?utm_source=v16_homeslider",
-                driver.getCurrentUrl());
-    }
-
-    @Test
-    @DisplayName("Check that clicked on third moving image and get Url")
-    public void checkThatClickedOnThirdMovingImageAndGetUrl(){
-        Assertions.assertTrue(homePage.clickOnThirdMovingImageAndGetUrl().equals("https://www.prestashop.com/en?utm_source=v16_homeslider"));
-    }
-
     @AfterEach
     public void tearDown() {
         DriverFactory.closeDriver();
     }
 
+    @AfterAll
+    static void close(){
+        driver.quit();
+    }
 }
