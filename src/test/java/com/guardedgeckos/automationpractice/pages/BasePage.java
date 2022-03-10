@@ -37,7 +37,7 @@ public class BasePage {
     private By productDetailsCart = new By.ByClassName("product-atributes");
     private By itemPriceCart = new By.ByClassName("price");
     private By removeItemCart = new By.ByClassName("ajax_cart_block_remove_link");
-    private By checkOutButtonHovered = new By.ByXPath("//*[@id='button_order_cart']/span");
+    private By checkOutButtonHovered = new By.ById("button_order_cart");
     private By shippingFeesCartHovered = new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[2]/span[1]");
     private By totalCartHovered = new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/div/div/div/div/div[1]/span[1]");
 
@@ -259,12 +259,12 @@ public class BasePage {
         return itemsToRemove;
     }
 
-    public void getCheckOut () {
+    public void getCheckOut() {
         try {
             Actions action = new Actions(driver);
             action.moveToElement(driver.findElement(cartHovered)).perform();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            action.moveToElement(driver.findElement(checkOutButtonHovered));
+            action.moveToElement(driver.findElement(checkOutButtonHovered)).click();
         } catch (Exception e) {
             e.printStackTrace();
         }
