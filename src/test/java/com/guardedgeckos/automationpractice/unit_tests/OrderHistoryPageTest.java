@@ -440,6 +440,22 @@ public class OrderHistoryPageTest {
         Assertions.assertEquals("rregre", orderHistoryPage.getMessageContent(1));
     }
 
+    @Test
+    @DisplayName("Click home button back to home page")
+    public void clickHomeButtonBackToHomePage(){
+        orderHistoryPage = new OrderHistoryPage(webDriver);
+        orderHistoryPage.clickHomeButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
+    }
+
+    @Test
+    @DisplayName("Click back to your account button back to account page")
+    public void clickBackToYouAccountButtonBackToAccountPage(){
+        orderHistoryPage =  new OrderHistoryPage(webDriver);
+        orderHistoryPage.clickBackToYourAccountButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account",webDriver.getCurrentUrl());
+    }
+
 
 
     @AfterAll

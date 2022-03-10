@@ -88,6 +88,22 @@ public class AddressesPageTest {
 
     }
 
+    @Test
+    @DisplayName("Click home button back to home page")
+    public void clickHomeButtonBackToHomePage(){
+        addressesPage =  new AddressesPage(webDriver);
+        addressesPage.clickHomeButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
+    }
+    @Test
+    @DisplayName("Click back to your account button back to account page")
+    public void clickBackToYouAccountButtonBackToAccountPage(){
+        addressesPage =  new AddressesPage(webDriver);
+        addressesPage.clickBackToYourAccountButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account",webDriver.getCurrentUrl());
+    }
+
+
 
 
     @AfterAll

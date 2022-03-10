@@ -57,9 +57,26 @@ public class IdentityPageTest {
         assertThat(identityPage.getAlertText(),containsString("Your personal information has been successfully updated."));
     }
 
+
+    @Test
+    @DisplayName("Click home button back to home page")
+    public void clickHomeButtonBackToHomePage(){
+        identityPage = new IdentityPage(webDriver);
+        identityPage.clickHomeButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
+    }
+
+    @Test
+    @DisplayName("Click back to your account button back to account page")
+    public void clickBackToYouAccountButtonBackToAccountPage(){
+        identityPage =  new IdentityPage(webDriver);
+        identityPage.clickBackToYourAccountButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account",webDriver.getCurrentUrl());
+    }
+
     @AfterAll
     static void close(){
-      //  webDriver.quit();
+        webDriver.quit();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.guardedgeckos.automationpractice.unit_tests;
 
 import com.guardedgeckos.automationpractice.pages.SignInPage;
+import com.guardedgeckos.automationpractice.pages.cart.myaccount.IdentityPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyWishlistsPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
@@ -185,6 +186,23 @@ public class MyWishListTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Assertions.assertEquals("Low", myWishlistsPage.getPriorityInWishList(1));
     }
+
+    @Test
+    @DisplayName("Click home button back to home page")
+    public void clickHomeButtonBackToHomePage(){
+        myWishlistsPage = new MyWishlistsPage(webDriver);
+        myWishlistsPage.clickHomeButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
+    }
+
+    @Test
+    @DisplayName("Click back to your account button back to account page")
+    public void clickBackToYouAccountButtonBackToAccountPage(){
+        myWishlistsPage =  new MyWishlistsPage(webDriver);
+        myWishlistsPage.clickBackToYourAccountButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account",webDriver.getCurrentUrl());
+    }
+
 
 
     @AfterAll
