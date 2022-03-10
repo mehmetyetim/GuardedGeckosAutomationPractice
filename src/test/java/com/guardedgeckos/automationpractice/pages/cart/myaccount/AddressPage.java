@@ -12,6 +12,7 @@ public class AddressPage extends BasePage
 
     private By firstname = new By.ByName("firstname");
     private By lastname = new By.ByName("lastname");
+    private By company = new By.ByName("company");
     private By address1 = new By.ByName("address1");
     private By address2 = new By.ByName("address2");
     private By city = new By.ByName("city");
@@ -54,6 +55,11 @@ public class AddressPage extends BasePage
         driver.findElement(lastname).clear();
         driver.findElement(lastname).sendKeys(string);
     }
+    public void inputCompany(String string){
+        driver.findElement(company).clear();
+        driver.findElement(company).sendKeys(string);
+    }
+
     public void inputAddressOne(String string){
         driver.findElement(address1).clear();
         driver.findElement(address1).sendKeys(string);
