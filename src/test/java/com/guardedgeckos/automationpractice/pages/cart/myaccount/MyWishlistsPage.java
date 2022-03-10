@@ -321,6 +321,4 @@ public class MyWishlistsPage extends BasePage
     }
 
 
-
-
 }
