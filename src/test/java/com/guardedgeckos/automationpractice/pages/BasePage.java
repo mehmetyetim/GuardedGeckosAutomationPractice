@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -86,7 +87,6 @@ public class BasePage {
     {
         this.driver = driver;
         this.driver.get(DEFAULT_URL);
-        this.action = new Actions(driver);
     }
 
     protected BasePage(WebDriver driver, String url)
@@ -261,9 +261,10 @@ public class BasePage {
 
     public void getCheckOut () {
         try {
-            action.moveToElement(driver.findElement(cartHovered));
+            Actions action = new Actions(driver);
+            action.moveToElement(driver.findElement(cartHovered)).perform();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             action.moveToElement(driver.findElement(checkOutButtonHovered));
-            action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -271,9 +272,10 @@ public class BasePage {
 
     public void getShippingFeesCartHovered () {
         try {
-            action.moveToElement(driver.findElement(cartHovered));
+            Actions action = new Actions(driver);
+            action.moveToElement(driver.findElement(cartHovered)).perform();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             action.moveToElement(driver.findElement(shippingFeesCartHovered));
-            action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -281,9 +283,10 @@ public class BasePage {
 
     public void getTotalCartHovered () {
         try {
-            action.moveToElement(driver.findElement(cartHovered));
+            Actions action = new Actions(driver);
+            action.moveToElement(driver.findElement(cartHovered)).perform();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             action.moveToElement(driver.findElement(totalCartHovered));
-            action.click().build().perform();
         } catch (Exception e) {
             e.printStackTrace();
         }
