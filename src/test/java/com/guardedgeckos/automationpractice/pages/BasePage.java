@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class BasePage {
-    //region Variables
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?controller=authentication";
+public class BasePage {
+    public static String DEFAULT_URL = "http://automationpractice.com/index.php";
     protected static WebDriver driver;
     private Actions action;
 
@@ -31,6 +30,7 @@ public abstract class BasePage {
 
     private By cartHovered = new By.ByXPath("//*[@id='header']/div[3]/div/div/div[3]/div/a");
     private By itemImageLinkCart = new By.ByClassName("cart-images");
+    private By totalQuantityCart = new By.ByClassName("ajax_cart_quantity");
     private By quantityItemCart = new By.ByClassName("quantity");
     private By itemNameLinkCart = new By.ByClassName("cart_block_product_name");
     private By productDetailsCart = new By.ByCssSelector("title=Product detail'");
@@ -61,7 +61,7 @@ public abstract class BasePage {
     private By twitter = new By.ByClassName("twitter");
     private By youtube = new By.ByClassName("youtube");
     private By googlePlus = new By.ByClassName("google-plus");
-    
+
     private By myAccountFooter = new By.ByXPath("//*[@id='footer']/div/section[5]/div");
 
     private By womenFooter = new By.ByXPath("//*[@id='footer']/div/section[2]/div/div/ul/li/a");
@@ -187,6 +187,16 @@ public abstract class BasePage {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String getTotalItemsQuantityCart() {
+        String totalItemsCart = "";
+        try {
+            totalItemsCart = this.driver.findElement(totalQuantityCart).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalItemsCart;
     }
 
     public List<WebElement> getItemsImagesCart() {
