@@ -154,8 +154,4 @@ public class HomePageTests {
         DriverFactory.closeDriver();
     }
 
-    @AfterAll
-    static void close(){
-        driver.quit();
-    }
 }

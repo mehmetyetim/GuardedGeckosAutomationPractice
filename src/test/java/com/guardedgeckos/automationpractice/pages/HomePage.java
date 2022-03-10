@@ -42,6 +42,7 @@ public class HomePage extends BasePage
     private final By itemName = new By.ByClassName("product-name");
     private final By addToCart = new By.ByPartialLinkText("Add to cart");
     private final By addToCartButtonUnderFirstProduct = By.xpath("(//a[@data-id-product='1'])[1]/span");
+    private final By movingImages = By.xpath("//li[@class='homeslider-container']");
 
     private final WebDriverWait wait;
     Actions action;
@@ -391,5 +392,40 @@ public class HomePage extends BasePage
 
     public boolean isNumberOfSmallImages7(){
         return driver.findElements(allImagesOnHomePageExceptTheBiggest).size() == 7;
+    }
+
+    public void clickOnFirstMovingImage(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages)
+                .get(0)));
+        driver.findElements(movingImages).get(0).click();
+    }
+
+    public String clickOnFirstMovingImageAndGetUrl(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages)
+                .get(0)));
+        driver.findElements(movingImages).get(1).click();
+        return driver.getCurrentUrl();
+    }
+
+    public void clickOnSecondMovingImage(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(1)));
+        driver.findElements(movingImages).get(1).click();
+    }
+
+    public String clickOnSecondMovingImageAndGetUrl(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(1)));
+        driver.findElements(movingImages).get(1).click();
+        return driver.getCurrentUrl();
+    }
+
+    public void clickOnThirdMovingImage(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(2)));
+        driver.findElements(movingImages).get(2).click();
+    }
+
+    public String clickOnThirdMovingImageAndGetUrl(){
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(movingImages).get(2)));
+        driver.findElements(movingImages).get(2).click();
+        return driver.getCurrentUrl();
     }
 }
