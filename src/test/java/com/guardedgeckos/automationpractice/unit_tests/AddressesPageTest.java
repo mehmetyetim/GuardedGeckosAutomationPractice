@@ -1,18 +1,28 @@
 package com.guardedgeckos.automationpractice.unit_tests;
 
+import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.AddressPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.AddressesPage;
+import com.guardedgeckos.automationpractice.pages.cart.myaccount.IdentityPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.WebDriver;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
+@ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AddressesPageTest {
-    private static WebDriver webDriver = DriverFactory.get();
+
+    @Spy
+    private static WebDriver webDriver;
     static MyAccountPage myAccountPage;
     static AddressesPage addressesPage;
     static AddressPage addressPage;
@@ -30,6 +40,7 @@ public class AddressesPageTest {
     }
 
     @Test
+    @Order(1)
     @DisplayName("click add new address button go to address page")
     public void clickAddNewAddressButtonGoToAddressPage(){
         addressesPage = new AddressesPage(webDriver);
@@ -38,6 +49,7 @@ public class AddressesPageTest {
     }
 
     @Test
+    @Order(2)
     @DisplayName("click update address go to address page")
     public void clickUpdateAddressGoToAddressPage(){
         addressesPage = new AddressesPage(webDriver);
@@ -46,6 +58,7 @@ public class AddressesPageTest {
     }
 
     @Test
+    @Order(3)
     @DisplayName("Create a new address and go back to addresses page")
     public void createANewAddress(){
         addressesPage = new AddressesPage(webDriver);
@@ -69,6 +82,7 @@ public class AddressesPageTest {
     }
 
     @Test
+    @Order(4)
     @DisplayName("Check correct information in address block and delete block")
     public void checkCorrectInformationInAddresBlock(){
         addressesPage = new AddressesPage(webDriver);
@@ -89,21 +103,32 @@ public class AddressesPageTest {
     }
 
     @Test
+    @Order(5)
     @DisplayName("Click home button back to home page")
     public void clickHomeButtonBackToHomePage(){
         addressesPage =  new AddressesPage(webDriver);
         addressesPage.clickHomeButton();
-        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php");
+        Assertions.assertEquals(HomePage.DEFAULT_URL,webDriver.getCurrentUrl());
     }
     @Test
+    @Order(6)
     @DisplayName("Click back to your account button back to account page")
     public void clickBackToYouAccountButtonBackToAccountPage(){
         addressesPage =  new AddressesPage(webDriver);
         addressesPage.clickBackToYourAccountButton();
-        Assertions.assertEquals("http://automationpractice.com/index.php?controller=my-account",webDriver.getCurrentUrl());
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=my-account");
+        Assertions.assertEquals(MyAccountPage.DEFAULT_URL,webDriver.getCurrentUrl());
     }
 
-
+    @Test
+    @Order(7)
+    @DisplayName("IdentityPage constructor test")
+    public void identityPageConstructorTest(){
+        addressesPage =  new AddressesPage(webDriver);
+        Mockito.when(webDriver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=addresses");
+        Assertions.assertEquals(AddressesPage.DEFAULT_URL,webDriver.getCurrentUrl());
+    }
 
 
     @AfterAll
