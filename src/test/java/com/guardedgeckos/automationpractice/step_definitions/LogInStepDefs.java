@@ -1,20 +1,16 @@
 package com.guardedgeckos.automationpractice.step_definitions;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
-import com.guardedgeckos.automationpractice.utilities.DriverFactory;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.WebDriver;
+
+import static com.guardedgeckos.automationpractice.step_definitions.Hooks.webDriver;
 
 public class LogInStepDefs {
-        private static WebDriver webDriver = DriverFactory.get();
         private static SignInPage signInPage;
         private static MyAccountPage myAccountPage;
 
@@ -59,12 +55,6 @@ public class LogInStepDefs {
                 signInPage.clickSignInButton();
         }
 
-        @Then("I will stay in the Login Page")
-        public void iWillStayInTheLoginPage() {
-              Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication", signInPage.getDefaultUrl());
-
-        }
-
         @When("I insert a invalid password")
         public void iInsertAInvalidPassword() {
                 signInPage = new SignInPage(webDriver);
@@ -78,8 +68,7 @@ public class LogInStepDefs {
 
         @Then("I will stay in the Login webPage")
         public void iWillStayInTheLoginWebPage() {
-                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication", signInPage.getDefaultUrl());
-
+                Assertions.assertEquals("http://automationpractice.com/index.php?controller=authentication", SignInPage.DEFAULT_URL);
         }
 
 

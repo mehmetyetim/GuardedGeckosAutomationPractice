@@ -33,7 +33,7 @@ public class SignInTests
         signInPage = new SignInPage(driver);
         Mockito.when(driver.getCurrentUrl()).thenReturn("http://automationpractice.com/index.php?controller=authentication");
 
-        Assertions.assertEquals(signInPage.getDefaultUrl(), driver.getCurrentUrl());
+        Assertions.assertEquals(SignInPage.DEFAULT_URL, driver.getCurrentUrl());
     }
 
     @Test
@@ -80,7 +80,7 @@ public class SignInTests
     }
 
     @Test
-    @DisplayName("The user can enter a registration email")
+    @DisplayName("The user can submit a registration email")
     void signInPageRegistrationEmailSubmitTest()
     {
         signInPage = new SignInPage(driver);
@@ -91,7 +91,7 @@ public class SignInTests
 
         try
         {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         }
         catch (InterruptedException e)
         {

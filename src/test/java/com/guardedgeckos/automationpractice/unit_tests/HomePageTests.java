@@ -176,6 +176,7 @@ public class HomePageTests {
 
     @AfterAll
     static void close(){
-       //driver.quit();
+       driver.quit();
     }
+
 }

@@ -1,5 +1,4 @@
 @signin
-
 Feature: As a registered user with valid email and password I will be able to login to the website
 
   Background: Setting up the Browser
@@ -14,12 +13,12 @@ Feature: As a registered user with valid email and password I will be able to lo
   Scenario: Staying in the Login Page as result of unregistered email address
     When I insert an unregistered email
     And I insert a valid password and click the login button
-    Then I will stay in the Login Page
+    Then I will stay in the Login webPage
 
-    Scenario: Staying in the Login Page as result of invalid password
-      When I insert a invalid password
-      And I insert a registered email and click the login button
-      Then I will stay in the Login webPage
+  Scenario: Staying in the Login Page as result of invalid password
+    When I insert a invalid password
+    And I insert a registered email and click the login button
+    Then I will stay in the Login webPage
 
 
   Scenario: Creating a new password in case of a forgotten one
