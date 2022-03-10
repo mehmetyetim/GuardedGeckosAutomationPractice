@@ -72,6 +72,14 @@ public class MyAccountPageTest {
         Assertions.assertEquals("http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist", webDriver.getCurrentUrl());
     }
 
+    @Test
+    @DisplayName("Click home button back to home page")
+    public void clickHomeButtonBackToHomePage(){
+        myAccountPage =  new MyAccountPage(webDriver);
+        myAccountPage.clickHomeButton();
+        Assertions.assertEquals("http://automationpractice.com/index.php",webDriver.getCurrentUrl());
+    }
+
     @AfterAll
     static void close(){
     webDriver.quit();
