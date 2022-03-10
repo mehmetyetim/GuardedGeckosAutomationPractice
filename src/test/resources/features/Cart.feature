@@ -5,7 +5,7 @@ Feature: As a User I want to be able buy the products that I want.
 
     Given I have shopping in the basket
     And I am on the shopping cart summary page
-    And I am logged in
+
 
     Scenario: As a customer if I have a empty basket I should see that
       my shopping cart is empty
