@@ -4,7 +4,6 @@ import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.AddressPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.AddressesPage;
-import com.guardedgeckos.automationpractice.pages.cart.myaccount.IdentityPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;
@@ -13,7 +12,6 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.WebDriver;
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 

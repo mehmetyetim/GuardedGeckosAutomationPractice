@@ -2,7 +2,6 @@ package com.guardedgeckos.automationpractice.unit_tests;
 
 import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
-import com.guardedgeckos.automationpractice.pages.cart.myaccount.IdentityPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyWishlistsPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
@@ -16,7 +15,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThrows;

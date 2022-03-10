@@ -2,9 +2,7 @@ package com.guardedgeckos.automationpractice.unit_tests;
 
 import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
-import com.guardedgeckos.automationpractice.pages.cart.myaccount.IdentityPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.MyAccountPage;
-import com.guardedgeckos.automationpractice.pages.cart.myaccount.OrderHistoryPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.OrderSlipPage;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
 import org.junit.jupiter.api.*;

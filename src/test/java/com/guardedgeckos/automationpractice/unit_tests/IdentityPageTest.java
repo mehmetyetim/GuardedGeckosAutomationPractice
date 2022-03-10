@@ -4,14 +4,12 @@ import com.guardedgeckos.automationpractice.pages.HomePage;
 import com.guardedgeckos.automationpractice.pages.SignInPage;
 import com.guardedgeckos.automationpractice.pages.cart.myaccount.*;
 import com.guardedgeckos.automationpractice.utilities.DriverFactory;
-import io.cucumber.java.bs.I;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.WebDriver;
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 

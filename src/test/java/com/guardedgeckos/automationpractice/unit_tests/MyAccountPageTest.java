@@ -11,8 +11,6 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.WebDriver;
 
-import java.sql.Driver;
-
 @ExtendWith(MockitoExtension.class)
 public class MyAccountPageTest {
 

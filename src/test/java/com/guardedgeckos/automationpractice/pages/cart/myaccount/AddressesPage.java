@@ -25,12 +25,7 @@ public class AddressesPage extends BasePage
     private By address = new By.ByClassName("address");
     private By list = new By.ByTagName("li");
     private By clearfix = new By.ByClassName("clearfix");
-    private By options = new By.ByTagName("option");
-    private By colorMyAccountText = new By.ByClassName("color-myaccount");
-    private By paragraph = new By.ByTagName("p");
-    private By darkText = new By.ByClassName("dark");
     private By buttonLink = new By.ByTagName("a");
-    private By linkButton = new By.ByClassName("link-button");
     private By button = new By.ByClassName("btn");
     private By myAccountPageFooter = new By.ByClassName("footer_links");
 
