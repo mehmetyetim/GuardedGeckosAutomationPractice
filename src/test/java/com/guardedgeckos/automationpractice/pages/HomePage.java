@@ -42,7 +42,8 @@ public class HomePage extends BasePage
     private final By itemImgName = new By.ByClassName("product-image-container");
     private final By overlay = new By.ByClassName("fancybox-item");
     private final By addToCart = new By.ByCssSelector("title='Add to cart'");
-    private final By proceedToCheckoutButton = By.xpath("//span[.='Proceed to checkout']");
+//    private final By proceedToCheckoutButton = By.xpath("//span[.='Proceed to checkout']");
+private final By proceedToCheckoutButton = new By.ById("button_order_cart");
     private final By continueShoppingButton = By.xpath("//span[@title='Continue shopping']");
     private final By addToCartButtonUnderFirstProduct = By.xpath("(//a[@data-id-product='1'])[1]/span");
     private final By movingImages = By.xpath("//li[@class='homeslider-container']");
