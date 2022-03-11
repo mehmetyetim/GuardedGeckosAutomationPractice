@@ -42,11 +42,23 @@ public class HomePageTests {
         Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
     }
 
+//    @Test
+//    @DisplayName("Add item to Cart")
+//    void AddItemToCart() {
+//        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
+//        //not clicking
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ajax_cart_quantity")));
+//        System.out.println("homePage.getTotalItemsQuantityCart() = " + homePage.getTotalItemsQuantityCart());
+//        Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
+//    }
     @Test
-    @DisplayName("Check that the page defaults to the base url")
-    void AddItemToCart(){
-        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
-    }
+    @DisplayName("Clicks on the image view")
+    void hoverImage() throws InterruptedException {
+        homePage.quickView(Item.FADED_SHORT_SLEEVE_);
+        Thread.sleep(5);
+        Assertions.assertTrue(homePage.isOverlay());
+        }
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -151,7 +163,12 @@ public class HomePageTests {
 
     @AfterEach
     public void tearDown() {
-        DriverFactory.closeDriver();
+        //DriverFactory.closeDriver();
+    }
+
+    @AfterAll
+    static void close(){
+       driver.quit();
     }
 
 }
