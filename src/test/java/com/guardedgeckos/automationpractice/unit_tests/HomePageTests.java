@@ -42,15 +42,15 @@ public class HomePageTests {
         Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
     }
 
-    @Test
-    @DisplayName("Add item to Cart")
-    void AddItemToCart() {
-        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
-        //not clicking
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ajax_cart_quantity")));
-        System.out.println("homePage.getTotalItemsQuantityCart() = " + homePage.getTotalItemsQuantityCart());
-        Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
-    }
+//    @Test
+//    @DisplayName("Add item to Cart")
+//    void AddItemToCart() {
+//        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
+//        //not clicking
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ajax_cart_quantity")));
+//        System.out.println("homePage.getTotalItemsQuantityCart() = " + homePage.getTotalItemsQuantityCart());
+//        Assertions.assertTrue(homePage.getTotalItemsQuantityCart().equals("1"));
+//    }
     @Test
     @DisplayName("Clicks on the image view")
     void hoverImage() throws InterruptedException {
@@ -59,14 +59,6 @@ public class HomePageTests {
         Assertions.assertTrue(homePage.isOverlay());
         }
 
-
-//    @Test
-//    @DisplayName("Check that the page defaults to the base url")
-//    void ProceedtoCart() throws InterruptedException {
-//        homePage.addItemToCart(Item.FADED_SHORT_SLEEVE_);
-//        homePage.proceedToCheckout();
-//        Thread.sleep(300);
-//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -168,17 +168,7 @@ public class HomePage extends BasePage
             System.out.println("Unable to click");
         }
     }
-    public void getItemPhotos(int index){
-        try {
-            driver.findElement(itemsList)
-                    .findElement(itemsBlock)
-                    .findElements(itemPhoto)
-                    .get(index)
-                    .click();
-        }catch (IndexOutOfBoundsException e){
-            System.out.println("Unable to click");
-        }
-    }
+
     public void clickAddToCartForProduct(int index){
         try {
             driver.findElement(itemsList)
