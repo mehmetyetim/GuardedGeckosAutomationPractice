@@ -224,6 +224,8 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 
 ### **Unit Testing**
 
+We did unit testing to amke sure that every development we did are working fine before merging to dev to avoid any conflict. We also used mocking and spy in this classes to make sure that our codes in POM classes are working fine even if there is no connection to the website we are testing.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -231,6 +233,8 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 <br/>
 
 ### **Behaviour-driven Development Tests**
+
+BDD approach is for people who are not technical. So, it makes the test scenarios understandable for those people. It causes to have clear communication across technical and non-technical people. 
 
 <br/>
 <div align="left">
@@ -240,6 +244,7 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 
 #### Gherkin Language - Feature Files
 
+We have different keywords in Gherkin language for example When, Given, Then, Background, Scenario, Scenario Outline with a set of examples etc. So we can use them to have tests consisting of plain English. One of the important benefits that feature files have is to be able to write same statement effortlessly so you don't need to write step definition method again if you implemented once before for that specific statement in feature file.
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -247,6 +252,8 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 <br/>
 
 #### Step Definitions
+
+What was written with Gherkin language in feature files were implemented in step definitions classes. We used @Before and @After annotations to run at the beginning ang end of the scenario.
 
 <br/>
 <div align="left">
@@ -256,6 +263,7 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 
 #### TestRunner Class
 
+This is the class that behaves like the brain of our framework. You can configure our tests in this class. You can decide which test scenarios are wanted to run and different types of reports. This is the class that makes feature files and step definition classes connected. 
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -264,6 +272,8 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 
 ### **Driver Factory Class**
 
+DriverFactory class is created in singleton pattern design to make sure that there is only one object of the web driver. Since web driver management dependency was used, we don't have to add any .exe files to our project. But if it doesn't support in any way, then we need to add those files to our project.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -271,6 +281,12 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 <br/>
 
 #### Configuration Properties
+
+Configuration properties file is where we specify which browser we want to use. We can switch to another browser which is already in DriverFactory class by changing one word. 
+
+<img src="readme-images/config.png">
+
+Instead of _chrome_, we can write _chrome-headless_, _firefox_, _firefox-headless_, _ie_ and _edge_ if we are using windows, _safari_ if we are using mac, _chrome-nexus-5_ and _chrome-galaxy-s5_. These will trigger the specified web driver run.
 
 <br/>
 <div align="left">
@@ -296,6 +312,7 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 
 ### **How to use the framework**
 
+What you need to do is to create scenarios in feature files and implement them in step definitions by calling an object for each POM class which is related to the tests that we want to write. After preparing step definitions, you can run your tests using TestRunner class and make configuration. You can generate useful reports for the scenarios to see whether it fails or not. 
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -303,6 +320,8 @@ Page Object Model (POM) is a design pattern in Selenium which a class can be cre
 <br/>
 
 #### Reporting
+
+We generated different kinds of reports such as pretty, html, and json. When the scenario failed, the image of website where fail occurred attaches to the report. We can also create tests for different types of testing such as Regression, Sanity, Smoke, Integration, Compatibility etc. using the tags in Cucumber options. 
 
 <br/>
 <div align="left">
