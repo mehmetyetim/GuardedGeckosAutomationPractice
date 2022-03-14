@@ -44,22 +44,15 @@ public class MyWishlistsPage extends BasePage
     private By tableRow = new By.ByTagName("tr");
     private By tableData = new By.ByTagName("td");
     private By options = new By.ByTagName("option");
-    private By colorMyAccountText = new By.ByClassName("color-myaccount");
-    private By paragraph = new By.ByTagName("p");
-    private By darkText = new By.ByClassName("dark");
     private By buttonLink = new By.ByTagName("a");
-    private By linkButton = new By.ByClassName("link-button");
-    private By button = new By.ByClassName("btn");
     private By myAccountPageFooter = new By.ByClassName("footer_links");
-    private By footableRow = new By.ByClassName("footable-row-detail-row");
-    private By foottableRowValue = new By.ByClassName("footable-row-detail-value");
 
     //My account page footer buttons
     private final int backToYourAccountButton = 0;
     private final int homeButton = 1;
 
 
-    protected static final String DEFAULT_URL = "http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist";
+    public static final String DEFAULT_URL = "http://automationpractice.com/index.php?fc=module&module=blockwishlist&controller=mywishlist";
 
     public MyWishlistsPage(WebDriver driver)
     {
