@@ -3,10 +3,6 @@
 ## **Table Of Contents**
 * [**Overview**](#overview)
 * * [**Project Planning (Agile - Scrum)**](#project-planning)
-    - [Sprint 1](#sprint-1)
-    - [Sprint 2](#sprint-2)
-    - [Sprint 3](#sprint-3)
-    - [Sprint 4](#sprint-4)
     - [User Stories](#user-stories)
 * [**Tools and Dependencies**](#tools-and-dependencies)
     - [IntelliJ](#intellij)
@@ -17,7 +13,6 @@
     - [Selenium Java](#selenium-java)
     - [Mockito Junit Jupiter](#mockito-junit-jupiter)
     - [Mockito Core](#mockito-core)
-    - [Hamcrest All](#hamcrest-all)
     - [Web Driver Management](#web-driver-management)
     - [Jira](#jira)
 * [**Page Object Model Classes**](#page-object-model-classes)
@@ -28,8 +23,6 @@
     - [TestRunner Class](#testrunner-class)
 * [**Driver Factory Class**](#driver-factory-class)
     - [Configuration Properties](#configuration-properties)
-* [**Assumptions**](#assumptions)
-* [**Recommendations**](#recommendations)
 * [**How to use the framework**](#how-to-use-the-project)
     - [Reporting](#reporting)
 
@@ -52,39 +45,19 @@ Agile methodology and scrum framework was implemented. Sprint planning, daily st
 </div>
 <br/>
 
-#### Sprint 1
-
-<br/>
-<div align="left">
-    <b><a href="#table-of-contents">↥ Back to top</a></b>
-</div>
-<br/>
-
-#### Sprint 2
-
-<br/>
-<div align="left">
-    <b><a href="#table-of-contents">↥ Back to top</a></b>
-</div>
-<br/>
-
-#### Sprint 3
-
-<br/>
-<div align="left">
-    <b><a href="#table-of-contents">↥ Back to top</a></b>
-</div>
-<br/>
-
-#### Sprint 4
-
-<br/>
-<div align="left">
-    <b><a href="#table-of-contents">↥ Back to top</a></b>
-</div>
-<br/>
-
 #### User Stories
+
+We created epics first scuh as login, navigation, catalogue, product images, comparing products, account management, cart and then, they were split into the user stories.
+
+Some user stories are as described below: 
+
+_As a user, when I enter my correct information, I expect to be able to log in and see the user information._
+
+_As a user, I want to hover over a product to see the options to see: colours, add to cart, add to wishlist, add to compare, click more to see if its in stock as well as price._
+
+_As a user I should be able to click contact us to get to access to the contact page._
+
+_As a user, I want to be able to see my saved addresses._
 
 <br/>
 <div align="left">
@@ -182,14 +155,6 @@ Mockito Core is a dependency which objects can be mocked. In this project, mocki
 </div>
 <br/>
 
-#### Hamcrest All
-
-<br/>
-<div align="left">
-    <b><a href="#table-of-contents">↥ Back to top</a></b>
-</div>
-<br/>
-
 #### Web Driver Management
 
 Web Driver Management is a dependency which enables us to use different browsers without adding .exe files to our project. If somehow it doesn't work, we need to have .exe files for the browser we want to use so that, by the help of Selenium, we can use these browsers.
@@ -245,6 +210,7 @@ BDD approach is for people who are not technical. So, it makes the test scenario
 #### Gherkin Language - Feature Files
 
 We have different keywords in Gherkin language for example When, Given, Then, Background, Scenario, Scenario Outline with a set of examples etc. So we can use them to have tests consisting of plain English. One of the important benefits that feature files have is to be able to write same statement effortlessly so you don't need to write step definition method again if you implemented once before for that specific statement in feature file.
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -264,6 +230,7 @@ What was written with Gherkin language in feature files were implemented in step
 #### TestRunner Class
 
 This is the class that behaves like the brain of our framework. You can configure our tests in this class. You can decide which test scenarios are wanted to run and different types of reports. This is the class that makes feature files and step definition classes connected. 
+
 <br/>
 <div align="left">
     <b><a href="#table-of-contents">↥ Back to top</a></b>
@@ -294,22 +261,6 @@ Instead of _chrome_, we can write _chrome-headless_, _firefox_, _firefox-headles
 </div>
 <br/>
 
-### **Assumptions**
-
-<br/>
-<div align="left">
-    <b><a href="#table-of-contents">↥ Back to top</a></b>
-</div>
-<br/>
-
-### **Recommendations**
-
-<br/>
-<div align="left">
-    <b><a href="#table-of-contents">↥ Back to top</a></b>
-</div>
-<br/>
-
 ### **How to use the framework**
 
 What you need to do is to create scenarios in feature files and implement them in step definitions by calling an object for each POM class which is related to the tests that we want to write. After preparing step definitions, you can run your tests using TestRunner class and make configuration. You can generate useful reports for the scenarios to see whether it fails or not. 
@@ -329,8 +280,3 @@ We generated different kinds of reports such as pretty, html, and json. When the
 </div>
 <br/>
 
-|  Test ID | Bug Description  | Steps to reproduce  | Expected Result  | Environment  |
-|:--------:|:----------------:|:-------------------:|:----------------:|:------------:|
-|   |   |||||
-||||||||
-||||
