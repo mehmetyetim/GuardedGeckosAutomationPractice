@@ -2,7 +2,7 @@
 
 ## **Table Of Contents**
 * [**Overview**](#overview)
-* * [**Project Planning (Agile - Scrum)**](#project-planning)
+* [**Project Planning (Agile - Scrum)**](#project-planning)
     - [User Stories](#user-stories)
 * [**Tools and Dependencies**](#tools-and-dependencies)
     - [IntelliJ](#intellij)
@@ -18,12 +18,12 @@
 * [**Page Object Model Classes**](#page-object-model-classes)
 * [**Unit Testing**](#unit-testing)
 * [**Behaviour-driven Development Tests**](#behaviour-driven-development-tests)
-    - [Gherkin Language - Feature Files](#gherkin-languages-feature-files)
+    - [Gherkin Language - Feature Files](#gherkin-language-feature-files)
     - [Step Definitions](#step-definitions)
     - [TestRunner Class](#testrunner-class)
 * [**Driver Factory Class**](#driver-factory-class)
     - [Configuration Properties](#configuration-properties)
-* [**How to use the framework**](#how-to-use-the-project)
+* [**How to use the framework**](#how-to-use-the-framework)
     - [Reporting](#reporting)
 
 ### **Overview**
@@ -260,6 +260,7 @@ Instead of _chrome_, we can write _chrome-headless_, _firefox_, _firefox-headles
     <b><a href="#table-of-contents">↥ Back to top</a></b>
 </div>
 <br/>
+
 
 ### **How to use the framework**
 
