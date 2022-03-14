@@ -1,0 +1,18 @@
+package com.guardedgeckos.automationpractice.pages.cart.payment;
+
+import com.guardedgeckos.automationpractice.pages.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class CheckPage extends BasePage {
+
+    public CheckPage(WebDriver driver) {
+        super(driver, false);
+    }
+
+    public BasePage confirmPayment(){
+        driver.findElement(By.xpath("//*[@id=\"cart_navigation\"]/button")).click();
+        return new FinalPaymentPage(driver);
+    }
+
+}

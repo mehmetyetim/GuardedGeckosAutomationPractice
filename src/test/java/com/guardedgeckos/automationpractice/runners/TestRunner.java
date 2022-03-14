@@ -14,5 +14,5 @@ import org.junit.runner.RunWith;
         tags = "@signin"
 
 )
-public class CucumberRunner {
+public class TestRunner {
 }
